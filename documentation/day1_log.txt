@@ -1,0 +1,299 @@
+================================================================================
+PROJECT LOG BOOK - DAY 1
+Project : Detection of Malicious URLs Using Machine Learning and Explainable AI
+          (SHAP vs LIME explanation agreement and efficiency)
+Course  : MCARP31 Research Project (Sem 3) -> MCARP42 Research Paper (Sem 4)
+Session : Thursday 5 Nov 2026, 17:20 IST  ->  Friday 6 Nov 2026, 01:20 IST
+Machine : Windows 11 (build 26300), Intel 12th-gen (Family 6 Model 154), 8 logical CPUs, 16 GB RAM
+Python  : 3.10.11, isolated virtual environment malicious_url_xai/.venv
+================================================================================
+
+
+--------------------------------------------------------------------------------
+1. CHRONOLOGICAL WORK COMPLETED
+--------------------------------------------------------------------------------
+
+[17:20] Plan review
+  - Reviewed the project plan (.cursor/plans/malicious_url_xai_3c2d7784.plan.md)
+    against the project context (topic, RQs, hypotheses, one-week schedule).
+  - Verdict: plan sound; needed one serious correction (dataset artifact, see
+    section 3) and several small fixes.
+
+[17:25] Dataset artifact check (before any modelling)
+  - Measured, per class, the share of URLs that start with a scheme, with
+    https://, and with a leading "www.", plus median URL length:
+
+        class        has scheme   https://   www.     median length
+        benign          8.3%        0.5%      3.1%        46
+        defacement    100.0%        0.0%     69.8%        81
+        malware        96.3%       20.8%      9.3%        49
+        phishing       26.4%        7.4%     38.7%        35
+
+  - Conclusion: URL formatting depends on the source each class was collected
+    from, not on maliciousness. Only 0.5% of "benign" URLs use HTTPS, which is
+    the opposite of the real web.
+
+[21:58] Plan updated with the fixes (see section 2), then build started.
+
+[22:00] Environment
+  - Created malicious_url_xai/{src,tests,artifacts,results} and .venv.
+  - Installed: pandas 2.3.3, numpy 2.2.6, scikit-learn 1.7.2, xgboost 3.2.0,
+    shap 0.49.1, lime 0.2.0.1, scipy 1.15.3, matplotlib 3.10.9, seaborn 0.13.2,
+    joblib 1.6.0, pytest 9.2.0, pyarrow 25.0.1.
+  - Froze exact versions to requirements-lock.txt.
+
+[22:00-22:01] Code written
+  - src/features.py : URL normalization + 24 lexical features (+2 raw-only flags)
+  - src/data.py     : schema checks, cleaning, stratified 70/15/15 split,
+                      hostname-overlap measurement
+  - prepare.py      : stage 1 (clean -> split -> cache features)
+  - train.py        : stage 2 (compare models -> select -> refit -> test once
+                      -> ablation)
+  - tests/test_features.py, pytest.ini, .gitignore, README.md
+
+[22:01] Unit tests: 12 passed.
+
+[22:01] prepare.py run on malicious_phish.csv (52 s).
+  - 651,191 raw rows -> 631,179 clean rows (details in section 4).
+  - Found 4,047 normalized URLs with conflicting labels (see section 3).
+
+[22:02-22:06] train.py run (about 4 min).
+  - Model comparison on validation, Random Forest selected, refit on
+    train+validation, evaluated once on test, two-way raw-URL ablation.
+
+[00:12] Review by student; corrections received (see section 3):
+  - feature count is 24, not 25
+  - conflict breakdown is 4,018 scheme-based + 29 www-based
+  - asked for a three-way ablation and a seen/unseen hostname analysis
+
+[00:15-00:20] Implemented corrections, re-ran pytest (12 passed),
+  prepare.py and train.py. All validation and test numbers reproduced
+  exactly (fixed seeds), confirming determinism.
+
+[later] Student added check.py (single-URL classifier using the saved model
+  and the same normalization + feature code).
+
+[01:20] Overall check by student: pipeline confirmed consistent.
+  Documentation folder created (this log + project_documentation_draft.md).
+
+
+--------------------------------------------------------------------------------
+2. DECISIONS (FIXED BEFORE SEEING XAI RESULTS)
+--------------------------------------------------------------------------------
+
+Data
+  D1. Normalize every URL before feature extraction: strip whitespace, remove
+      the scheme (anything matching "scheme://") and one leading "www."
+      (case-insensitive). Paths are NOT lowercased or rewritten.
+  D2. Remove every normalized URL that carries more than one label (all
+      copies), instead of guessing the right label.
+  D3. Keep one row per normalized URL (first occurrence; its raw string is kept
+      for the raw-URL ablation).
+  D4. Stratified 70/15/15 train/validation/test split, random_state = 42.
+      Split saved inside artifacts/clean.parquet so every script uses it.
+  D5. No hostname-grouped split (would change the agreed experiment); hostname
+      overlap reported as a limitation and analysed separately.
+
+Features
+  D6. Lexical features only, no network calls (no WHOIS, DNS, page content).
+  D7. Primary model has NO https flag and NO has-scheme flag.
+
+Models
+  D8. Compare Logistic Regression, Random Forest and XGBoost.
+  D9. Select by validation macro-F1 (classes are imbalanced); report accuracy,
+      macro precision/recall/F1 and per-class recall.
+  D10. Class imbalance: class_weight='balanced' (LR),
+       'balanced_subsample' (RF), balanced sample weights (XGBoost).
+  D11. Random Forest capped (200 trees, max_depth 25, min_samples_leaf 5) to
+       keep model size and TreeSHAP time manageable.
+  D12. Refit the selected configuration on train+validation, evaluate once on
+       test. 95% accuracy treated as a target, not a requirement.
+
+XAI (fixed now, before running explanations)
+  D13. k = 5 (top-5 features).
+  D14. Sample: 500 test URLs, 125 per PREDICTED class, seed 42, sampled from
+       all test predictions with a saved "correct" flag.
+  D15. Considerable disagreement = mean top-5 Jaccard < 0.50.
+       The earlier 0.70 threshold was rejected: with two 5-feature sets, even
+       4 shared features give 4/6 = 0.667.
+  D16. Spearman correlation over the full vector of absolute importances
+       (all 24 features); NaN recorded when a vector is constant.
+  D17. LIME: default quartile discretization (discretize_continuous=True),
+       random_state 42, num_samples 2000 initially, labels = predicted class,
+       weights via as_map(). Non-discretized mode was rejected because, with
+       sample_around_instance=False, LIME would sample around the training mean
+       rather than around the URL being explained.
+  D18. SHAP: TreeExplainer on the final model; explain the predicted class.
+  D19. Timing per URL with time.perf_counter(), after warm-up, excluding
+       loading and disk writes. Caveat: per-instance TreeSHAP vs
+       perturbation-based LIME is the measured setup, not a universal claim.
+  D20. Statistics: Wilcoxon signed-rank (timing), Kruskal-Wallis (Jaccard
+       across predicted classes).
+
+
+--------------------------------------------------------------------------------
+3. PROBLEMS DISCOVERED AND CORRECTIONS
+--------------------------------------------------------------------------------
+
+P1. Formatting artifact in the dataset (serious).
+    Found: scheme/www/https presence depends on class source (table above).
+    Risk : inflated accuracy, and artifact features could dominate both SHAP
+           and LIME, artificially raising their agreement (contaminating RQ1).
+    Fix  : normalization (D1) + no scheme flags in the primary model (D7).
+    Proof: three-way ablation (section 5) shows ~9.3 accuracy points come
+           from raw formatting.
+
+P2. Label noise exposed by normalization.
+    Found: 4,047 normalized URLs had two labels (raw file showed only 6).
+           All are benign vs phishing:
+             - 4,018: copy WITH a scheme labelled phishing, copy WITHOUT a
+                      scheme labelled benign
+             - 29   : copy WITH "www." labelled phishing, copy WITHOUT "www."
+                      labelled benign
+           Example: http://000067d.rcomhost.com/ssl/dk/sesion/confirm/...
+           /DANSKEBANK-DK/FRAUD/MEMBER-ID/... is phishing, but the scheme-less
+           copy is labelled benign.
+    Fix  : all 8,230 rows of these URLs removed (D2).
+    Correction: I first wrote that "every" conflict was http vs no-scheme;
+           the student's check showed 29 are www-based. Documented correctly
+           now.
+
+P3. Malware class shrank from 32,520 to 23,593.
+    Cause: duplicates after normalization (the same malware URL listed with
+           different schemes / www), not conflicts (all conflicts were
+           benign/phishing).
+
+P4. Feature count misreported.
+    I reported 25 features; correct count is 24 (primary) and 26 (raw +
+    is_https + has_scheme). Corrected; n_features is now saved in the
+    ablation CSV.
+
+P5. Two-way ablation was not feature-matched (raw run also added two flags).
+    Fix: three-way ablation (normalized/24, raw/24, raw+flags/26).
+
+P6. Hostname overlap: ~74% of test URLs share a hostname with training.
+    Fix: added seen vs unseen hostname subgroup evaluation (no retraining).
+    Overlap measured against train+validation hosts, because the final model
+    was refit on train+validation.
+
+P7. Unseen-host subgroup has only 21 defacement URLs (14,275 in seen-host).
+    Its macro-F1 (0.6089) and defacement recall (1.0) are unreliable;
+    compare per-class recall with supports instead.
+
+P8. PowerShell piping/quoting error when chaining prepare.py with
+    Select-String; prepare.py was re-run alone. No effect on results.
+
+P9. Final Random Forest is 565 MB on disk (artifacts/ excluded from git).
+    Acceptable on this laptop; note that check.py reloads it on every call.
+
+
+--------------------------------------------------------------------------------
+4. DATASET CLEANING (results/data_audit.json)
+--------------------------------------------------------------------------------
+
+  Raw rows                                   651,191
+    benign 428,103 | defacement 96,457 | phishing 94,111 | malware 32,520
+  Raw duplicate rows (exact URL)              10,072
+  Raw conflicting URLs                             6
+  Empty after normalization                        0
+  Conflicting normalized URLs                  4,047  (8,230 rows removed)
+  Duplicate normalized rows removed           11,782
+  Clean rows                                 631,179
+    benign 423,147 | defacement 95,308 | phishing 89,131 | malware 23,593
+
+  Split (stratified, seed 42)
+    train  441,825  (benign 296,203 | defacement 66,715 | phishing 62,392 | malware 16,515)
+    val     94,677  (benign  63,472 | defacement 14,297 | phishing 13,369 | malware  3,539)
+    test    94,677  (benign  63,472 | defacement 14,296 | phishing 13,370 | malware  3,539)
+
+  Hostname overlap with train only : val 73.87%, test 73.97%
+  Hostname overlap with train+val  : test 75.28% (71,276 of 94,677)
+
+  Clean normalized URL length: mean 56.9, median 45, min 1, max 2,175
+
+
+--------------------------------------------------------------------------------
+5. MODELS, TESTS AND RESULTS
+--------------------------------------------------------------------------------
+
+Unit tests (pytest): 12 passed
+  normalization (5 cases), scheme vs scheme-less parsing, IP/port/percent
+  encoding, raw-only flags, entropy and empty string, finite + deterministic
+  feature matrix on malformed URLs, conflict + duplicate removal, split sizes
+  and stratification.
+
+Validation comparison (train -> val)
+  model           accuracy  macro-F1  fit time
+  LogReg            0.5182    0.4991    19 s
+  Random Forest     0.8463    0.8254    55 s   <- selected
+  XGBoost           0.8318    0.8124    43 s
+
+Final test (RF refit on train+val; test used once)
+  accuracy 0.8471 | macro precision 0.8120 | macro recall 0.8534 | macro-F1 0.8269
+  per class      precision  recall   F1      support
+    benign         0.9472   0.8476  0.8946   63,472
+    defacement     0.7539   0.8859  0.8146   14,296
+    malware        0.9507   0.8878  0.9182    3,539
+    phishing       0.5961   0.7924  0.6803   13,370
+  Main confusions: 6,192 benign -> phishing; 3,385 benign -> defacement;
+                   2,009 phishing -> benign.
+
+Three-way ablation (same rows, same RF config, test set)
+  input                               features  accuracy  macro-F1
+  normalized URL (primary)               24      0.8471    0.8269
+  raw URL, same features                 24      0.9402    0.9206
+  raw URL + is_https + has_scheme        26      0.9466    0.9283
+  -> ~9.3 points come from the raw string itself (length, slashes, dots
+     already encode "http://" / "www."); explicit flags add only ~0.6.
+
+Hostname subgroups (final model, test set; "seen" = host in train+val)
+  subgroup       n       acc     macro-F1  recall: benign  defacement  malware  phishing
+  all test     94,677   0.8471   0.8269          0.8476    0.8859      0.8878   0.7924
+  seen host    71,276   0.8694   0.8355          0.8731    0.8857      0.9317   0.7813
+  unseen host  23,401   0.7792   0.6089          0.7701    1.0 (n=21)  0.7515   0.8030
+  -> benign and malware recall drop on unseen hosts; phishing does not.
+  -> defacement generalization cannot be judged (21 unseen-host URLs).
+
+Commands used (from malicious_url_xai/, venv active)
+  python -m venv .venv
+  pip install pandas numpy scikit-learn xgboost shap lime scipy matplotlib seaborn joblib pytest pyarrow
+  pip freeze > requirements-lock.txt
+  pytest
+  python prepare.py
+  python train.py
+  python check.py "<url>"
+
+
+--------------------------------------------------------------------------------
+6. OPEN ITEMS CARRIED TO DAY 2
+--------------------------------------------------------------------------------
+  - Decide: proceed to explain.py now (recommended) vs extra lexical features.
+  - Read Paper 5 (Nair & Di Troia, 2025) full text: does it already measure
+    SHAP-LIME agreement quantitatively? (try SJSU ScholarWorks / library)
+  - Verify dataset licence/source page on Kaggle; verify venue indexing
+    (especially iJOE, Paper 4).
+  - explain.py: 10-URL LIME pilot first to estimate runtime.
+
+
+================================================================================
+DAY 1 SUMMARY
+================================================================================
+Built and ran a reproducible pipeline (load -> normalize -> clean -> split ->
+24 lexical features -> LR/RF/XGBoost -> validation selection -> single test
+evaluation -> saved model), with 12 passing unit tests and all intermediate
+artifacts saved.
+
+Key finding: the popular 651k malicious URL dataset leaks its labels through
+URL formatting. Normalizing scheme and "www." exposed 4,047 contradictory
+labels and dropped test accuracy from 94.0-94.7% (raw) to 84.7% (normalized,
+macro-F1 0.827). This is the honest baseline for the XAI study, and the
+artifact itself is a reportable contribution.
+
+Further, 75% of test URLs share a hostname with training data; on unseen
+hostnames accuracy falls to 77.9%, with benign and malware recall dropping
+most. These are stated limitations.
+
+Selected model: Random Forest (200 trees, depth 25, min leaf 5, balanced
+subsample weights). XAI protocol (k=5, 500 URLs, Jaccard < 0.50) fixed before
+any explanation was generated.
+================================================================================

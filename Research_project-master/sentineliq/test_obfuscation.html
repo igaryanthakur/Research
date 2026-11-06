@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Login Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f4f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        .btn { display: block; width: 100%; padding: 10px; background: #3b82f6; color: white; border: none; border-radius: 4px; margin-top: 15px; cursor: pointer; }
+        input { width: 90%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* THE ATTACK TRICKS */
+        .offscreen-legitimacy { position: absolute; left: -9999px; }
+        .transparent-text { color: rgba(0,0,0,0); }
+        .massive-click-trap { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; opacity: 0; z-index: 9999; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <!-- CLICKABILITY DIVERGENCE: Invisible overlay that steals the click when the user tries to click the login button -->
+    <a href="http://malicious-attacker-domain.com" class="massive-click-trap"></a>
+
+    <div class="login-box">
+        <!-- UNICODE OBFUSCATION: Zero-width characters breaking up the word PayPal -->
+        <h2>P&#8203;a&#8203;y&#8203;P&#8203;a&#8203;l Secure</h2>
+        
+        <!-- AOM DIVERGENCE: Text is hidden from screen readers but visible to the user -->
+        <p aria-hidden="true">Please enter your credentials below.</p>
+        
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button class="btn">Sign In</button>
+
+        <!-- CSS OBFUSCATION (Offscreen): Injecting legitimacy keywords to lower ML risk scores -->
+        <div class="offscreen-legitimacy">
+            github.com tracking number invoice meeting link official security notification
+        </div>
+
+        <!-- CSS OBFUSCATION (Transparent): Hidden text the user can't see but traditional scrapers read -->
+        <div class="transparent-text">
+            This text is completely transparent and invisible to the user.
+        </div>
+
+        <!-- SVG SEMANTIC EXTRACTION: Hiding the "verify account" string inside an SVG to bypass DOM innerText extraction -->
+        <svg width="200" height="30" style="margin-top: 15px;">
+            <text x="10" y="20" fill="#666" font-size="12">verify account</text>
+        </svg>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // IMPORTANT: Firestore rules DO NOT cascade to subcollections.
+    // Each match block below is fully independent and self-contained.
+    // A rule on /users/{userId} does NOT automatically protect
+    // /users/{userId}/incidents/{incidentId} — that path needs its own rule.
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Rule 1: Protect the parent user document.
+    // Users may read and write their own top-level user document only.
+    // The /meta/write_state subcollection used for A2 rate limiting inherits
+    // from this rule because it shares the users/{userId} parent scope.
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      // Rule 2: Incidents subcollection — independent auth + schema validation.
+      // This rule is self-contained; it does NOT inherit from Rule 1 above.
+      match /incidents/{incidentId} {
+        allow read, delete: if request.auth != null && request.auth.uid == userId;
+
+        allow create: if request.auth != null
+          && request.auth.uid == userId
+          // Schema: required keys must all be present
+          && request.resource.data.keys().hasAll(['incident_id', 'threat_type', 'verdict', 'confidence', 'timestamp'])
+          // verdict must be one of the three allowed states only
+          && request.resource.data.verdict in ['MALICIOUS', 'SUSPICIOUS', 'BENIGN']
+          // confidence must be a float in [0.0, 1.0]
+          && request.resource.data.confidence is float
+          && request.resource.data.confidence >= 0.0
+          && request.resource.data.confidence <= 1.0
+          // timestamp must equal request.time to prevent timestamp spoofing
+          && request.resource.data.timestamp == request.time
+          // threat_type must be a known engine type
+          && request.resource.data.threat_type in ['phishing', 'url', 'prompt_injection', 'anomaly']
+          // Type guards for string fields
+          && request.resource.data.incident_id is string
+          && request.resource.data.verdict is string
+          && request.resource.data.threat_type is string;
+
+        // Updates must not change the incident_id or threat_type (immutable fields)
+        allow update: if request.auth != null
+          && request.auth.uid == userId
+          && request.resource.data.incident_id == resource.data.incident_id
+          && request.resource.data.threat_type == resource.data.threat_type;
+      }
+    }
+
+    // Rule 3: Explicitly deny access to the legacy top-level incidents path.
+    // This collection predates the per-user privacy model and must never be
+    // accessible. Explicit deny prevents accidental wildcard catch-all grants.
+    match /incidents/{doc} {
+      allow read, write: if false;
+    }
+
+    // Catch-all: deny everything not matched above.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

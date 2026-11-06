@@ -1,0 +1,4 @@
+input,n_features,accuracy,macro_precision,macro_recall,macro_f1,recall_benign,recall_defacement,recall_malware,recall_phishing
+normalized_url (primary),24,0.8471,0.812,0.8534,0.8269,0.8476,0.8859,0.8878,0.7924
+"raw_url, same features",24,0.9402,0.914,0.9303,0.9206,0.9434,0.9856,0.9068,0.8854
+"raw_url + is_https, has_scheme",26,0.9466,0.9219,0.9372,0.9283,0.9491,0.9938,0.9124,0.8933

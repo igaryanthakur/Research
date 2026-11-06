@@ -1,0 +1,4 @@
+subgroup,n,n_benign,n_defacement,n_malware,n_phishing,accuracy,macro_precision,macro_recall,macro_f1,recall_benign,recall_defacement,recall_malware,recall_phishing
+all_test,94677,63472,14296,3539,13370,0.8471,0.812,0.8534,0.8269,0.8476,0.8859,0.8878,0.7924
+seen_hostname,71276,47785,14275,2678,6538,0.8694,0.8172,0.8679,0.8355,0.8731,0.8857,0.9317,0.7813
+unseen_hostname,23401,15687,21,861,6832,0.7792,0.6379,0.8311,0.6089,0.7701,1.0,0.7515,0.803

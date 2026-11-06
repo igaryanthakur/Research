@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+model_cache/
+*.joblib
+firebase-service-account.json
+.DS_Store
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+sentineliq.db

@@ -1,0 +1,33 @@
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\db\database.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\db\database.py:55:46 - error: "Query" is not a known attribute of module "firebase_admin.firestore" (reportAttributeAccessIssue)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\db\database.py:60:16 - error: Type "list[Dict[str, Any] | None]" is not assignable to return type "List[dict[Unknown, Unknown]]" (reportReturnType)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\db\database.py:74:56 - error: "Query" is not a known attribute of module "firebase_admin.firestore" (reportAttributeAccessIssue)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\db\database.py:81:54 - error: "get" is not a known attribute of "None" (reportOptionalMemberAccess)
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\diagnose.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\diagnose.py:3:10 - warning: Unsupported escape sequence in string literal (reportInvalidStringEscapeSequence)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\diagnose.py:3:18 - warning: Unsupported escape sequence in string literal (reportInvalidStringEscapeSequence)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\diagnose.py:7:16 - error: Cannot access attribute "reconfigure" for class "TextIO"
+    Attribute "reconfigure" is unknown (reportAttributeAccessIssue)
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\engines\anomaly.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\engines\anomaly.py:204:35 - error: Argument of type "float" cannot be assigned to parameter "contamination" of type "str" in function "__init__"
+    "float" is not assignable to "str" (reportArgumentType)
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\engines\url_detector.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\engines\url_detector.py:241:20 - error: "httpx" is possibly unbound (reportPossiblyUnboundVariable)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\engines\url_detector.py:246:20 - error: "BeautifulSoup" is possibly unbound (reportPossiblyUnboundVariable)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\engines\url_detector.py:328:25 - error: "tldextract" is possibly unbound (reportPossiblyUnboundVariable)
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\quick_test.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\quick_test.py:4:16 - error: Cannot access attribute "reconfigure" for class "TextIO"
+    Attribute "reconfigure" is unknown (reportAttributeAccessIssue)
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\test_accuracy.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\test_accuracy.py:160:66 - error: Argument of type "Literal[0]" cannot be assigned to parameter "zero_division" of type "str" in function "precision_score"
+    "Literal[0]" is not assignable to "str" (reportArgumentType)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\test_accuracy.py:161:63 - error: Argument of type "Literal[0]" cannot be assigned to parameter "zero_division" of type "str" in function "recall_score"
+    "Literal[0]" is not assignable to "str" (reportArgumentType)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\test_accuracy.py:162:59 - error: Argument of type "Literal[0]" cannot be assigned to parameter "zero_division" of type "str" in function "f1_score"
+    "Literal[0]" is not assignable to "str" (reportArgumentType)
+c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\xai\shap_explainer.py
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\xai\shap_explainer.py:122:46 - error: Cannot access attribute "data" for class "list[Explanation]"
+    Attribute "data" is unknown (reportAttributeAccessIssue)
+  c:\Users\Ramakrishna\OneDrive\Pictures\java\Documents\Projects\INDIANEXT\sentineliq\backend\xai\shap_explainer.py:123:62 - error: Cannot access attribute "values" for class "list[Explanation]"
+    Attribute "values" is unknown (reportAttributeAccessIssue)
+15 errors, 2 warnings, 0 informations

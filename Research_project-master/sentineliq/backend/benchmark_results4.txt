@@ -1,0 +1,75 @@
+﻿.\venv\Scripts\python : Warning: You 
+are sending unauthenticated requests 
+to the HF Hub. Please set a HF_TOKEN 
+to enable higher rate limits and 
+faster downloads.
+At line:1 char:1
++ .\venv\Scripts\python -X utf8 
+test_accuracy.py 2>&1 | Out-File 
+-FileP ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpeci 
+   fied: (Warning: You ar...ster down  
+  loads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCo 
+   mmandError
+ 
+
+========================================================
+  SentinelIQ ΓÇö Formal Accuracy Benchmark
+========================================================
+
+Loading models...
+
+Loading weights:   0%|          | 
+0/393 [00:00<?, ?it/s]
+Loading weights: 
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 
+393/393 [00:00<00:00, 24691.22it/s]
+
+Loading weights:   0%|          | 
+0/393 [00:00<?, ?it/s]
+Loading weights: 
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 
+393/393 [00:00<00:00, 17638.97it/s]
+Error trying to connect to socket: 
+closing socket - timed out
+Error trying to connect to socket: 
+closing socket - timed out
+Error trying to connect to socket: 
+closing socket - timed out
+  phishing   ΓåÆ bert_model
+  url        ΓåÆ distilbert_model
+  injection  ΓåÆ regex_plus_gemini
+  anomaly    ΓåÆ isolation_forest
+
+Running benchmark (WHOIS checks may take ~5-10s)...
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  PHISHING            Precision=100.0%  Recall=100.0%  F1=100.0%  AUC=1.000
+  TP=10  FP=0  FN=0  TN=8  (18 test cases)
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  URL                 Precision=50.0%  Recall=100.0%  F1=66.7%  AUC=1.000
+  TP=7  FP=7  FN=0  TN=0  (14 test cases)
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  PROMPT INJECTION    Precision=100.0%  Recall=100.0%  F1=100.0%  AUC=1.000
+  TP=9  FP=0  FN=0  TN=6  (15 test cases)
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  ANOMALY             Precision=100.0%  Recall=100.0%  F1=100.0%  AUC=1.000
+  TP=3  FP=0  FN=0  TN=3  (6 test cases)
+
+========================================================
+  COMPOSITE F1 (mean of 4 engines): 91.7%
+========================================================
+
+Fitting Platt calibrators from benchmark scores...
+  Saved calibrator: db/calibrator_phishing.joblib
+  Saved calibrator: db/calibrator_url.joblib
+  Saved calibrator: db/calibrator_injection.joblib
+  Saved calibrator: db/calibrator_anomaly.joblib
+
+Benchmark complete. Calibrators saved ΓÇö engines will use them on next restart.

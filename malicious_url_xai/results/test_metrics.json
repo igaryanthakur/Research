@@ -1,0 +1,11 @@
+{
+  "model": "random_forest",
+  "accuracy": 0.8471,
+  "macro_precision": 0.812,
+  "macro_recall": 0.8534,
+  "macro_f1": 0.8269,
+  "recall_benign": 0.8476,
+  "recall_defacement": 0.8859,
+  "recall_malware": 0.8878,
+  "recall_phishing": 0.7924
+}

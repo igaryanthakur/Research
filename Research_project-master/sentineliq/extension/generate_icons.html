@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head><title>SentinelIQ Icon Generator</title></head>
+<body>
+<canvas id="c"></canvas>
+<script>
+// Run this page once in a browser to download all icon PNGs
+const sizes = [16, 32, 48, 128];
+sizes.forEach(size => {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  const bgGrad = ctx.createLinearGradient(0, 0, size, size);
+  bgGrad.addColorStop(0, '#1e1b4b');
+  bgGrad.addColorStop(1, '#312e81');
+  ctx.fillStyle = bgGrad;
+  const r = size * 0.18;
+  ctx.beginPath();
+  ctx.roundRect(0, 0, size, size, r);
+  ctx.fill();
+
+  // Shield
+  const cx = size / 2, cy = size / 2;
+  const sw = size * 0.58, sh = size * 0.68;
+  const sx = cx - sw / 2, sy = cy - sh / 2;
+
+  const shieldGrad = ctx.createLinearGradient(sx, sy, sx + sw, sy + sh);
+  shieldGrad.addColorStop(0, '#6366f1');
+  shieldGrad.addColorStop(1, '#8b5cf6');
+  ctx.fillStyle = shieldGrad;
+
+  ctx.beginPath();
+  ctx.moveTo(cx, sy);
+  ctx.bezierCurveTo(cx + sw * 0.5, sy, cx + sw * 0.5, sy + sh * 0.4, cx, sy + sh);
+  ctx.bezierCurveTo(cx - sw * 0.5, sy + sh * 0.4, cx - sw * 0.5, sy, cx, sy);
+  ctx.fill();
+
+  // Checkmark
+  if (size >= 32) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+    ctx.lineWidth = size * 0.08;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(cx - sw * 0.2, cy);
+    ctx.lineTo(cx - sw * 0.02, cy + sh * 0.15);
+    ctx.lineTo(cx + sw * 0.22, cy - sh * 0.12);
+    ctx.stroke();
+  }
+
+  // Download
+  const link = document.createElement('a');
+  link.download = `icon${size}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+});
+</script>
+</body>
+</html>

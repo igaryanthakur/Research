@@ -1,0 +1,76 @@
+{
+  "manifest_version": 3,
+  "name": "SentinelIQ — Browser Threat Intelligence",
+  "version": "1.2.1",
+  "description": "Explainable real-time browser threat intelligence. Detects phishing, malicious URLs, and AI prompt injection attacks with AI analyst briefings.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "SentinelIQ Threat Scanner"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "*://mail.google.com/*",
+        "*://outlook.live.com/*",
+        "*://outlook.office.com/*",
+        "*://outlook.cloud.microsoft/*"
+      ],
+      "js": ["content-email.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "webNavigation",
+    "tabs",
+    "alarms",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://indianext-x-chitti2-0.onrender.com/*",
+    "http://localhost:8000/*",
+    "http://127.0.0.1:8000/*",
+    "https://securetoken.googleapis.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*", "popup/*", "blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "oauth2": {
+    "client_id": "868310281016-okql7a16f33d7h03l6j6imnf22jtu4hf.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  }
+}

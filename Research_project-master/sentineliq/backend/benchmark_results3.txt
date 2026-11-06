@@ -1,0 +1,193 @@
+﻿
+========================================================
+  SentinelIQ ΓÇö Formal Accuracy Benchmark
+========================================================
+
+Loading models...
+.\venv\Scripts\python : 
+At line:1 char:1
++ .\venv\Scripts\python -X utf8 
+test_accuracy.py 2>&1 | Out-File 
+-FileP ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpeci 
+   fied: (:String) [], RemoteExceptio  
+  n
+    + FullyQualifiedErrorId : NativeCo 
+   mmandError
+ 
+Loading weights:   0%|          | 
+0/393 [00:00<?, ?it/s]
+Loading weights: 
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 
+393/393 [00:00<00:00, 22069.08it/s]
+
+Loading weights:   0%|          | 
+0/201 [00:00<?, ?it/s]
+Loading weights: 
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 
+201/201 [00:00<00:00, 8141.68it/s]
+[1mBertForSequenceClassification LOAD 
+REPORT[0m from: 
+elftsdmr/malware-url-detect
+Key                          | Status  
+   |  | 
+-----------------------------+---------
+---+--+-
+bert.embeddings.position_ids | 
+UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when 
+loading from different 
+task/architecture; not ok if you 
+expect identical arch.[0m
+Exception in thread 
+Thread-auto_conversion:
+Traceback (most recent call last):
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\huggingface_hub\utils\_http.py", 
+line 761, in hf_raise_for_status
+    response.raise_for_status()
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\httpx\_models.py", line 829, in 
+raise_for_status
+    raise HTTPStatusError(message, 
+request=request, response=self)
+httpx.HTTPStatusError: Client error 
+'403 Forbidden' for url 'https://huggin
+gface.co/api/models/elftsdmr/malware-ur
+l-detect/discussions?p=0'
+For more information check: https://dev
+eloper.mozilla.org/en-US/docs/Web/HTTP/
+Status/403
+
+The above exception was the direct 
+cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ramakrishna\AppData\Lo
+cal\Programs\Python\Python311\Lib\threa
+ding.py", line 1045, in 
+_bootstrap_inner
+    self.run()
+  File "C:\Users\Ramakrishna\AppData\Lo
+cal\Programs\Python\Python311\Lib\threa
+ding.py", line 982, in run
+    self._target(*self._args, 
+**self._kwargs)
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\transformers\safetensors_conversi
+on.py", line 117, in auto_conversion
+    raise e
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\transformers\safetensors_conversi
+on.py", line 96, in auto_conversion
+    sha = 
+get_conversion_pr_reference(api, 
+pretrained_model_name_or_path, 
+**cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\transformers\safetensors_conversi
+on.py", line 69, in 
+get_conversion_pr_reference
+    pr = previous_pr(api, model_id, 
+pr_title, token=token)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\transformers\safetensors_conversi
+on.py", line 14, in previous_pr
+    for discussion in 
+get_repo_discussions(repo_id=model_id, 
+token=token):
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\huggingface_hub\hf_api.py", line 
+6553, in get_repo_discussions
+    discussions, has_next = _fetch_disc
+ussion_page(page_index=page_index)
+                            ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\huggingface_hub\hf_api.py", line 
+6542, in _fetch_discussion_page
+    hf_raise_for_status(resp)
+  File "C:\Users\Ramakrishna\OneDrive\P
+ictures\java\Documents\Projects\INDIANE
+XT\sentineliq\backend\venv\Lib\site-pac
+kages\huggingface_hub\utils\_http.py", 
+line 861, in hf_raise_for_status
+    raise _format(HfHubHTTPError, 
+message, response) from e
+huggingface_hub.errors.HfHubHTTPError: 
+(Request ID: Root=1-69b8a0e4-1cdd6cb71a
+e95da604d63718;e5cd363e-67cc-4365-b057-
+5e94d7a6c442)
+
+403 Forbidden: Discussions are 
+disabled for this repo.
+Cannot access content at: https://huggi
+ngface.co/api/models/elftsdmr/malware-u
+rl-detect/discussions?p=0.
+Make sure your token has the correct 
+permissions.
+Error trying to connect to socket: 
+closing socket - timed out
+Error trying to connect to socket: 
+closing socket - timed out
+Error trying to connect to socket: 
+closing socket - timed out
+  phishing   ΓåÆ bert_model
+  url        ΓåÆ distilbert_model
+  injection  ΓåÆ regex_plus_gemini
+  anomaly    ΓåÆ isolation_forest
+
+Running benchmark (WHOIS checks may take ~5-10s)...
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  PHISHING            Precision=100.0%  Recall=100.0%  F1=100.0%  AUC=1.000
+  TP=10  FP=0  FN=0  TN=8  (18 test cases)
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  URL                 Precision=50.0%  Recall=100.0%  F1=66.7%  AUC=0.939
+  TP=7  FP=7  FN=0  TN=0  (14 test cases)
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  PROMPT INJECTION    Precision=100.0%  Recall=100.0%  F1=100.0%  AUC=1.000
+  TP=9  FP=0  FN=0  TN=6  (15 test cases)
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  ANOMALY             Precision=100.0%  Recall=100.0%  F1=100.0%  AUC=1.000
+  TP=3  FP=0  FN=0  TN=3  (6 test cases)
+
+========================================================
+  COMPOSITE F1 (mean of 4 engines): 91.7%
+========================================================
+
+Fitting Platt calibrators from benchmark scores...
+  Saved calibrator: db/calibrator_phishing.joblib
+  Saved calibrator: db/calibrator_url.joblib
+  Saved calibrator: db/calibrator_injection.joblib
+  Saved calibrator: db/calibrator_anomaly.joblib
+
+Benchmark complete. Calibrators saved ΓÇö engines will use them on next restart.

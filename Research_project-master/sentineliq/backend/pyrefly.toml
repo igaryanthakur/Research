@@ -1,0 +1,16 @@
+python_version = "3.11"
+
+[site_package_path]
+paths = [
+  "venv/Lib/site-packages"
+]
+
+[search_path]
+paths = [
+  ".",
+  "engines",
+  "xai",
+  "scoring",
+  "db",
+  "routers"
+]

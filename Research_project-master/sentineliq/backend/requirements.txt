@@ -1,0 +1,34 @@
+fastapi==0.111.0
+uvicorn==0.29.0
+python-multipart==0.0.9
+pydantic==2.7.1
+python-dotenv==1.0.1
+aiofiles==23.2.1
+
+# ML
+transformers==4.40.2
+torch>=2.9.0
+scikit-learn>=1.4.2
+numpy>=1.26.4
+shap>=0.45.0
+joblib>=1.4.2
+xgboost>=2.0.3
+
+# Firebase
+firebase-admin==6.5.0
+
+# AI API
+openai==1.50.0
+
+# File parsing
+# pymupdf==1.24.5 (Fails on Python 3.14 without VS C++)
+
+# Utilities (required by engines)
+cachetools==5.3.3
+beautifulsoup4==4.12.3
+regex==2024.4.16
+requests==2.31.0
+tldextract==5.1.2
+
+# Dev
+httpx==0.27.0

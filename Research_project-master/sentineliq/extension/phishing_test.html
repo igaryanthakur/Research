@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    SentinelIQ LOCAL PHISHING MOCKUP — For pipeline testing ONLY
+    ============================================================
+    This page deliberately combines ALL correlated threat signals
+    to exercise every layer of the SentinelIQ detection pipeline:
+
+    Layer A (Heuristic):  urgency language, account suspension threat
+    Layer B (BERT):       deceptive credential harvesting intent
+    Layer C (Gemini):     LLM-quality social engineering copy
+    URL Engine:           brand impersonation path structure
+    DOM Engine:           password form + spoofed brand UI
+    Email Engine:         urgency + sender mismatch patterns
+
+    TEST PROCEDURE:
+    1. Serve this file: python -m http.server 8080
+    2. In Chrome with SentinelIQ extension active, navigate to:
+       http://localhost:8080/phishing_test.html
+       OR
+       https://google.com/url?q=http://localhost:8080/phishing_test.html
+    3. Extension should fire MALICIOUS verdict with full signal attribution.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Account Verification Required — Action Needed</title>
+  <link rel="icon" href="https://www.microsoft.com/favicon.ico">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f2f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 440px;
+      padding: 44px 40px 36px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .logo svg { width: 24px; height: 24px; }
+
+    .logo-text {
+      font-size: 20px;
+      color: #1f1f1f;
+      font-weight: 300;
+      letter-spacing: -0.3px;
+    }
+
+    .alert-banner {
+      background: #fdf1cc;
+      border: 1px solid #f0d060;
+      border-radius: 3px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #6b4c00;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .alert-banner::before {
+      content: "⚠";
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f1f1f;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #605e5c;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .urgency-text {
+      color: #a80000;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 20px;
+      padding: 10px 14px;
+      background: #fde7e9;
+      border-radius: 3px;
+      border-left: 3px solid #a80000;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #1f1f1f;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #8a8886;
+      border-radius: 2px;
+      font-size: 15px;
+      margin-bottom: 16px;
+      color: #1f1f1f;
+      transition: border-color 0.15s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0078d4;
+      box-shadow: 0 0 0 2px rgba(0,120,212,0.2);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 10px;
+      background: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: #006cbe; }
+
+    .deadline-counter {
+      text-align: center;
+      font-size: 12px;
+      color: #a80000;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .links a {
+      font-size: 12px;
+      color: #0078d4;
+      text-decoration: none;
+    }
+
+    .links a:hover { text-decoration: underline; }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #edebe9;
+      font-size: 11px;
+      color: #8a8886;
+    }
+
+    /* TRAP: Hidden credential harvesting honeypot */
+    .security-check {
+      opacity: 0;
+      position: absolute;
+      left: -9999px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Brand Impersonation: Microsoft Logo -->
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
+      <rect x="13" y="1" width="10" height="10" fill="#7FBA00"/>
+      <rect x="1" y="13" width="10" height="10" fill="#00A4EF"/>
+      <rect x="13" y="13" width="10" height="10" fill="#FFB900"/>
+    </svg>
+    <span class="logo-text">Microsoft</span>
+  </div>
+
+  <!-- Urgency alert banner -->
+  <div class="alert-banner">
+    Unusual sign-in activity detected on your Microsoft account. Your account will be suspended within 24 hours if you do not verify your identity.
+  </div>
+
+  <h1>Verify your identity</h1>
+  <p class="subtitle">
+    For your security, please confirm your account credentials. Your account has been temporarily restricted due to suspicious activity from an unrecognized location.
+  </p>
+
+  <!-- Explicit urgency / threat signal -->
+  <div class="urgency-text">
+    ⏰ Your account will be permanently closed in 23:47:12 if no action is taken. Verify immediately to restore access.
+  </div>
+
+  <!-- Credential Harvesting Form (primary signal for DOM engine) -->
+  <form action="#" method="POST" onsubmit="handleSubmit(event)">
+    <label for="email">Email, phone, or Skype</label>
+    <input type="email" id="email" name="email" placeholder="someone@example.com" autocomplete="email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter your Microsoft password">
+
+    <!-- Hidden honeypot — phishing pattern -->
+    <input class="security-check" type="text" name="confirm_password" tabindex="-1" autocomplete="off">
+    <input class="security-check" type="text" name="ssn" tabindex="-1" autocomplete="off">
+    <input class="security-check" type="text" name="credit_card" tabindex="-1" autocomplete="off">
+
+    <div class="deadline-counter" id="countdown">Session expires in: <strong>23:47:12</strong></div>
+
+    <button type="submit" class="btn-primary">Verify Account Now</button>
+  </form>
+
+  <div class="links">
+    <a href="#">Forgot my password</a>
+    <a href="#">Sign-in options</a>
+    <a href="#">Create account</a>
+  </div>
+
+  <div class="footer">
+    <p>© 2024 Microsoft Corporation. All rights reserved.</p>
+    <p>Privacy Statement | Terms of Service | Contact Support</p>
+    <p style="margin-top:6px;color:#a80000;">⚠ This page requires you to verify your identity to maintain account access.</p>
+  </div>
+</div>
+
+<script>
+  // Countdown timer — urgency simulation
+  let timeLeft = 23 * 3600 + 47 * 60 + 12;
+  const countdown = document.getElementById('countdown');
+
+  const timer = setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 0) { clearInterval(timer); return; }
+    const h = String(Math.floor(timeLeft / 3600)).padStart(2, '0');
+    const m = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, '0');
+    const s = String(timeLeft % 60).padStart(2, '0');
+    if (countdown) countdown.innerHTML = `Session expires in: <strong>${h}:${m}:${s}</strong>`;
+  }, 1000);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // In a real attack, credentials would be exfiltrated here.
+    // This mockup just alerts for safe demonstration.
+    alert('SentinelIQ Test: This form submission would exfiltrate credentials in a real attack.\nThis is a safe local test page for pipeline validation only.');
+  }
+
+  console.warn('[SentinelIQ Test] This page deliberately triggers all phishing detection signals.');
+  console.warn('[SentinelIQ Test] Signals present: brand_impersonation, password_form, urgency_threat, credential_harvesting, deadline_countdown');
+</script>
+
+<!-- HIDDEN WEBMAIL SIGNALS: Added to satisfy the Two-Step Webmail Confirmation in content.js -->
+<div style="display: none;" class="msg-header" role="heading">
+  <h2 class="subject">URGENT: Action Required</h2>
+  <span email="security@microsoft-alert-systems.com">security@microsoft-alert-systems.com</span>
+  <div>Received: 10:45 AM</div>
+  <button aria-label="Reply">Reply</button>
+  <button aria-label="Forward">Forward</button>
+</div>
+
+</body>
+</html>

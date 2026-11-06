@@ -1,0 +1,5002 @@
+[
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.21276695668019935,
+    "location_delta_km": 30.73980825409684,
+    "device_match": true,
+    "session_duration_sec": 3084,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.02752146503766681,
+    "location_delta_km": 28.27685333901683,
+    "device_match": true,
+    "session_duration_sec": 1245,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.018617593787123205,
+    "location_delta_km": 31.4394550270428,
+    "device_match": true,
+    "session_duration_sec": 2692,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.014443108807301607,
+    "location_delta_km": 34.177361406707504,
+    "device_match": true,
+    "session_duration_sec": 2911,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.0782026388302913,
+    "location_delta_km": 4.6327729476557815,
+    "device_match": true,
+    "session_duration_sec": 2329,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.25062962936421157,
+    "location_delta_km": 7.594907391031443,
+    "device_match": true,
+    "session_duration_sec": 1271,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.0005273048411351156,
+    "location_delta_km": 73.76072630217567,
+    "device_match": true,
+    "session_duration_sec": 2332,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.011194064569654355,
+    "location_delta_km": 50.744467946301,
+    "device_match": true,
+    "session_duration_sec": 1082,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.08927971436446827,
+    "location_delta_km": 1.5966840646526912,
+    "device_match": true,
+    "session_duration_sec": 1763,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.07469107892954835,
+    "location_delta_km": 17.107015194352854,
+    "device_match": true,
+    "session_duration_sec": 2246,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.07517247904367276,
+    "location_delta_km": 19.603635966648525,
+    "device_match": true,
+    "session_duration_sec": 960,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.0550178557282599,
+    "location_delta_km": 35.74380796692779,
+    "device_match": true,
+    "session_duration_sec": 1956,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.01886374207286824,
+    "location_delta_km": 3.354675629989471,
+    "device_match": true,
+    "session_duration_sec": 924,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.03602230417263695,
+    "location_delta_km": 2.642554369019624,
+    "device_match": true,
+    "session_duration_sec": 1540,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.10856095786076889,
+    "location_delta_km": 13.864145798473581,
+    "device_match": true,
+    "session_duration_sec": 1901,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.059561265904073284,
+    "location_delta_km": 12.43852212001036,
+    "device_match": true,
+    "session_duration_sec": 2058,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.12625049450211076,
+    "location_delta_km": 38.984076166795326,
+    "device_match": true,
+    "session_duration_sec": 2323,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.38691249903948455,
+    "location_delta_km": 10.45630706438314,
+    "device_match": true,
+    "session_duration_sec": 2100,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 3,
+    "login_velocity": 3,
+    "failed_ratio": 0.01850595591842945,
+    "location_delta_km": 5.349845071797466,
+    "device_match": true,
+    "session_duration_sec": 2308,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.4944877752937436,
+    "location_delta_km": 68.16220810696157,
+    "device_match": true,
+    "session_duration_sec": 1784,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.032070704518479834,
+    "location_delta_km": 49.86671928682416,
+    "device_match": true,
+    "session_duration_sec": 2004,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.17895138250057213,
+    "location_delta_km": 153.87812063940117,
+    "device_match": true,
+    "session_duration_sec": 2089,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 4,
+    "failed_ratio": 0.06152640260189986,
+    "location_delta_km": 40.68684960301139,
+    "device_match": false,
+    "session_duration_sec": 2313,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.06961270935487203,
+    "location_delta_km": 60.61437781122449,
+    "device_match": true,
+    "session_duration_sec": 2136,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.1438109107147616,
+    "location_delta_km": 25.27398254998768,
+    "device_match": true,
+    "session_duration_sec": 2096,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.09171675724738439,
+    "location_delta_km": 16.881533015726124,
+    "device_match": true,
+    "session_duration_sec": 1479,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.09894265341492485,
+    "location_delta_km": 4.460551449494864,
+    "device_match": true,
+    "session_duration_sec": 2207,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.39450914457547104,
+    "location_delta_km": 14.44150504899873,
+    "device_match": true,
+    "session_duration_sec": 605,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.01734805297881906,
+    "location_delta_km": 53.969517484839926,
+    "device_match": true,
+    "session_duration_sec": 832,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.02149747128113106,
+    "location_delta_km": 6.169019611998802,
+    "device_match": true,
+    "session_duration_sec": 1375,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.0015867312874785844,
+    "location_delta_km": 31.2439511217452,
+    "device_match": true,
+    "session_duration_sec": 2159,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.05042022002147244,
+    "location_delta_km": 53.74873820274989,
+    "device_match": true,
+    "session_duration_sec": 3208,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.08347977817404542,
+    "location_delta_km": 49.166909234390175,
+    "device_match": true,
+    "session_duration_sec": 1637,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.014319369537601588,
+    "location_delta_km": 93.17630200486386,
+    "device_match": true,
+    "session_duration_sec": 1924,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.24715529715269313,
+    "location_delta_km": 39.70054479406113,
+    "device_match": true,
+    "session_duration_sec": 1496,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.12612161295539814,
+    "location_delta_km": 28.017780472107983,
+    "device_match": true,
+    "session_duration_sec": 1678,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.06549295700826673,
+    "location_delta_km": 159.1531138450119,
+    "device_match": true,
+    "session_duration_sec": 1621,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.026557510840366973,
+    "location_delta_km": 78.40977081105743,
+    "device_match": true,
+    "session_duration_sec": 1082,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.012370765236817106,
+    "location_delta_km": 5.330435612269272,
+    "device_match": true,
+    "session_duration_sec": 1461,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.06689443542610754,
+    "location_delta_km": 106.16338915437493,
+    "device_match": true,
+    "session_duration_sec": 922,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.27556871012351186,
+    "location_delta_km": 5.894010398594012,
+    "device_match": true,
+    "session_duration_sec": 2742,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 4,
+    "failed_ratio": 0.03654793192518701,
+    "location_delta_km": 37.57803781489296,
+    "device_match": true,
+    "session_duration_sec": 324,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.1918281509475867,
+    "location_delta_km": 40.35548318666744,
+    "device_match": false,
+    "session_duration_sec": 1807,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.019206344423663674,
+    "location_delta_km": 10.420208071803225,
+    "device_match": true,
+    "session_duration_sec": 1315,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.03916190513273465,
+    "location_delta_km": 7.146492445194738,
+    "device_match": true,
+    "session_duration_sec": 904,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.24204747391726214,
+    "location_delta_km": 218.2137734110084,
+    "device_match": true,
+    "session_duration_sec": 1630,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.035481734122014844,
+    "location_delta_km": 144.8085841437218,
+    "device_match": true,
+    "session_duration_sec": 1828,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.18553730278937447,
+    "location_delta_km": 55.67206417595511,
+    "device_match": true,
+    "session_duration_sec": 2566,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.1807721477331859,
+    "location_delta_km": 76.7787740796594,
+    "device_match": true,
+    "session_duration_sec": 3323,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 3,
+    "login_velocity": 3,
+    "failed_ratio": 0.009670625675446881,
+    "location_delta_km": 120.65978967435991,
+    "device_match": true,
+    "session_duration_sec": 2831,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.36431477439675464,
+    "location_delta_km": 195.68265487902957,
+    "device_match": true,
+    "session_duration_sec": 1766,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.013895770859191007,
+    "location_delta_km": 21.206965789740263,
+    "device_match": true,
+    "session_duration_sec": 1236,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.24148801911046264,
+    "location_delta_km": 39.78284475936219,
+    "device_match": true,
+    "session_duration_sec": 1019,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.19188619658749534,
+    "location_delta_km": 126.8346773189464,
+    "device_match": true,
+    "session_duration_sec": 1928,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.0283101772789509,
+    "location_delta_km": 3.218466106559397,
+    "device_match": true,
+    "session_duration_sec": 2758,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.11110408694787006,
+    "location_delta_km": 23.6832492401236,
+    "device_match": true,
+    "session_duration_sec": 1922,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.10172911567930246,
+    "location_delta_km": 32.656156984409996,
+    "device_match": true,
+    "session_duration_sec": 1565,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.04217421562241185,
+    "location_delta_km": 34.482435153647366,
+    "device_match": true,
+    "session_duration_sec": 2303,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.0358595178943723,
+    "location_delta_km": 9.52012168314435,
+    "device_match": true,
+    "session_duration_sec": 1551,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.06688148912184906,
+    "location_delta_km": 55.22797993408918,
+    "device_match": false,
+    "session_duration_sec": 2253,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.3549448559969098,
+    "location_delta_km": 37.734113299124175,
+    "device_match": true,
+    "session_duration_sec": 2183,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.11939970947857098,
+    "location_delta_km": 39.80574804234198,
+    "device_match": true,
+    "session_duration_sec": 516,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.006931427587453562,
+    "location_delta_km": 5.641598440905742,
+    "device_match": true,
+    "session_duration_sec": 1437,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.006711173295421686,
+    "location_delta_km": 7.52791232070963,
+    "device_match": true,
+    "session_duration_sec": 2748,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.02376567042452294,
+    "location_delta_km": 44.37382827654926,
+    "device_match": true,
+    "session_duration_sec": 1946,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.133971868451425,
+    "location_delta_km": 3.4470960887535553,
+    "device_match": true,
+    "session_duration_sec": 831,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.014414800139680186,
+    "location_delta_km": 112.16516652682228,
+    "device_match": true,
+    "session_duration_sec": 2548,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.0261710726500103,
+    "location_delta_km": 5.4302905047028105,
+    "device_match": true,
+    "session_duration_sec": 2904,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.021545917261739385,
+    "location_delta_km": 59.20008545438085,
+    "device_match": true,
+    "session_duration_sec": 2384,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.04653071229167013,
+    "location_delta_km": 7.4897868104215375,
+    "device_match": true,
+    "session_duration_sec": 899,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 4,
+    "failed_ratio": 0.01058437757648353,
+    "location_delta_km": 66.6745151941696,
+    "device_match": false,
+    "session_duration_sec": 2607,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.22310821635235767,
+    "location_delta_km": 25.458242170450678,
+    "device_match": true,
+    "session_duration_sec": 2456,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.09947218755826379,
+    "location_delta_km": 44.2236445640353,
+    "device_match": true,
+    "session_duration_sec": 129,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.1673916224578104,
+    "location_delta_km": 0.6590472412829613,
+    "device_match": true,
+    "session_duration_sec": 693,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.0333784571528827,
+    "location_delta_km": 27.825061377864518,
+    "device_match": true,
+    "session_duration_sec": 1129,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.08665359516988741,
+    "location_delta_km": 30.191732514681085,
+    "device_match": true,
+    "session_duration_sec": 1863,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.037539610906205424,
+    "location_delta_km": 26.274478380362314,
+    "device_match": true,
+    "session_duration_sec": 1333,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.03241603199304648,
+    "location_delta_km": 20.72059401138112,
+    "device_match": true,
+    "session_duration_sec": 953,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 1,
+    "login_velocity": 6,
+    "failed_ratio": 0.06925796188923691,
+    "location_delta_km": 66.57224637211866,
+    "device_match": true,
+    "session_duration_sec": 1645,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.02233532800699091,
+    "location_delta_km": 48.92811227735438,
+    "device_match": true,
+    "session_duration_sec": 748,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.3238905819636693,
+    "location_delta_km": 211.22486826447692,
+    "device_match": true,
+    "session_duration_sec": 1954,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.12887956197607664,
+    "location_delta_km": 90.06935435811958,
+    "device_match": false,
+    "session_duration_sec": 2245,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.20975763001933026,
+    "location_delta_km": 40.39177577034926,
+    "device_match": true,
+    "session_duration_sec": 1212,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.025631484246326733,
+    "location_delta_km": 50.13303346206966,
+    "device_match": true,
+    "session_duration_sec": 1250,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.004656888293367504,
+    "location_delta_km": 46.21011094925578,
+    "device_match": true,
+    "session_duration_sec": 1364,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.04862089967403014,
+    "location_delta_km": 65.94526356275215,
+    "device_match": true,
+    "session_duration_sec": 1617,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.20421059403199532,
+    "location_delta_km": 26.61894092215098,
+    "device_match": true,
+    "session_duration_sec": 1589,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.11755045300061283,
+    "location_delta_km": 7.3565224409760015,
+    "device_match": false,
+    "session_duration_sec": 1651,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.18271788190075028,
+    "location_delta_km": 219.77792087026646,
+    "device_match": false,
+    "session_duration_sec": 803,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.12531043362585537,
+    "location_delta_km": 177.12349613111266,
+    "device_match": false,
+    "session_duration_sec": 2431,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.007264525644637214,
+    "location_delta_km": 4.003767165219138,
+    "device_match": true,
+    "session_duration_sec": 2100,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.10639875857370576,
+    "location_delta_km": 104.64270561513258,
+    "device_match": true,
+    "session_duration_sec": 2828,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 5,
+    "failed_ratio": 0.16737396161114962,
+    "location_delta_km": 103.4457032016195,
+    "device_match": false,
+    "session_duration_sec": 309,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.021688168260954405,
+    "location_delta_km": 13.303058297974838,
+    "device_match": true,
+    "session_duration_sec": 1248,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.06723902329540944,
+    "location_delta_km": 201.79580715258618,
+    "device_match": true,
+    "session_duration_sec": 2281,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.2732833241988772,
+    "location_delta_km": 13.111751402598133,
+    "device_match": true,
+    "session_duration_sec": 2772,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.06411079006750446,
+    "location_delta_km": 36.205885144894516,
+    "device_match": true,
+    "session_duration_sec": 3272,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.014172687053765546,
+    "location_delta_km": 4.797295148550687,
+    "device_match": true,
+    "session_duration_sec": 2362,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.18424101050002692,
+    "location_delta_km": 66.44141225235313,
+    "device_match": true,
+    "session_duration_sec": 1687,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.03325207983647538,
+    "location_delta_km": 34.17435221560392,
+    "device_match": true,
+    "session_duration_sec": 1934,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.22645364575848909,
+    "location_delta_km": 20.323946998995932,
+    "device_match": true,
+    "session_duration_sec": 1515,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.20632790059552372,
+    "location_delta_km": 68.03294015803708,
+    "device_match": true,
+    "session_duration_sec": 1888,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.026263964651906214,
+    "location_delta_km": 6.156079967033821,
+    "device_match": true,
+    "session_duration_sec": 1443,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.09821948424270173,
+    "location_delta_km": 17.90262082141199,
+    "device_match": true,
+    "session_duration_sec": 2045,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.01088844815207159,
+    "location_delta_km": 45.118880887733745,
+    "device_match": true,
+    "session_duration_sec": 2946,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.0001235128472206116,
+    "location_delta_km": 5.390042302933244,
+    "device_match": true,
+    "session_duration_sec": 1065,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.006881936627817217,
+    "location_delta_km": 150.65772031925547,
+    "device_match": true,
+    "session_duration_sec": 2586,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.03619992088627484,
+    "location_delta_km": 13.065290624194523,
+    "device_match": true,
+    "session_duration_sec": 1946,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.09469772769068592,
+    "location_delta_km": 8.341589541770157,
+    "device_match": true,
+    "session_duration_sec": 1510,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.0035589323571104414,
+    "location_delta_km": 32.84291801348973,
+    "device_match": true,
+    "session_duration_sec": 2225,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.031913274153704686,
+    "location_delta_km": 28.391562667283814,
+    "device_match": false,
+    "session_duration_sec": 2492,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.02989006714302551,
+    "location_delta_km": 2.0212508198851578,
+    "device_match": true,
+    "session_duration_sec": 2055,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.08605394240377816,
+    "location_delta_km": 141.71257273285937,
+    "device_match": true,
+    "session_duration_sec": 1112,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.03225252223005171,
+    "location_delta_km": 55.49156814248434,
+    "device_match": false,
+    "session_duration_sec": 2131,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.06679204469909011,
+    "location_delta_km": 80.9057936298363,
+    "device_match": true,
+    "session_duration_sec": 2036,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.042876017590218064,
+    "location_delta_km": 52.5331504504997,
+    "device_match": true,
+    "session_duration_sec": 1523,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.008273571375602334,
+    "location_delta_km": 33.989523670658656,
+    "device_match": true,
+    "session_duration_sec": 2519,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.20653753462899074,
+    "location_delta_km": 66.4674104604933,
+    "device_match": true,
+    "session_duration_sec": 1635,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.09543083136064323,
+    "location_delta_km": 27.38493506770124,
+    "device_match": true,
+    "session_duration_sec": 1776,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.14044082039860784,
+    "location_delta_km": 46.04699910314765,
+    "device_match": true,
+    "session_duration_sec": 1369,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.1551323155903841,
+    "location_delta_km": 44.94106713425393,
+    "device_match": true,
+    "session_duration_sec": 90,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.1582529209991571,
+    "location_delta_km": 13.372672106601275,
+    "device_match": true,
+    "session_duration_sec": 2727,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.049951319961014706,
+    "location_delta_km": 9.138597384292341,
+    "device_match": true,
+    "session_duration_sec": 964,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.06045538977668637,
+    "location_delta_km": 1.7392919170521337,
+    "device_match": false,
+    "session_duration_sec": 2453,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.011693170063139965,
+    "location_delta_km": 35.386125188567256,
+    "device_match": true,
+    "session_duration_sec": 1751,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.20649217635405417,
+    "location_delta_km": 36.24180343488855,
+    "device_match": true,
+    "session_duration_sec": 2007,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.2960164005270594,
+    "location_delta_km": 65.62050889055683,
+    "device_match": true,
+    "session_duration_sec": 2103,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.0016354717456014665,
+    "location_delta_km": 73.16295285027378,
+    "device_match": true,
+    "session_duration_sec": 1489,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.06941146488284594,
+    "location_delta_km": 53.62461592329283,
+    "device_match": false,
+    "session_duration_sec": 1112,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.0343098184199237,
+    "location_delta_km": 129.96528173490495,
+    "device_match": true,
+    "session_duration_sec": 1328,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.07810856946779257,
+    "location_delta_km": 41.441349952653574,
+    "device_match": true,
+    "session_duration_sec": 922,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.08078638474181267,
+    "location_delta_km": 34.70190978287546,
+    "device_match": true,
+    "session_duration_sec": 1170,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.07449501915302816,
+    "location_delta_km": 38.135855217643446,
+    "device_match": true,
+    "session_duration_sec": 812,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.28767378336205074,
+    "location_delta_km": 32.617849353852485,
+    "device_match": true,
+    "session_duration_sec": 2718,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.03834694210512322,
+    "location_delta_km": 47.12323804772562,
+    "device_match": true,
+    "session_duration_sec": 2635,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.2148131179198197,
+    "location_delta_km": 78.8502927158306,
+    "device_match": true,
+    "session_duration_sec": 2108,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.006387613232358658,
+    "location_delta_km": 52.008572609090656,
+    "device_match": true,
+    "session_duration_sec": 2047,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.11877259132927019,
+    "location_delta_km": 55.06327516026851,
+    "device_match": true,
+    "session_duration_sec": 1463,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.03082359751697012,
+    "location_delta_km": 9.827878396286534,
+    "device_match": true,
+    "session_duration_sec": 2455,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.05567374382334654,
+    "location_delta_km": 7.334580630766366,
+    "device_match": true,
+    "session_duration_sec": 3347,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.010408875183739673,
+    "location_delta_km": 4.137534367389874,
+    "device_match": true,
+    "session_duration_sec": 2777,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.04763245150838301,
+    "location_delta_km": 80.5611021079626,
+    "device_match": true,
+    "session_duration_sec": 1338,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.10306336252766815,
+    "location_delta_km": 20.29097475520596,
+    "device_match": true,
+    "session_duration_sec": 2586,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.03185875889994653,
+    "location_delta_km": 32.2070466065598,
+    "device_match": true,
+    "session_duration_sec": 1348,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.015251295651303546,
+    "location_delta_km": 6.258268761326533,
+    "device_match": true,
+    "session_duration_sec": 1105,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.10827327846690055,
+    "location_delta_km": 36.25041260227198,
+    "device_match": true,
+    "session_duration_sec": 1950,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.16411821554427067,
+    "location_delta_km": 105.1761884121618,
+    "device_match": true,
+    "session_duration_sec": 2141,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.015575359854936233,
+    "location_delta_km": 157.70462593611558,
+    "device_match": true,
+    "session_duration_sec": 1873,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.060063890142707174,
+    "location_delta_km": 7.913105552263051,
+    "device_match": true,
+    "session_duration_sec": 2104,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.10394867206867746,
+    "location_delta_km": 48.325014225288186,
+    "device_match": true,
+    "session_duration_sec": 1671,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.039076072410888014,
+    "location_delta_km": 3.87807104059956,
+    "device_match": true,
+    "session_duration_sec": 1338,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 3,
+    "failed_ratio": 0.12077015634664255,
+    "location_delta_km": 27.763558065834786,
+    "device_match": true,
+    "session_duration_sec": 1722,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.03945416798892354,
+    "location_delta_km": 14.28954360927419,
+    "device_match": true,
+    "session_duration_sec": 2621,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.0016052695881729755,
+    "location_delta_km": 186.2227511571439,
+    "device_match": true,
+    "session_duration_sec": 1790,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.06004715174915283,
+    "location_delta_km": 19.628129750685222,
+    "device_match": true,
+    "session_duration_sec": 418,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.014310766765766298,
+    "location_delta_km": 143.08729795770765,
+    "device_match": true,
+    "session_duration_sec": 1681,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.0729867261865459,
+    "location_delta_km": 110.08765303080048,
+    "device_match": true,
+    "session_duration_sec": 1781,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.003817090907673606,
+    "location_delta_km": 24.518091431169374,
+    "device_match": true,
+    "session_duration_sec": 1154,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.019054491255539322,
+    "location_delta_km": 17.509428265181267,
+    "device_match": true,
+    "session_duration_sec": 946,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.0030780618558439326,
+    "location_delta_km": 80.151472442218,
+    "device_match": true,
+    "session_duration_sec": 1834,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.004694417180878698,
+    "location_delta_km": 45.6313196491377,
+    "device_match": true,
+    "session_duration_sec": 2316,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.03306972369185276,
+    "location_delta_km": 108.9851540550276,
+    "device_match": true,
+    "session_duration_sec": 2316,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.351961326385978,
+    "location_delta_km": 40.80114597217871,
+    "device_match": true,
+    "session_duration_sec": 1711,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.02303835795686383,
+    "location_delta_km": 64.72769270301934,
+    "device_match": true,
+    "session_duration_sec": 1818,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.03198378716075177,
+    "location_delta_km": 43.03958272559376,
+    "device_match": true,
+    "session_duration_sec": 1084,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.060303329571707906,
+    "location_delta_km": 11.410043063078188,
+    "device_match": true,
+    "session_duration_sec": 2231,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.12121038609783961,
+    "location_delta_km": 89.39249687491973,
+    "device_match": true,
+    "session_duration_sec": 2296,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.10231430663450343,
+    "location_delta_km": 44.952551433930836,
+    "device_match": true,
+    "session_duration_sec": 2808,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.06880034288150141,
+    "location_delta_km": 103.67793223913351,
+    "device_match": true,
+    "session_duration_sec": 1477,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.038955437510474845,
+    "location_delta_km": 8.067142018045923,
+    "device_match": true,
+    "session_duration_sec": 2131,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.03304743432669571,
+    "location_delta_km": 66.52654534548505,
+    "device_match": false,
+    "session_duration_sec": 1913,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 5,
+    "failed_ratio": 0.07370104207885167,
+    "location_delta_km": 9.033792244258933,
+    "device_match": true,
+    "session_duration_sec": 2812,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.037065887935769135,
+    "location_delta_km": 92.23699354910642,
+    "device_match": true,
+    "session_duration_sec": 1684,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.14843817661015932,
+    "location_delta_km": 75.75483360184072,
+    "device_match": true,
+    "session_duration_sec": 1635,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.009624606123621192,
+    "location_delta_km": 15.170636567819159,
+    "device_match": true,
+    "session_duration_sec": 1664,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.017067264868413496,
+    "location_delta_km": 2.3808234490624955,
+    "device_match": true,
+    "session_duration_sec": 631,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.16049228194965445,
+    "location_delta_km": 87.97479175379111,
+    "device_match": true,
+    "session_duration_sec": 1737,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.022902275465386965,
+    "location_delta_km": 146.90713050012786,
+    "device_match": false,
+    "session_duration_sec": 1435,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.12016788823063967,
+    "location_delta_km": 3.5033346359758153,
+    "device_match": true,
+    "session_duration_sec": 1303,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.10896831569472629,
+    "location_delta_km": 5.132792729848476,
+    "device_match": true,
+    "session_duration_sec": 2779,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.07988125039951509,
+    "location_delta_km": 102.83928669257192,
+    "device_match": true,
+    "session_duration_sec": 2277,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.05054244917433565,
+    "location_delta_km": 73.92321860913893,
+    "device_match": true,
+    "session_duration_sec": 1763,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.08258156713064492,
+    "location_delta_km": 4.903136689021209,
+    "device_match": true,
+    "session_duration_sec": 1483,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.06506322485973279,
+    "location_delta_km": 38.074391872769056,
+    "device_match": true,
+    "session_duration_sec": 2389,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.06175865766535063,
+    "location_delta_km": 1.6976777437902448,
+    "device_match": true,
+    "session_duration_sec": 2269,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 2,
+    "login_velocity": 4,
+    "failed_ratio": 0.28390474792376336,
+    "location_delta_km": 50.34788547467605,
+    "device_match": true,
+    "session_duration_sec": 1687,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.002497328618485416,
+    "location_delta_km": 11.770482897906634,
+    "device_match": true,
+    "session_duration_sec": 2090,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.05250315788781181,
+    "location_delta_km": 88.08554976337119,
+    "device_match": true,
+    "session_duration_sec": 2127,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.03199814297832355,
+    "location_delta_km": 28.591227889595388,
+    "device_match": true,
+    "session_duration_sec": 2277,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.09599453592434373,
+    "location_delta_km": 57.97024320124432,
+    "device_match": true,
+    "session_duration_sec": 1969,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.029278087922342738,
+    "location_delta_km": 18.116430595060464,
+    "device_match": true,
+    "session_duration_sec": 2234,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.016885918415163424,
+    "location_delta_km": 23.86171767187063,
+    "device_match": true,
+    "session_duration_sec": 1228,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.14718209418041622,
+    "location_delta_km": 16.42779574570097,
+    "device_match": true,
+    "session_duration_sec": 2107,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 3,
+    "failed_ratio": 0.08758596919794273,
+    "location_delta_km": 29.877507365332924,
+    "device_match": true,
+    "session_duration_sec": 779,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.11642684353823726,
+    "location_delta_km": 116.59811810955894,
+    "device_match": true,
+    "session_duration_sec": 2370,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.036642219086047235,
+    "location_delta_km": 77.83298711584247,
+    "device_match": true,
+    "session_duration_sec": 1064,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.1767927737615026,
+    "location_delta_km": 88.38851597612025,
+    "device_match": true,
+    "session_duration_sec": 2191,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.021211852564721974,
+    "location_delta_km": 9.351546116868331,
+    "device_match": false,
+    "session_duration_sec": 2659,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.05793718055904856,
+    "location_delta_km": 52.80987154596441,
+    "device_match": false,
+    "session_duration_sec": 2687,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.0038159771889119828,
+    "location_delta_km": 118.96259781517308,
+    "device_match": true,
+    "session_duration_sec": 298,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.15449281789652977,
+    "location_delta_km": 96.25402910688966,
+    "device_match": true,
+    "session_duration_sec": 1978,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.03512029374468786,
+    "location_delta_km": 25.293151328733416,
+    "device_match": true,
+    "session_duration_sec": 1268,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.1060820212572527,
+    "location_delta_km": 29.946153969290023,
+    "device_match": false,
+    "session_duration_sec": 1578,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.2315353124606567,
+    "location_delta_km": 86.07389054325331,
+    "device_match": true,
+    "session_duration_sec": 1510,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.05049348392813523,
+    "location_delta_km": 23.026672405936967,
+    "device_match": true,
+    "session_duration_sec": 2712,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.10981447211368109,
+    "location_delta_km": 50.543265496302126,
+    "device_match": true,
+    "session_duration_sec": 2371,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 4,
+    "failed_ratio": 0.07381905001686472,
+    "location_delta_km": 4.4083684560778185,
+    "device_match": true,
+    "session_duration_sec": 1695,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.18303427105599362,
+    "location_delta_km": 18.286757394049722,
+    "device_match": true,
+    "session_duration_sec": 2635,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.09890696045900522,
+    "location_delta_km": 45.948988053763166,
+    "device_match": true,
+    "session_duration_sec": 1207,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.09417982577098194,
+    "location_delta_km": 20.75826216983984,
+    "device_match": true,
+    "session_duration_sec": 2564,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.10125224826498778,
+    "location_delta_km": 9.157679129889997,
+    "device_match": false,
+    "session_duration_sec": 1131,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.0026309963454163475,
+    "location_delta_km": 30.67273522269077,
+    "device_match": true,
+    "session_duration_sec": 1743,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.0907141891418577,
+    "location_delta_km": 1.5713159519648512,
+    "device_match": false,
+    "session_duration_sec": 3379,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.2205110234619988,
+    "location_delta_km": 35.4075961509798,
+    "device_match": true,
+    "session_duration_sec": 2180,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.08469394650376344,
+    "location_delta_km": 254.55206319712303,
+    "device_match": true,
+    "session_duration_sec": 2460,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.10803722470746475,
+    "location_delta_km": 118.72705080366555,
+    "device_match": true,
+    "session_duration_sec": 2798,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.07478520660624605,
+    "location_delta_km": 1.7534526517534732,
+    "device_match": false,
+    "session_duration_sec": 1811,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.0715274608564842,
+    "location_delta_km": 46.539175221911265,
+    "device_match": true,
+    "session_duration_sec": 2617,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 4,
+    "failed_ratio": 0.017644430010785486,
+    "location_delta_km": 28.91507309737382,
+    "device_match": true,
+    "session_duration_sec": 1718,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.08969460184224871,
+    "location_delta_km": 17.790593565488702,
+    "device_match": true,
+    "session_duration_sec": 1423,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.0012564378644274352,
+    "location_delta_km": 89.83194682467004,
+    "device_match": true,
+    "session_duration_sec": 2052,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.08682137086148402,
+    "location_delta_km": 26.173851741266763,
+    "device_match": true,
+    "session_duration_sec": 1685,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.014663259826948377,
+    "location_delta_km": 57.245689051787174,
+    "device_match": true,
+    "session_duration_sec": 1515,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.024228427268646404,
+    "location_delta_km": 81.35025155783579,
+    "device_match": false,
+    "session_duration_sec": 2297,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.0042060835968721864,
+    "location_delta_km": 26.90311212762657,
+    "device_match": true,
+    "session_duration_sec": 2158,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.1520754278626502,
+    "location_delta_km": 62.579893063476675,
+    "device_match": true,
+    "session_duration_sec": 1941,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.13792747496581434,
+    "location_delta_km": 63.95665288180111,
+    "device_match": true,
+    "session_duration_sec": 1277,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.1322722714438734,
+    "location_delta_km": 91.42277821073932,
+    "device_match": true,
+    "session_duration_sec": 2295,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.11578891371588274,
+    "location_delta_km": 42.40931516762468,
+    "device_match": true,
+    "session_duration_sec": 1732,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.09797309882301783,
+    "location_delta_km": 24.522465688125656,
+    "device_match": true,
+    "session_duration_sec": 2113,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.1482197167174839,
+    "location_delta_km": 15.664904388047034,
+    "device_match": true,
+    "session_duration_sec": 1797,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.06997901489396857,
+    "location_delta_km": 2.6887670368048906,
+    "device_match": true,
+    "session_duration_sec": 2541,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 4,
+    "failed_ratio": 0.004695556615466392,
+    "location_delta_km": 133.54299372347276,
+    "device_match": true,
+    "session_duration_sec": 1882,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.05617463798494156,
+    "location_delta_km": 5.911718817835568,
+    "device_match": true,
+    "session_duration_sec": 2244,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 10,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.018008814638320852,
+    "location_delta_km": 33.9488609616996,
+    "device_match": true,
+    "session_duration_sec": 3247,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.04334560991699635,
+    "location_delta_km": 30.341033440044406,
+    "device_match": true,
+    "session_duration_sec": 1534,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.038473470002811226,
+    "location_delta_km": 17.35806079258283,
+    "device_match": true,
+    "session_duration_sec": 503,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.07737672003567721,
+    "location_delta_km": 46.58882155537125,
+    "device_match": true,
+    "session_duration_sec": 1516,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.08060821818995284,
+    "location_delta_km": 32.104629430782744,
+    "device_match": true,
+    "session_duration_sec": 2122,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 4,
+    "failed_ratio": 0.03536012906767206,
+    "location_delta_km": 37.46103419449538,
+    "device_match": true,
+    "session_duration_sec": 2063,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.16399543689983834,
+    "location_delta_km": 133.39832344103021,
+    "device_match": true,
+    "session_duration_sec": 786,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.04563435792217555,
+    "location_delta_km": 30.77828607786736,
+    "device_match": true,
+    "session_duration_sec": 1461,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.38592864814217914,
+    "location_delta_km": 24.867367952738924,
+    "device_match": true,
+    "session_duration_sec": 1971,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.08152247599404328,
+    "location_delta_km": 3.794485110692194,
+    "device_match": true,
+    "session_duration_sec": 2055,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.1049976347636882,
+    "location_delta_km": 8.87862718992548,
+    "device_match": true,
+    "session_duration_sec": 1796,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.10364242559269204,
+    "location_delta_km": 82.53364605847999,
+    "device_match": true,
+    "session_duration_sec": 2632,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.03704202812225074,
+    "location_delta_km": 125.9941784148555,
+    "device_match": false,
+    "session_duration_sec": 993,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.07027778274794899,
+    "location_delta_km": 93.95472709359115,
+    "device_match": true,
+    "session_duration_sec": 650,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.23785222808524745,
+    "location_delta_km": 28.22720236175453,
+    "device_match": true,
+    "session_duration_sec": 1281,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.05089107163219816,
+    "location_delta_km": 32.34522562058408,
+    "device_match": true,
+    "session_duration_sec": 2352,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.09153979050634349,
+    "location_delta_km": 17.495025862827305,
+    "device_match": true,
+    "session_duration_sec": 1610,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.09849250356005369,
+    "location_delta_km": 104.32656413709739,
+    "device_match": true,
+    "session_duration_sec": 2515,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.09925560794353155,
+    "location_delta_km": 64.2100481329581,
+    "device_match": true,
+    "session_duration_sec": 1880,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.00013623823581632226,
+    "location_delta_km": 94.33386140185173,
+    "device_match": true,
+    "session_duration_sec": 1110,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.039734823627289466,
+    "location_delta_km": 26.022856964076123,
+    "device_match": true,
+    "session_duration_sec": 1305,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.2386734899542405,
+    "location_delta_km": 32.876211896288595,
+    "device_match": true,
+    "session_duration_sec": 1879,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.17122035142592673,
+    "location_delta_km": 87.86973400640409,
+    "device_match": true,
+    "session_duration_sec": 1894,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.017524898670139847,
+    "location_delta_km": 2.6645169639787283,
+    "device_match": true,
+    "session_duration_sec": 2365,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.4665241261057468,
+    "location_delta_km": 77.13703589415599,
+    "device_match": true,
+    "session_duration_sec": 1755,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.11548390817405849,
+    "location_delta_km": 40.933324544675536,
+    "device_match": true,
+    "session_duration_sec": 2017,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.061969020507971116,
+    "location_delta_km": 56.52874661584655,
+    "device_match": true,
+    "session_duration_sec": 1618,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.07142797422535015,
+    "location_delta_km": 0.6115634704485624,
+    "device_match": true,
+    "session_duration_sec": 1956,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.0706708025817467,
+    "location_delta_km": 3.5400753206794393,
+    "device_match": true,
+    "session_duration_sec": 1278,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.024483657717628587,
+    "location_delta_km": 66.11656524379367,
+    "device_match": true,
+    "session_duration_sec": 1775,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.04292575934737569,
+    "location_delta_km": 3.4944429248061493,
+    "device_match": true,
+    "session_duration_sec": 798,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.08881787756553854,
+    "location_delta_km": 46.50461043228481,
+    "device_match": true,
+    "session_duration_sec": 933,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.09799599281399177,
+    "location_delta_km": 30.62651296599896,
+    "device_match": true,
+    "session_duration_sec": 1366,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.049760110783441724,
+    "location_delta_km": 14.352404795419163,
+    "device_match": true,
+    "session_duration_sec": 2858,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.21789258192532648,
+    "location_delta_km": 44.286363363235445,
+    "device_match": true,
+    "session_duration_sec": 2004,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.20375144472608533,
+    "location_delta_km": 67.24000975548768,
+    "device_match": true,
+    "session_duration_sec": 1263,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.14276491812042583,
+    "location_delta_km": 28.493701626667274,
+    "device_match": true,
+    "session_duration_sec": 2295,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.018397720569752442,
+    "location_delta_km": 121.24966792318193,
+    "device_match": true,
+    "session_duration_sec": 2107,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.00436790612174036,
+    "location_delta_km": 55.87013671515735,
+    "device_match": true,
+    "session_duration_sec": 1619,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.13771962144014466,
+    "location_delta_km": 219.74381127477983,
+    "device_match": true,
+    "session_duration_sec": 306,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.04572089229855076,
+    "location_delta_km": 30.288457321064925,
+    "device_match": true,
+    "session_duration_sec": 2232,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.020232927161284477,
+    "location_delta_km": 76.87859191648938,
+    "device_match": true,
+    "session_duration_sec": 2637,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.01945927447715017,
+    "location_delta_km": 26.278122401305325,
+    "device_match": false,
+    "session_duration_sec": 1196,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.10737225792076319,
+    "location_delta_km": 5.8509586905315745,
+    "device_match": true,
+    "session_duration_sec": 1898,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.041188825529742956,
+    "location_delta_km": 122.54755242514166,
+    "device_match": false,
+    "session_duration_sec": 2128,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.0240869363557906,
+    "location_delta_km": 88.26696176092548,
+    "device_match": true,
+    "session_duration_sec": 1627,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.13361156198801785,
+    "location_delta_km": 24.290687027810293,
+    "device_match": true,
+    "session_duration_sec": 1160,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.025441108551915486,
+    "location_delta_km": 12.574663233084152,
+    "device_match": true,
+    "session_duration_sec": 1044,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.09025075020464396,
+    "location_delta_km": 102.57903283977141,
+    "device_match": true,
+    "session_duration_sec": 1933,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.16447276612630748,
+    "location_delta_km": 46.52428645663679,
+    "device_match": true,
+    "session_duration_sec": 3131,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.10530218611689951,
+    "location_delta_km": 74.91480016074622,
+    "device_match": true,
+    "session_duration_sec": 2229,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.022187670360811197,
+    "location_delta_km": 92.67945682339605,
+    "device_match": true,
+    "session_duration_sec": 1879,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.18682761859595617,
+    "location_delta_km": 24.536943501757477,
+    "device_match": true,
+    "session_duration_sec": 2414,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.12956604272076971,
+    "location_delta_km": 29.935375474248104,
+    "device_match": true,
+    "session_duration_sec": 2508,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.04344470637732922,
+    "location_delta_km": 23.06799069853607,
+    "device_match": true,
+    "session_duration_sec": 917,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.11912504709839525,
+    "location_delta_km": 5.472810173761822,
+    "device_match": true,
+    "session_duration_sec": 966,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.012212649960808711,
+    "location_delta_km": 9.309311113175609,
+    "device_match": true,
+    "session_duration_sec": 2715,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.06334340549072594,
+    "location_delta_km": 39.005719004462655,
+    "device_match": true,
+    "session_duration_sec": 1585,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.037261373479441945,
+    "location_delta_km": 27.656293405821806,
+    "device_match": true,
+    "session_duration_sec": 1329,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.05320553465293253,
+    "location_delta_km": 39.85239865136343,
+    "device_match": true,
+    "session_duration_sec": 1763,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.03403687517935032,
+    "location_delta_km": 15.36941705045495,
+    "device_match": true,
+    "session_duration_sec": 2220,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.050934065094073604,
+    "location_delta_km": 109.67044278880851,
+    "device_match": true,
+    "session_duration_sec": 1644,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.2391188552256831,
+    "location_delta_km": 3.481220362865055,
+    "device_match": true,
+    "session_duration_sec": 2186,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.006812190413421458,
+    "location_delta_km": 22.347712126266643,
+    "device_match": true,
+    "session_duration_sec": 1653,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.0013608781074419315,
+    "location_delta_km": 1.9858186663832365,
+    "device_match": true,
+    "session_duration_sec": 2597,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.3786367850809802,
+    "location_delta_km": 24.651779752405428,
+    "device_match": true,
+    "session_duration_sec": 2738,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.01882528066544753,
+    "location_delta_km": 44.96654568445091,
+    "device_match": true,
+    "session_duration_sec": 2129,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.2639281866439313,
+    "location_delta_km": 182.96147774236658,
+    "device_match": true,
+    "session_duration_sec": 1892,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.008050671811656513,
+    "location_delta_km": 3.125956485543101,
+    "device_match": true,
+    "session_duration_sec": 3141,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.07459460540754663,
+    "location_delta_km": 4.090763060973868,
+    "device_match": true,
+    "session_duration_sec": 1979,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.056149538457419386,
+    "location_delta_km": 107.24267725759071,
+    "device_match": true,
+    "session_duration_sec": 1345,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.14677000076308322,
+    "location_delta_km": 31.27531610066969,
+    "device_match": true,
+    "session_duration_sec": 2292,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 4,
+    "failed_ratio": 0.05635371816598986,
+    "location_delta_km": 5.322394599515666,
+    "device_match": true,
+    "session_duration_sec": 870,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.22278197857362442,
+    "location_delta_km": 6.944657242346085,
+    "device_match": true,
+    "session_duration_sec": 1174,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.18069544902901505,
+    "location_delta_km": 8.416513317584938,
+    "device_match": true,
+    "session_duration_sec": 1243,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.08795290318288518,
+    "location_delta_km": 0.1572924523283243,
+    "device_match": true,
+    "session_duration_sec": 2404,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.035211472650711034,
+    "location_delta_km": 55.01253208091015,
+    "device_match": true,
+    "session_duration_sec": 1607,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.07317588518830902,
+    "location_delta_km": 91.07911543049325,
+    "device_match": true,
+    "session_duration_sec": 2822,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.1361787399503858,
+    "location_delta_km": 101.8597637661355,
+    "device_match": true,
+    "session_duration_sec": 1844,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.10719711690763885,
+    "location_delta_km": 10.09588239898087,
+    "device_match": true,
+    "session_duration_sec": 1297,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.2638158597510633,
+    "location_delta_km": 42.57470530198486,
+    "device_match": true,
+    "session_duration_sec": 2243,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.028702180598652365,
+    "location_delta_km": 8.246595886831491,
+    "device_match": true,
+    "session_duration_sec": 2537,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.24599747765477212,
+    "location_delta_km": 77.04520792556157,
+    "device_match": true,
+    "session_duration_sec": 2144,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.11458125258641894,
+    "location_delta_km": 25.363738693217297,
+    "device_match": true,
+    "session_duration_sec": 1440,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.14525545179115087,
+    "location_delta_km": 95.86001094796396,
+    "device_match": false,
+    "session_duration_sec": 1333,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.07936909184545825,
+    "location_delta_km": 9.527529148633624,
+    "device_match": true,
+    "session_duration_sec": 1529,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.059200148826183005,
+    "location_delta_km": 90.11047771975157,
+    "device_match": false,
+    "session_duration_sec": 939,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.08402284060242252,
+    "location_delta_km": 20.18874468732777,
+    "device_match": true,
+    "session_duration_sec": 1871,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 4,
+    "failed_ratio": 0.04203080479043183,
+    "location_delta_km": 0.5168873392039226,
+    "device_match": true,
+    "session_duration_sec": 2325,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.026565484471585854,
+    "location_delta_km": 4.66005459183921,
+    "device_match": false,
+    "session_duration_sec": 1997,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.03041303987829208,
+    "location_delta_km": 15.938001038810947,
+    "device_match": true,
+    "session_duration_sec": 2309,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.022796034298223328,
+    "location_delta_km": 6.096909978163909,
+    "device_match": false,
+    "session_duration_sec": 1682,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.024729968047671393,
+    "location_delta_km": 5.6616364945779845,
+    "device_match": true,
+    "session_duration_sec": 1888,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.1298777530646927,
+    "location_delta_km": 16.98003023060038,
+    "device_match": true,
+    "session_duration_sec": 2268,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.00973667411173719,
+    "location_delta_km": 0.7646614930723928,
+    "device_match": true,
+    "session_duration_sec": 2937,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.1580854959699199,
+    "location_delta_km": 5.516113468993782,
+    "device_match": true,
+    "session_duration_sec": 1183,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 4,
+    "failed_ratio": 0.029224925419122257,
+    "location_delta_km": 77.91165197349285,
+    "device_match": true,
+    "session_duration_sec": 859,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.005228584571235964,
+    "location_delta_km": 58.8846020978852,
+    "device_match": true,
+    "session_duration_sec": 2133,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.07831284552664074,
+    "location_delta_km": 19.888203081482576,
+    "device_match": true,
+    "session_duration_sec": 1759,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.03449788491346402,
+    "location_delta_km": 56.84673785558182,
+    "device_match": true,
+    "session_duration_sec": 2902,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.013714981212573566,
+    "location_delta_km": 6.185191239833109,
+    "device_match": true,
+    "session_duration_sec": 1907,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.03644717855855762,
+    "location_delta_km": 114.76079507762759,
+    "device_match": false,
+    "session_duration_sec": 2757,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.061627176884570437,
+    "location_delta_km": 8.528308464195053,
+    "device_match": true,
+    "session_duration_sec": 1743,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.08837963929685898,
+    "location_delta_km": 158.64496757970014,
+    "device_match": true,
+    "session_duration_sec": 1935,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.12257343953883554,
+    "location_delta_km": 29.34070181173059,
+    "device_match": true,
+    "session_duration_sec": 1952,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.10050615726153261,
+    "location_delta_km": 2.0030628561363373,
+    "device_match": true,
+    "session_duration_sec": 1743,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.030099968867167537,
+    "location_delta_km": 1.3053725868436596,
+    "device_match": true,
+    "session_duration_sec": 2569,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.029022843727383247,
+    "location_delta_km": 26.99499559696459,
+    "device_match": true,
+    "session_duration_sec": 1619,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.22683500762460876,
+    "location_delta_km": 8.695347045132342,
+    "device_match": true,
+    "session_duration_sec": 1776,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.1929305024249001,
+    "location_delta_km": 27.204246914178963,
+    "device_match": true,
+    "session_duration_sec": 1850,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.037934008041255185,
+    "location_delta_km": 22.636702528191062,
+    "device_match": true,
+    "session_duration_sec": 3257,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.019041533377799052,
+    "location_delta_km": 84.99694460871767,
+    "device_match": false,
+    "session_duration_sec": 1733,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 1,
+    "login_velocity": 4,
+    "failed_ratio": 0.15844947916570562,
+    "location_delta_km": 12.183293047871981,
+    "device_match": true,
+    "session_duration_sec": 2116,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.02317528319628705,
+    "location_delta_km": 43.954399751297544,
+    "device_match": true,
+    "session_duration_sec": 1425,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.023106204214016997,
+    "location_delta_km": 13.756827230918525,
+    "device_match": true,
+    "session_duration_sec": 2109,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.0029901434449434282,
+    "location_delta_km": 1.5240599816396865,
+    "device_match": true,
+    "session_duration_sec": 1179,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.06755038135731048,
+    "location_delta_km": 26.482626810245048,
+    "device_match": true,
+    "session_duration_sec": 2227,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.031729092913142215,
+    "location_delta_km": 46.21515799258397,
+    "device_match": true,
+    "session_duration_sec": 1682,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 3,
+    "failed_ratio": 0.013397071097910274,
+    "location_delta_km": 4.8956076729831395,
+    "device_match": false,
+    "session_duration_sec": 2210,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.10999303615788064,
+    "location_delta_km": 6.505856454605477,
+    "device_match": true,
+    "session_duration_sec": 2020,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.01519569222285098,
+    "location_delta_km": 1.4123735229361165,
+    "device_match": true,
+    "session_duration_sec": 2665,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.37665184436560123,
+    "location_delta_km": 41.496428636456805,
+    "device_match": true,
+    "session_duration_sec": 798,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 5,
+    "failed_ratio": 0.1299039647222604,
+    "location_delta_km": 43.517543646131024,
+    "device_match": true,
+    "session_duration_sec": 1659,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.12544257695617145,
+    "location_delta_km": 54.689594624407555,
+    "device_match": true,
+    "session_duration_sec": 1273,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.06336536170064591,
+    "location_delta_km": 75.66569501452845,
+    "device_match": true,
+    "session_duration_sec": 1021,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.013246899321437477,
+    "location_delta_km": 23.90010289540501,
+    "device_match": true,
+    "session_duration_sec": 966,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.009590779927761134,
+    "location_delta_km": 31.163731446502656,
+    "device_match": true,
+    "session_duration_sec": 607,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.14466683960853732,
+    "location_delta_km": 6.36678827545402,
+    "device_match": true,
+    "session_duration_sec": 2268,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.003728088282506002,
+    "location_delta_km": 29.262527747851664,
+    "device_match": true,
+    "session_duration_sec": 1583,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.0726427325319327,
+    "location_delta_km": 2.9358768793481183,
+    "device_match": true,
+    "session_duration_sec": 2508,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.028680191241474088,
+    "location_delta_km": 52.91427160727148,
+    "device_match": true,
+    "session_duration_sec": 1823,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 2,
+    "login_velocity": 4,
+    "failed_ratio": 0.2223225126439652,
+    "location_delta_km": 65.91093887551975,
+    "device_match": false,
+    "session_duration_sec": 2176,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.013718054377647068,
+    "location_delta_km": 174.21016873840983,
+    "device_match": true,
+    "session_duration_sec": 1691,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.06561351748338887,
+    "location_delta_km": 107.39612782062923,
+    "device_match": true,
+    "session_duration_sec": 2750,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.10102442614781468,
+    "location_delta_km": 43.58220073750817,
+    "device_match": true,
+    "session_duration_sec": 1299,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.005576196562284658,
+    "location_delta_km": 5.189988393035735,
+    "device_match": true,
+    "session_duration_sec": 1286,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.02524735800981293,
+    "location_delta_km": 28.349651529765897,
+    "device_match": true,
+    "session_duration_sec": 2103,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.02582676783154586,
+    "location_delta_km": 56.736513323834984,
+    "device_match": true,
+    "session_duration_sec": 2725,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.25689546168973487,
+    "location_delta_km": 1.115662396212134,
+    "device_match": false,
+    "session_duration_sec": 1395,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.017723894649005555,
+    "location_delta_km": 30.74744163060525,
+    "device_match": true,
+    "session_duration_sec": 1641,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.22644998646146258,
+    "location_delta_km": 26.73381245644393,
+    "device_match": false,
+    "session_duration_sec": 3163,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.12907154195385087,
+    "location_delta_km": 77.49768251194111,
+    "device_match": true,
+    "session_duration_sec": 1894,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.01565146783528942,
+    "location_delta_km": 24.4456286545864,
+    "device_match": true,
+    "session_duration_sec": 1971,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.18064462668906717,
+    "location_delta_km": 3.690706552196081,
+    "device_match": true,
+    "session_duration_sec": 2408,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 0,
+    "login_velocity": 4,
+    "failed_ratio": 0.061236508758681904,
+    "location_delta_km": 44.48421884480646,
+    "device_match": true,
+    "session_duration_sec": 2227,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.007170201294421934,
+    "location_delta_km": 65.24239606587939,
+    "device_match": true,
+    "session_duration_sec": 2382,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.13439788692769808,
+    "location_delta_km": 223.44457186520472,
+    "device_match": true,
+    "session_duration_sec": 1831,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.00990681069018025,
+    "location_delta_km": 79.85423771649214,
+    "device_match": true,
+    "session_duration_sec": 957,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.12105045947686101,
+    "location_delta_km": 67.29273835578647,
+    "device_match": true,
+    "session_duration_sec": 2855,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.15552161189836514,
+    "location_delta_km": 58.890982136291136,
+    "device_match": true,
+    "session_duration_sec": 1969,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.18189203250029848,
+    "location_delta_km": 26.30416737401197,
+    "device_match": true,
+    "session_duration_sec": 2929,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.13781941920759896,
+    "location_delta_km": 40.312633474358876,
+    "device_match": true,
+    "session_duration_sec": 1958,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.06718586888627513,
+    "location_delta_km": 79.5415081360898,
+    "device_match": true,
+    "session_duration_sec": 1153,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.05288377620708892,
+    "location_delta_km": 0.3242671116690151,
+    "device_match": true,
+    "session_duration_sec": 3306,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.01973814504695362,
+    "location_delta_km": 62.66062123161945,
+    "device_match": true,
+    "session_duration_sec": 1867,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.002432762459048557,
+    "location_delta_km": 45.43414021101691,
+    "device_match": true,
+    "session_duration_sec": 2444,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.04968672684834751,
+    "location_delta_km": 24.28491353708467,
+    "device_match": true,
+    "session_duration_sec": 1557,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.010243366341678627,
+    "location_delta_km": 16.65380873313557,
+    "device_match": true,
+    "session_duration_sec": 1023,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.027922841832782576,
+    "location_delta_km": 54.31955133325664,
+    "device_match": true,
+    "session_duration_sec": 642,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.21191097798133798,
+    "location_delta_km": 7.432268527692113,
+    "device_match": true,
+    "session_duration_sec": 2070,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.06610097769753423,
+    "location_delta_km": 81.41963014951298,
+    "device_match": true,
+    "session_duration_sec": 1919,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.010926095077068002,
+    "location_delta_km": 11.585122037602504,
+    "device_match": true,
+    "session_duration_sec": 2336,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.07470294876337226,
+    "location_delta_km": 119.98382485218566,
+    "device_match": true,
+    "session_duration_sec": 1417,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.1640459099994472,
+    "location_delta_km": 4.300011066009067,
+    "device_match": true,
+    "session_duration_sec": 2077,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.11396221733138694,
+    "location_delta_km": 34.7153243578947,
+    "device_match": true,
+    "session_duration_sec": 2018,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.02210500771375298,
+    "location_delta_km": 57.38791110025573,
+    "device_match": true,
+    "session_duration_sec": 1721,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.07027133169503616,
+    "location_delta_km": 98.19133967047392,
+    "device_match": false,
+    "session_duration_sec": 2598,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.09721633337239699,
+    "location_delta_km": 198.80567456199242,
+    "device_match": false,
+    "session_duration_sec": 638,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.0363219358957784,
+    "location_delta_km": 19.73425997194078,
+    "device_match": true,
+    "session_duration_sec": 1193,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.3111595007810484,
+    "location_delta_km": 14.761463639097125,
+    "device_match": true,
+    "session_duration_sec": 1878,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.018655715894063354,
+    "location_delta_km": 32.123298938244815,
+    "device_match": true,
+    "session_duration_sec": 1722,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.22086600949674287,
+    "location_delta_km": 14.829226243266202,
+    "device_match": true,
+    "session_duration_sec": 2896,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 3,
+    "failed_ratio": 0.0073318516437001135,
+    "location_delta_km": 0.011353199766673677,
+    "device_match": true,
+    "session_duration_sec": 991,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.007202546202754153,
+    "location_delta_km": 6.342866944466449,
+    "device_match": true,
+    "session_duration_sec": 1900,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.004317673309581082,
+    "location_delta_km": 20.870137687341686,
+    "device_match": true,
+    "session_duration_sec": 1527,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.13666550193793855,
+    "location_delta_km": 216.7416792160197,
+    "device_match": true,
+    "session_duration_sec": 1786,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.19312095306591243,
+    "location_delta_km": 20.573953452121447,
+    "device_match": true,
+    "session_duration_sec": 1489,
+    "privilege_escalation": true
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.0896677885023656,
+    "location_delta_km": 12.675279142307804,
+    "device_match": true,
+    "session_duration_sec": 1027,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.0959518411450418,
+    "location_delta_km": 63.280477595754746,
+    "device_match": true,
+    "session_duration_sec": 2075,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.20923951793589984,
+    "location_delta_km": 14.18192407260406,
+    "device_match": true,
+    "session_duration_sec": 1851,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 1,
+    "login_velocity": 4,
+    "failed_ratio": 0.24053535051355182,
+    "location_delta_km": 23.66476652788393,
+    "device_match": true,
+    "session_duration_sec": 1265,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.05517147729149784,
+    "location_delta_km": 54.43743481368431,
+    "device_match": true,
+    "session_duration_sec": 2411,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.3064657926081033,
+    "location_delta_km": 66.34631612061717,
+    "device_match": true,
+    "session_duration_sec": 1305,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.09886713843617057,
+    "location_delta_km": 49.39858527310383,
+    "device_match": true,
+    "session_duration_sec": 1460,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 4,
+    "failed_ratio": 0.10758468959336599,
+    "location_delta_km": 58.36766195716769,
+    "device_match": true,
+    "session_duration_sec": 2203,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.027437092146370926,
+    "location_delta_km": 22.510205747250506,
+    "device_match": true,
+    "session_duration_sec": 2804,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.11996744752242279,
+    "location_delta_km": 3.751101281068858,
+    "device_match": true,
+    "session_duration_sec": 1571,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.04237111813051693,
+    "location_delta_km": 13.172178945544882,
+    "device_match": true,
+    "session_duration_sec": 1933,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.05511851619101281,
+    "location_delta_km": 29.328790432528407,
+    "device_match": true,
+    "session_duration_sec": 2175,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.2989980818701873,
+    "location_delta_km": 20.68672142609829,
+    "device_match": false,
+    "session_duration_sec": 913,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.07083588470597335,
+    "location_delta_km": 4.5569554616986006,
+    "device_match": true,
+    "session_duration_sec": 1797,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.04547918065271216,
+    "location_delta_km": 83.51428752002451,
+    "device_match": true,
+    "session_duration_sec": 2309,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 2,
+    "login_velocity": 3,
+    "failed_ratio": 0.0935250673876666,
+    "location_delta_km": 24.507579255903597,
+    "device_match": true,
+    "session_duration_sec": 1775,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.2123655979256222,
+    "location_delta_km": 69.0372311883699,
+    "device_match": true,
+    "session_duration_sec": 1931,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.08700248160768254,
+    "location_delta_km": 54.94034485879432,
+    "device_match": true,
+    "session_duration_sec": 2209,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.10568183662888234,
+    "location_delta_km": 65.11906913898305,
+    "device_match": true,
+    "session_duration_sec": 2528,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.2853216361168195,
+    "location_delta_km": 5.723147232907852,
+    "device_match": true,
+    "session_duration_sec": 3994,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.008837446732715366,
+    "location_delta_km": 28.136352728059187,
+    "device_match": true,
+    "session_duration_sec": 2056,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.027558356605773077,
+    "location_delta_km": 97.57349871303201,
+    "device_match": true,
+    "session_duration_sec": 1656,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.007697394600370642,
+    "location_delta_km": 38.01468515320969,
+    "device_match": true,
+    "session_duration_sec": 2017,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.01971802983027739,
+    "location_delta_km": 33.39463940420542,
+    "device_match": true,
+    "session_duration_sec": 2150,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.029585128819910794,
+    "location_delta_km": 28.6568669799841,
+    "device_match": true,
+    "session_duration_sec": 2104,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.00899355616842809,
+    "location_delta_km": 64.4940130451489,
+    "device_match": true,
+    "session_duration_sec": 2316,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.08783170231901417,
+    "location_delta_km": 179.6083130004628,
+    "device_match": true,
+    "session_duration_sec": 2822,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.015126283195654277,
+    "location_delta_km": 35.150932302417466,
+    "device_match": true,
+    "session_duration_sec": 2179,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.04679131745259667,
+    "location_delta_km": 14.443493315591493,
+    "device_match": true,
+    "session_duration_sec": 2850,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.045911585367059825,
+    "location_delta_km": 72.74920922196848,
+    "device_match": false,
+    "session_duration_sec": 1310,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.1487819050842755,
+    "location_delta_km": 16.5586002765583,
+    "device_match": true,
+    "session_duration_sec": 96,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.04349983371980382,
+    "location_delta_km": 5.24468198529216,
+    "device_match": true,
+    "session_duration_sec": 2486,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.11281680910923686,
+    "location_delta_km": 43.58039330275023,
+    "device_match": true,
+    "session_duration_sec": 2225,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.1691272478819488,
+    "location_delta_km": 32.34394799634217,
+    "device_match": true,
+    "session_duration_sec": 1116,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.10248862532707032,
+    "location_delta_km": 8.005992486055339,
+    "device_match": false,
+    "session_duration_sec": 1652,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 3,
+    "failed_ratio": 0.0017837843428085173,
+    "location_delta_km": 35.196784036043326,
+    "device_match": true,
+    "session_duration_sec": 1260,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.3201229254561513,
+    "location_delta_km": 16.11828451439742,
+    "device_match": true,
+    "session_duration_sec": 2652,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.16184391089088318,
+    "location_delta_km": 16.617618740132432,
+    "device_match": true,
+    "session_duration_sec": 1843,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.06582967896076306,
+    "location_delta_km": 12.344393254175555,
+    "device_match": true,
+    "session_duration_sec": 1939,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.027078947586117605,
+    "location_delta_km": 17.07129749858519,
+    "device_match": true,
+    "session_duration_sec": 1674,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.056454303121085125,
+    "location_delta_km": 60.38190690047156,
+    "device_match": true,
+    "session_duration_sec": 2400,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 2,
+    "failed_ratio": 0.0287556749952656,
+    "location_delta_km": 139.7433322437601,
+    "device_match": true,
+    "session_duration_sec": 1978,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.23138477131354793,
+    "location_delta_km": 26.99249572296216,
+    "device_match": true,
+    "session_duration_sec": 1779,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.21314059554857848,
+    "location_delta_km": 91.45850016061382,
+    "device_match": true,
+    "session_duration_sec": 816,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.2371228257070072,
+    "location_delta_km": 20.227986642481522,
+    "device_match": false,
+    "session_duration_sec": 1703,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.0832519886193645,
+    "location_delta_km": 36.86028116070654,
+    "device_match": true,
+    "session_duration_sec": 1033,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.004438801994210741,
+    "location_delta_km": 17.142483842663918,
+    "device_match": true,
+    "session_duration_sec": 1720,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.07450480608275219,
+    "location_delta_km": 145.36011465820047,
+    "device_match": true,
+    "session_duration_sec": 1853,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.12486729224462359,
+    "location_delta_km": 335.9782080761886,
+    "device_match": true,
+    "session_duration_sec": 1218,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.007774490232596996,
+    "location_delta_km": 24.9538567169928,
+    "device_match": true,
+    "session_duration_sec": 2454,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 2,
+    "failed_ratio": 0.019613597329698293,
+    "location_delta_km": 14.895510011091288,
+    "device_match": true,
+    "session_duration_sec": 2135,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.18696954016306974,
+    "location_delta_km": 189.61556528390346,
+    "device_match": true,
+    "session_duration_sec": 2306,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.015000175774074741,
+    "location_delta_km": 7.154666203211221,
+    "device_match": true,
+    "session_duration_sec": 1640,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.1000831363719024,
+    "location_delta_km": 20.932793851026204,
+    "device_match": true,
+    "session_duration_sec": 1753,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.020665457966507747,
+    "location_delta_km": 93.15125431132704,
+    "device_match": true,
+    "session_duration_sec": 1518,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 0,
+    "login_velocity": 2,
+    "failed_ratio": 0.16045837306093552,
+    "location_delta_km": 25.083333998424106,
+    "device_match": true,
+    "session_duration_sec": 1657,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.13800422678818242,
+    "location_delta_km": 8.755398625454355,
+    "device_match": true,
+    "session_duration_sec": 2353,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.010398544528816429,
+    "location_delta_km": 33.767304482344684,
+    "device_match": true,
+    "session_duration_sec": 1067,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.1213861206988092,
+    "location_delta_km": 94.83816773936059,
+    "device_match": true,
+    "session_duration_sec": 2609,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 1,
+    "login_velocity": 2,
+    "failed_ratio": 0.26966665871820367,
+    "location_delta_km": 153.2082303754009,
+    "device_match": true,
+    "session_duration_sec": 1674,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.04891046821162267,
+    "location_delta_km": 60.87510445297679,
+    "device_match": true,
+    "session_duration_sec": 1392,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.054183854978693595,
+    "location_delta_km": 28.302036896339054,
+    "device_match": true,
+    "session_duration_sec": 2615,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.03761945438500847,
+    "location_delta_km": 100.58274143207781,
+    "device_match": true,
+    "session_duration_sec": 2225,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.28754898600331197,
+    "location_delta_km": 123.31314909719752,
+    "device_match": true,
+    "session_duration_sec": 1107,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.01963500087866614,
+    "location_delta_km": 39.58004391881073,
+    "device_match": true,
+    "session_duration_sec": 1888,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.04835404190144714,
+    "location_delta_km": 31.17969560067363,
+    "device_match": true,
+    "session_duration_sec": 1828,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.03665620038686782,
+    "location_delta_km": 1.9763986664602309,
+    "device_match": true,
+    "session_duration_sec": 2277,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.109279031605166,
+    "location_delta_km": 39.41994262708275,
+    "device_match": true,
+    "session_duration_sec": 1317,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 0,
+    "login_velocity": 0,
+    "failed_ratio": 0.039600275731145995,
+    "location_delta_km": 15.540307233413131,
+    "device_match": true,
+    "session_duration_sec": 921,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.015597707253150054,
+    "location_delta_km": 143.220101145545,
+    "device_match": true,
+    "session_duration_sec": 1429,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.13969834322257918,
+    "location_delta_km": 1.2476580641232493,
+    "device_match": true,
+    "session_duration_sec": 1221,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 1,
+    "login_velocity": 0,
+    "failed_ratio": 0.11556032722847354,
+    "location_delta_km": 52.51785144038891,
+    "device_match": false,
+    "session_duration_sec": 2592,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.011102905749714755,
+    "location_delta_km": 97.71289586945805,
+    "device_match": true,
+    "session_duration_sec": 1401,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.008005909172634306,
+    "location_delta_km": 21.94726646342402,
+    "device_match": true,
+    "session_duration_sec": 1938,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 14,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.058678991499211165,
+    "location_delta_km": 7.52326237102841,
+    "device_match": true,
+    "session_duration_sec": 1978,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 18,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.1346771028970532,
+    "location_delta_km": 91.26767516434536,
+    "device_match": true,
+    "session_duration_sec": 2217,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.052120368710477295,
+    "location_delta_km": 37.43829676045379,
+    "device_match": true,
+    "session_duration_sec": 1996,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 3,
+    "login_velocity": 0,
+    "failed_ratio": 0.022038040016999945,
+    "location_delta_km": 0.8826558707916065,
+    "device_match": true,
+    "session_duration_sec": 1424,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 16,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.3824450476050368,
+    "location_delta_km": 91.13144466845611,
+    "device_match": true,
+    "session_duration_sec": 2094,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 17,
+    "day_of_week": 1,
+    "login_velocity": 1,
+    "failed_ratio": 0.012035864703369986,
+    "location_delta_km": 49.489748601038464,
+    "device_match": true,
+    "session_duration_sec": 2050,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 15,
+    "day_of_week": 4,
+    "login_velocity": 1,
+    "failed_ratio": 0.005980177217281559,
+    "location_delta_km": 34.38104344142785,
+    "device_match": false,
+    "session_duration_sec": 2132,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.07770258930934784,
+    "location_delta_km": 13.419028332078364,
+    "device_match": true,
+    "session_duration_sec": 1309,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 9,
+    "day_of_week": 1,
+    "login_velocity": 3,
+    "failed_ratio": 0.12844647524285635,
+    "location_delta_km": 45.03128113388318,
+    "device_match": true,
+    "session_duration_sec": 1524,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 2,
+    "login_velocity": 0,
+    "failed_ratio": 0.0005020989212288073,
+    "location_delta_km": 10.949312269304675,
+    "device_match": false,
+    "session_duration_sec": 1625,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 13,
+    "day_of_week": 3,
+    "login_velocity": 2,
+    "failed_ratio": 0.10056058243574528,
+    "location_delta_km": 20.44974657878419,
+    "device_match": true,
+    "session_duration_sec": 1766,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 12,
+    "day_of_week": 4,
+    "login_velocity": 0,
+    "failed_ratio": 0.023840559786507176,
+    "location_delta_km": 9.126993723510875,
+    "device_match": false,
+    "session_duration_sec": 2124,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 10,
+    "day_of_week": 0,
+    "login_velocity": 1,
+    "failed_ratio": 0.024102338835307664,
+    "location_delta_km": 27.650425590291977,
+    "device_match": true,
+    "session_duration_sec": 135,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 8,
+    "day_of_week": 2,
+    "login_velocity": 1,
+    "failed_ratio": 0.017979942855702043,
+    "location_delta_km": 97.27943889849719,
+    "device_match": true,
+    "session_duration_sec": 2144,
+    "privilege_escalation": false
+  },
+  {
+    "hour": 11,
+    "day_of_week": 3,
+    "login_velocity": 1,
+    "failed_ratio": 0.21917518639869454,
+    "location_delta_km": 3.4827588017624223,
+    "device_match": true,
+    "session_duration_sec": 2150,
+    "privilege_escalation": false
+  }
+]
