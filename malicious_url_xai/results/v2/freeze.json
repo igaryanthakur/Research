@@ -1,0 +1,13 @@
+{
+  "frozen_at": "2026-11-06T18:00:41",
+  "model": "xgb_d10_lr0.1_sqrt_balanced",
+  "policy": "classifier frozen; no further tuning or test re-evaluation",
+  "sha256": {
+    "artifacts/v2/final_model.joblib": "6c81eedd8c91daa3dce9f4403f604858f2abfdead31bc9ba78c4d19a7b29aa59",
+    "artifacts/v2/label_encoder.joblib": "642c9be185053e8c521c764d47bdbcba0ddc9fb5c1b5a09c053adfd74007af01",
+    "artifacts/v2/feature_names.json": "72786034841b426ae515b1e5057be575c101b5a651ca0201fa4cf1b9d77f1574",
+    "artifacts/v2/selected_config.json": "a66cf123c7a5294039b35a0981e24158176514a6716ec79ec66783c9c23e4b02",
+    "results/v2/test_metrics.json": "305117390f4e73814fb38fcac9544c3e625d02ed55b3c0399108c2acaedcdd3e",
+    "results/v2/test_predictions.csv": "fecaf68495ac30ee0aed6dfdf3288278c1adc1a6e78ddb62c35432c762af6c5e"
+  }
+}

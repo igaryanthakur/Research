@@ -1,0 +1,11 @@
+case,row_id,url_norm,true,pred,correct,jaccard_top5,spearman_abs,top5_shap,top5_lime
+highest agreement,538011,162.212.114.96:37564/Mozi.m,malware,malware,True,0.6667,0.6202458343495536,digit_ratio;host_is_ip;has_port;count_dot;count_letters,has_port;host_is_ip;count_colon;count_dot;digit_ratio
+highest agreement,522655,78.37.178.168:55549/Mozi.m,malware,malware,True,0.6667,0.5869103558070066,digit_ratio;host_is_ip;has_port;count_dot;tld_len,has_port;host_is_ip;tld_len;count_colon;count_dot
+highest agreement,538061,49.119.77.48:39616/Mozi.m,malware,malware,True,0.6667,0.5533174604417371,digit_ratio;host_is_ip;has_port;count_dot;count_letters,has_port;host_is_ip;count_dot;count_colon;digit_ratio
+lowest agreement,482077,city-data.com/city/Cook-Minnesota.html,benign,benign,True,0.0,-0.44581724581724586,tld_len;path_len;count_dot;subdomain_count;longest_path_segment_len,fragment_len;count_plus;count_at;count_percent;has_port
+lowest agreement,567006,amicafashion.com/paypal/index.html,benign,benign,True,0.0,-0.45122265122265126,tld_len;first_dir_len;longest_path_segment_len;count_dot;max_host_label_len,fragment_len;count_hash;count_tilde;count_plus;embedded_double_slash_count
+lowest agreement,619766,sqldata.com/desktop.htm,phishing,phishing,True,0.0,-0.5477477477477478,count_slash;path_depth;count_digits;count_hyphen;count_dot,fragment_len;count_at;count_plus;count_tilde;count_percent
+typical benign,6282,trainvideos.org/,benign,benign,True,0.0,-0.3917631917631918,first_dir_len;path_depth;count_dot;tld_len;entropy,fragment_len;count_at;count_tilde;host_is_ip;count_plus
+typical defacement,12769,thc-hanau.de/index.php/component/jevents/day.listevents/2013/01/22/-,defacement,defacement,True,0.25,0.19922779922779926,first_dir_len;path_depth;count_slash;tld_len;count_hyphen,path_depth;count_at;has_port;count_slash;count_underscore
+typical malware,48986,szhdtt.51yey.com/upload/schoolimg/9989/05211947827149.jpg,malware,malware,True,0.4286,0.1884291142327758,digit_ratio;count_dot;count_slash;entropy;url_len,host_is_ip;count_dot;digit_ratio;path_depth;entropy
+typical phishing,7914,dixoncreekmore.com/aboutus.html,benign,phishing,False,0.0,-0.15701415701415702,count_slash;path_depth;entropy;count_digits;count_hyphen,count_tilde;count_hash;has_port;tld_len;count_plus

@@ -1,0 +1,5 @@
+trial_id,feature_set,n_features,accuracy,macro_precision,macro_recall,macro_f1,recall_benign,recall_defacement,recall_malware,recall_phishing,unseen_host_accuracy,unseen_host_macro_f1,fit_s,predict_s
+ablation_rf_v1_structural,v1_structural,36,0.8839,0.8561,0.8822,0.8656,0.8868,0.9381,0.8943,0.8096,0.7998,0.6169,50.5,0.9
+ablation_rf_v2_full,v2_full,39,0.8824,0.8541,0.8818,0.8641,0.884,0.937,0.8921,0.814,0.7992,0.6163,44.5,0.9
+ablation_rf_v1_lexicon,v1_lexicon,27,0.8481,0.8129,0.8535,0.8276,0.8487,0.8873,0.8839,0.794,0.7743,0.6037,43.1,0.8
+baseline_v1_rf,v1,24,0.8459,0.8106,0.8521,0.8254,0.8457,0.8868,0.8825,0.7933,0.7718,0.602,35.5,0.8

@@ -1,0 +1,73 @@
+{
+  "rows_raw": 651191,
+  "class_counts_raw": {
+    "benign": 428103,
+    "defacement": 96457,
+    "phishing": 94111,
+    "malware": 32520
+  },
+  "duplicate_rows_raw_url": 10072,
+  "conflicting_urls_raw": 6,
+  "empty_after_normalization": 0,
+  "conflicting_urls_normalized": 4047,
+  "rows_removed_conflicts": 8230,
+  "rows_removed_duplicates_normalized": 11782,
+  "rows_clean": 631179,
+  "class_counts_clean": {
+    "benign": 423147,
+    "defacement": 95308,
+    "phishing": 89131,
+    "malware": 23593
+  },
+  "url_len_summary_clean": {
+    "count": 631179.0,
+    "mean": 56.92,
+    "std": 43.49,
+    "min": 1.0,
+    "25%": 30.0,
+    "50%": 45.0,
+    "75%": 73.0,
+    "max": 2175.0
+  },
+  "split_counts": {
+    "train": {
+      "benign": 296203,
+      "defacement": 66715,
+      "phishing": 62392,
+      "malware": 16515
+    },
+    "val": {
+      "benign": 63472,
+      "defacement": 14297,
+      "phishing": 13369,
+      "malware": 3539
+    },
+    "test": {
+      "benign": 63472,
+      "defacement": 14296,
+      "phishing": 13370,
+      "malware": 3539
+    }
+  },
+  "hostname_overlap_with_train": {
+    "val": 0.7387,
+    "test": 0.7397
+  },
+  "dataset_sha256": "d83ce942075dd63ed4d11560cfdcd9d512caa3d680e292f22cab484e8f074d01",
+  "timings": {
+    "clean_split_s": 4.0,
+    "extract_v1_s": 15.4,
+    "extract_v2_s": 25.2
+  },
+  "peak_memory_mb": 1425.3,
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "sklearn": "1.7.2",
+    "xgboost": "3.2.0"
+  },
+  "dropped_features": {}
+}

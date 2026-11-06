@@ -1,0 +1,5 @@
+,benign,defacement,malware,phishing
+benign,0.9345,0.0166,0.0006,0.0483
+defacement,0.0438,0.9395,0.0006,0.0161
+malware,0.0444,0.0042,0.9053,0.0461
+phishing,0.212,0.0274,0.0047,0.7559

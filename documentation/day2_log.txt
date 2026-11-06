@@ -1,0 +1,619 @@
+================================================================================
+PROJECT LOG BOOK - DAY 2
+Project : Detection of Malicious URLs Using Machine Learning and Explainable AI
+          (SHAP vs LIME explanation agreement and efficiency)
+Course  : MCARP31 Research Project (Sem 3) -> MCARP42 Research Paper (Sem 4)
+Session : Friday 6 Nov 2026
+Focus   : Improve the clean lexical classifier before starting SHAP/LIME
+Machine : Windows 11 (build 26300), Intel Family 6 Model 154,
+          8 logical CPUs, 16 GB RAM
+Python  : 3.13.14 in malicious_url_xai/.venv
+================================================================================
+
+
+--------------------------------------------------------------------------------
+1. DAY 2 GOAL
+--------------------------------------------------------------------------------
+
+Day 1 produced an academically defensible baseline:
+
+  Random Forest test accuracy  : 0.8471
+  Random Forest test macro-F1  : 0.8269
+  Features                     : 24 normalized lexical features
+
+The Day 2 objective was to improve this baseline without restoring the raw
+scheme/www formatting artifact, changing the cleaned dataset, changing the
+fixed split, or repeatedly testing candidate models on the test set.
+
+Work was limited to:
+
+  1. improving lexical feature extraction;
+  2. comparing Logistic Regression, Random Forest and XGBoost;
+  3. selecting on validation data;
+  4. evaluating the locked winner on the untouched test set once.
+
+SHAP, LIME, report finalization, deployment and stacking were not part of this
+training run.
+
+
+--------------------------------------------------------------------------------
+2. REFERENCE STUDY REVIEWED
+--------------------------------------------------------------------------------
+
+Read:
+  Poddar, Chowdhury, Dwivedi and Mukkamala,
+  "Data Driven based Malicious URL Detection using Explainable AI,"
+  IEEE TrustCom 2022.
+
+Paper methodology:
+  - same 651,191-URL, four-class dataset;
+  - 21 URL features;
+  - random 70/30 train/test split;
+  - level-0 LightGBM, Gradient Boosting, XGBoost and Random Forest;
+  - Random Forest final estimator and stated five-fold stacking;
+  - reported stacked accuracy 97%;
+  - ALE explanations rather than SHAP.
+
+Useful paper-inspired ideas:
+  - first-directory length;
+  - TLD length;
+  - embedded-link indicator;
+  - suspicious-token flag/count;
+  - shortened-URL indicator.
+
+Features deliberately NOT copied:
+  - count-http;
+  - count-https;
+  - count-www.
+
+Reason:
+  Day 1 proved that scheme and www formatting depends strongly on the source
+  class. Reintroducing these fields would increase the score but make the model
+  learn the dataset collection process.
+
+Stacking was also rejected for this stage because it is outside the required
+three-model comparison, the paper does not specify enough details for exact
+reproduction, and it would unnecessarily complicate later explanation work.
+
+
+--------------------------------------------------------------------------------
+3. PLAN AND RULES FIXED BEFORE EXECUTION
+--------------------------------------------------------------------------------
+
+A separate V2 pipeline was planned so that all V1 code and saved results stayed
+unchanged.
+
+Candidate eligibility:
+  - validation accuracy > 0.8463;
+  - validation macro-F1 >= 0.8254;
+  - recall for defacement, malware and phishing >= 0.70;
+  - a malicious-class recall drop > 0.05 versus V1 is permitted only when
+    macro-F1 >= 0.8354 (V1 + 0.01).
+
+Selection among eligible candidates:
+  1. highest validation macro-F1;
+  2. macro-F1 values within 0.005 are treated as near-tied;
+  3. among near ties, higher validation accuracy;
+  4. then higher minimum malicious-class recall;
+  5. then lower fitting time.
+
+Other fixed rules:
+  - unseen-host validation metrics are diagnostic only;
+  - test data is not used for feature or model selection;
+  - the first 24 V2 columns must exactly equal V1 output;
+  - suspicious words must match whole tokens;
+  - the final test stage refuses to run when test_metrics.json already exists;
+  - all trials use random seed 42.
+
+Memory rule:
+  About 5.3 GB RAM was free before tuning. Random Forest trials were allowed a
+  3 GB projected tree-memory budget. Trees were grown in chunks of 50 and were
+  capped/stopped when necessary. A unit test confirmed that fixed-seed chunked
+  fitting gives the same probabilities as fitting all trees in one call.
+
+
+--------------------------------------------------------------------------------
+4. V2 CODE AND FILES CREATED
+--------------------------------------------------------------------------------
+
+New source files:
+  src/features_v2.py
+    - 24 V1 features followed by 15 frozen candidate additions;
+    - deterministic parsing;
+    - feature definitions and manifest;
+    - fixed suspicious-token and shortener lists.
+
+  src/runinfo.py
+    - environment and peak-memory information for saved run metadata.
+
+  prepare_v2.py
+    - independently rebuilds clean data and fixed split;
+    - extracts aligned V1 and V2 feature matrices;
+    - verifies the first 24 V2 columns equal V1 exactly;
+    - records feature distributions, timings and dataset SHA-256.
+
+  train_v2.py
+    - baseline reproduction;
+    - feature-block ablation;
+    - LR/RF/XGBoost tuning;
+    - eligibility and selection;
+    - final refit and one-time test;
+    - artifact reload verification.
+
+New tests:
+  tests/test_features_v2.py
+  tests/test_pipeline_v2_smoke.py
+
+Generated locations:
+  artifacts/v2/
+  results/v2/
+  results/v2/logs/
+
+V1 source files and results were not overwritten.
+
+
+--------------------------------------------------------------------------------
+5. V2 FEATURE ENGINEERING
+--------------------------------------------------------------------------------
+
+V1 features retained (24):
+  - URL, hostname, path and query lengths;
+  - counts of dot, hyphen, underscore, slash, ?, =, @, &, %, digits, letters;
+  - digit and special-character ratios;
+  - subdomain count, path depth and query parameter count;
+  - IP-host, port and percent-encoding indicators;
+  - Shannon entropy.
+
+New structural block (12):
+  - counts of colon, hash, plus, tilde and semicolon;
+  - first-directory length;
+  - longest path-segment length;
+  - TLD length;
+  - hostname-label count;
+  - maximum hostname-label length;
+  - fragment length;
+  - embedded // count after the hostname.
+
+New lexicon block (3):
+  - exact suspicious-token count;
+  - exact known-shortener host indicator;
+  - punycode indicator.
+
+Total generated V2 features: 39.
+
+Important safety decisions:
+  - all input comes from the normalized URL;
+  - no scheme/HTTP/HTTPS/www indicator;
+  - no label or source feature;
+  - no WHOIS, DNS, page fetch or other network call;
+  - malformed URLs must still produce finite deterministic values.
+
+
+--------------------------------------------------------------------------------
+6. DATA PREPARATION REPRODUCTION
+--------------------------------------------------------------------------------
+
+prepare_v2.py rebuilt the dataset from the raw CSV.
+
+  Raw rows                         651,191
+  Conflicting normalized URLs       4,047
+  Rows removed for conflicts         8,230
+  Normalized duplicates removed     11,782
+  Clean rows                       631,179
+
+Fixed split:
+  train       441,825
+  validation   94,677
+  test         94,677
+
+Feature extraction:
+  V1 24-feature matrix       15.4 s
+  Full V2 39-feature matrix  25.2 s
+  Peak process memory       1,425.3 MB
+
+Dataset SHA-256:
+  d83ce942075dd63ed4d11560cfdcd9d512caa3d680e292f22cab484e8f074d01
+
+All row-count, split, index, finite-value and feature-prefix assertions passed.
+No new feature was constant on the training split.
+
+
+--------------------------------------------------------------------------------
+7. V1 BASELINE REPRODUCTION
+--------------------------------------------------------------------------------
+
+The original 24-feature Random Forest configuration was rerun through V2:
+
+  saved V1 validation accuracy   0.8463
+  reproduced accuracy            0.8459
+  absolute difference            0.0004
+
+  saved V1 validation macro-F1   0.8254
+  reproduced macro-F1            0.8254
+
+The accuracy difference was inside the pre-fixed 0.001 tolerance. Exact
+macro-F1 reproduction and matching data checks allowed V2 work to continue.
+
+
+--------------------------------------------------------------------------------
+8. FEATURE-BLOCK ABLATION
+--------------------------------------------------------------------------------
+
+The unchanged V1 Random Forest was used so that only input features changed.
+
+  feature set           n     val accuracy   val macro-F1
+  V1                    24       0.8459          0.8254
+  V1 + lexicon          27       0.8481          0.8276
+  V1 + structural       36       0.8839          0.8656
+  full V2               39       0.8824          0.8641
+
+Decision:
+  Lock V1 + structural = 36 features.
+
+Finding:
+  The structural block caused the major gain. The token, shortener and punycode
+  block added little and slightly reduced the full-set result, so it was not
+  used for model tuning.
+
+Colon check:
+  Defacement URLs have more colons on average than benign URLs. Manual examples
+  showed Joomla paths such as catid=26: and IP:port URLs. This is genuine URL
+  content rather than an explicit scheme flag. However, repeated templates may
+  still identify campaigns or sources, so the safe claim is "no known explicit
+  source-format leakage features," not "no leakage."
+
+
+--------------------------------------------------------------------------------
+9. MODEL TUNING
+--------------------------------------------------------------------------------
+
+Logistic Regression:
+  - C = 0.1, 1, 10;
+  - no, square-root-balanced and fully balanced weights;
+  - StandardScaler and max_iter=2000.
+
+Random Forest:
+  - coarse: 300 trees;
+  - depth 25 or unlimited;
+  - minimum leaf size 1, 3 or 5;
+  - no or square-root-balanced weights;
+  - selected refinements up to 500 trees;
+  - sqrt or 0.5 feature sampling;
+  - one exact V1-style balanced control.
+
+XGBoost:
+  - depth 6, 8 or 10;
+  - learning rate 0.05 or 0.1;
+  - no or square-root-balanced weights;
+  - subsample 0.8;
+  - column subsample 0.8;
+  - maximum 1,000 trees;
+  - validation-log-loss early stopping after 50 non-improving rounds.
+
+Every trial recorded:
+  - accuracy;
+  - macro and weighted precision/recall/F1;
+  - per-class precision/recall/F1/support;
+  - confusion matrix;
+  - fit and prediction time;
+  - unseen-host validation accuracy and macro-F1;
+  - model parameters, class weights and trial status.
+
+Completed trials were appended immediately and skipped if their trial ID was
+already present, making the run resumable.
+
+
+--------------------------------------------------------------------------------
+10. IMPLEMENTATION PROBLEMS FOUND AND CORRECTED
+--------------------------------------------------------------------------------
+
+P1. RF refinement initially chose candidates from all coarse RF trials rather
+    than eligible coarse trials.
+    Effect:
+      One additional refinement trial ran.
+    Correction:
+      The refinement selection was corrected. The extra trial remains in the
+      raw log as superseded and is excluded from final selection.
+    Test impact:
+      None; the test set had not been used.
+
+P2. The selection stage crashed because a derived ranking column was missing
+    from one DataFrame.
+    Correction:
+      The selection code was fixed and selection alone was rerun from the saved
+      validation trials.
+    Test impact:
+      None; no training was repeated and the test set had not been used.
+
+Housekeeping noted after review:
+  - eligible candidates should be passed directly to the ordering function in
+    code; the intended eligible-only recalculation gives the same winner;
+  - run_metadata currently carries the full 39-feature manifest hash although
+    the selected feature list correctly contains 36 columns.
+
+These two metadata/code-cleanup points do not change predictions and do not
+require another test evaluation.
+
+
+--------------------------------------------------------------------------------
+11. VALIDATION MODEL COMPARISON
+--------------------------------------------------------------------------------
+
+Best candidate per required family:
+
+  family       val accuracy   val macro-F1   phishing recall   eligible
+  Logistic       0.7564          0.6511           0.3234          no
+  RF             0.9064          0.8799           0.7063          yes
+  XGBoost        0.9070          0.8841           0.7495          yes
+
+Selected trial:
+  xgb_d10_lr0.1_sqrt_balanced
+
+Selected validation configuration:
+  max_depth          10
+  learning_rate      0.1
+  subsample          0.8
+  colsample_bytree   0.8
+  weighting          square-root balanced
+  best iteration     635
+  final tree count   636
+
+Tie-rule detail:
+  XGBoost depth 10 / lr 0.05 obtained macro-F1 0.8846 versus 0.8841 for
+  lr 0.1. These were inside the fixed 0.005 near-tie range. The lr 0.1 model
+  won on validation accuracy (0.9070 vs 0.9069) and fit time.
+
+Why the highest raw accuracy was not selected:
+  Several unweighted candidates reached validation accuracy around 0.910 to
+  0.913 but phishing recall was only about 0.63 to 0.66. The pre-fixed minimum
+  recall gate correctly rejected them.
+
+
+--------------------------------------------------------------------------------
+12. FINAL REFIT AND ONE-TIME TEST
+--------------------------------------------------------------------------------
+
+The selected XGBoost configuration was refit on train + validation.
+
+  Final fitting rows       536,502
+  Test rows                 94,677
+  Final fit time              90.8 s
+  Test prediction time          1.8 s
+  Saved model size             55.9 MB
+
+The test set was then evaluated once. The guard file now prevents accidental
+repeat execution of the final stage.
+
+Final test:
+
+  accuracy          0.9089
+  macro precision   0.8895
+  macro recall      0.8838
+  macro-F1          0.8863
+  weighted F1       0.9092
+
+Per class:
+
+  class          precision   recall    F1       support
+  benign           0.9425    0.9345   0.9385    63,472
+  defacement       0.9033    0.9395   0.9211    14,296
+  malware          0.9671    0.9053   0.9352     3,539
+  phishing         0.7451    0.7559   0.7504    13,370
+
+Confusion matrix (rows true, columns predicted):
+
+                    benign  defacement  malware  phishing
+  benign            59,314      1,056       37      3,065
+  defacement           626     13,431        9        230
+  malware              157         15    3,204        163
+  phishing           2,835        366       63     10,106
+
+
+--------------------------------------------------------------------------------
+13. V1 VERSUS V2
+--------------------------------------------------------------------------------
+
+  metric                         V1        V2       change
+  test accuracy                0.8471    0.9089    +0.0618
+  test macro-F1                0.8269    0.8863    +0.0594
+  benign recall                0.8476    0.9345    +0.0869
+  defacement recall            0.8859    0.9395    +0.0536
+  malware recall               0.8878    0.9053    +0.0175
+  phishing recall              0.7924    0.7559    -0.0365
+  model size (MB)             565.0      55.9     -509.1
+
+Conclusion:
+  V2 clearly beats V1 overall on the untouched test set and is much smaller.
+  V2 is selected as the final classifier for the next XAI stage.
+
+
+--------------------------------------------------------------------------------
+14. PHISHING TRADE-OFF
+--------------------------------------------------------------------------------
+
+V2 improved phishing precision from 0.5961 to 0.7451 but reduced phishing
+recall from 0.7924 to 0.7559.
+
+Concrete error changes:
+  benign incorrectly predicted as phishing:
+    V1 6,192 -> V2 3,065 (3,127 fewer false alarms)
+
+  phishing incorrectly predicted as benign:
+    V1 2,009 -> V2 2,835 (826 more missed phishing examples)
+
+Interpretation:
+  The model is much less likely to raise a false phishing alarm, but it misses
+  more real phishing URLs. It is incorrect to claim that V2 improved every
+  class. It improved overall performance and phishing precision, not phishing
+  recall.
+
+
+--------------------------------------------------------------------------------
+15. HOSTNAME GENERALIZATION
+--------------------------------------------------------------------------------
+
+Test subgroup:
+
+  subgroup          n        accuracy   macro-F1
+  all test         94,677     0.9089      0.8863
+  seen hostname    71,276     0.9330      0.9022
+  unseen hostname  23,401     0.8357      0.6311
+
+V1 unseen-host:
+  accuracy 0.7792 | macro-F1 0.6089
+
+V2 unseen-host:
+  accuracy 0.8357 | macro-F1 0.6311
+
+The unseen-host score improved, but remains much weaker than the seen-host
+score. Only 21 unseen-host defacement URLs exist, so defacement recall 1.0 and
+the subgroup macro-F1 are unstable. The random-split result must not be claimed
+as performance on entirely new websites.
+
+
+--------------------------------------------------------------------------------
+16. TESTING AND VERIFICATION
+--------------------------------------------------------------------------------
+
+Complete suite rerun:
+  40 tests passed in 1.74 seconds under Python 3.13.14.
+
+V2 feature tests cover:
+  - schema order and vector length;
+  - no scheme/http/https/www features;
+  - deterministic finite values for malformed URLs;
+  - path and hostname structures;
+  - IPv4 and IPv6 hosts;
+  - fragments and embedded //;
+  - whole-token suspicious-word matching;
+  - exact shortener-host matching;
+  - punycode;
+  - scheme/www normalization invariance;
+  - exact V1 prefix equality;
+  - feature manifest.
+
+Pipeline smoke tests cover:
+  - class weights;
+  - selection tie rules;
+  - candidate eligibility;
+  - chunked versus one-shot Random Forest;
+  - RF and XGBoost save/reload;
+  - finite four-class probabilities that sum to one.
+
+Final verification:
+  - final model reloaded;
+  - label encoder reloaded;
+  - model class order checked;
+  - first 5,000 probabilities reproduced;
+  - saved row IDs, predictions and probabilities matched.
+
+
+--------------------------------------------------------------------------------
+17. SAVED OUTPUTS
+--------------------------------------------------------------------------------
+
+artifacts/v2/
+  clean.parquet
+  features_v1_norm.parquet
+  features_v2_norm.parquet
+  feature_manifest.json
+  final_model.joblib
+  label_encoder.joblib
+  feature_names.json
+  selected_config.json
+
+results/v2/
+  data_audit.json
+  feature_summary_train.csv
+  feature_ablation_val.csv
+  feature_set_lock.json
+  model_trials_val.csv
+  model_trials_ranked_val.csv
+  model_comparison_val.csv
+  selection.json
+  test_metrics.json
+  classification_report.txt / .csv
+  confusion_matrix.csv
+  confusion_matrix_normalized.csv
+  test_predictions.csv
+  hostname_subgroup_test.csv
+  v1_vs_v2.csv
+  run_metadata.json
+  logs/
+
+
+--------------------------------------------------------------------------------
+18. COMMANDS
+--------------------------------------------------------------------------------
+
+From malicious_url_xai/ with the virtual environment active:
+
+  pytest
+  python prepare_v2.py
+  python train_v2.py baseline ablation lr rf xgb select final verify
+
+
+--------------------------------------------------------------------------------
+19. DAY 2 DECISIONS
+--------------------------------------------------------------------------------
+
+D1. V2 XGBoost replaces the V1 Random Forest as the selected classifier.
+D2. Freeze the 36 selected feature columns and their order.
+D3. Do not perform more tuning using the existing test set.
+D4. Keep V1 outputs as the baseline and artifact-ablation evidence.
+D5. Report phishing recall reduction, not only aggregate improvement.
+D6. Report seen/unseen hostname results and their support limitations.
+D7. Use the phrase "no known explicit source-format leakage features"; do not
+    claim complete absence of leakage.
+D8. Use the saved XGBoost model for the next SHAP/LIME stage.
+D9. Apply only housekeeping corrections to selection ordering/feature hashing;
+    do not rerun final test evaluation.
+
+
+--------------------------------------------------------------------------------
+20. NEXT WORK
+--------------------------------------------------------------------------------
+
+Immediate:
+  - correct eligible-only ordering code and selected-feature metadata hash
+    without retraining or reevaluating test;
+  - design/run a small TreeSHAP and LIME compatibility pilot;
+  - confirm XGBoost multi-class SHAP output shape;
+  - estimate LIME time before the full 500-URL run.
+
+Then:
+  - sample 500 test predictions, balanced by predicted class;
+  - generate SHAP and LIME explanations for the same predicted class;
+  - compute top-5 Jaccard and full-rank Spearman;
+  - compare agreement across classes;
+  - compare per-prediction explanation time;
+  - analyse selected disagreement cases.
+
+Still open:
+  - read the closest SHAP/LIME paper in full;
+  - verify dataset licence/source page;
+  - verify venue indexing.
+
+
+================================================================================
+DAY 2 SUMMARY
+================================================================================
+
+Day 2 built an isolated V2 pipeline while preserving V1. Fifteen candidate
+lexical features were added and tested in structural and lexicon blocks. The
+12 structural additions raised the unchanged Random Forest validation accuracy
+from 0.8459 to 0.8839; the lexicon block contributed almost nothing and was
+excluded.
+
+Logistic Regression, Random Forest and XGBoost were then compared with fixed
+eligibility and selection rules. The selected model was square-root-balanced
+XGBoost with 36 features, depth 10, learning rate 0.1 and 636 trees.
+
+On the untouched test set, evaluated once, V2 achieved 0.9089 accuracy and
+0.8863 macro-F1, compared with V1's 0.8471 and 0.8269. V2 is also much smaller
+(55.9 MB versus 565 MB). Phishing recall fell by 0.0365, and unseen-host
+macro-F1 remains only 0.6311, so these limitations are explicitly retained.
+
+The classifier stage is now strong enough to freeze. The next project stage is
+the planned SHAP-versus-LIME agreement and timing experiment.
+================================================================================

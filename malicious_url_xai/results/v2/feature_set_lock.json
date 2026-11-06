@@ -1,0 +1,65 @@
+{
+  "feature_set": "v1_structural",
+  "features": [
+    "url_len",
+    "host_len",
+    "path_len",
+    "query_len",
+    "count_dot",
+    "count_hyphen",
+    "count_underscore",
+    "count_slash",
+    "count_question",
+    "count_equal",
+    "count_at",
+    "count_amp",
+    "count_percent",
+    "count_digits",
+    "count_letters",
+    "digit_ratio",
+    "special_ratio",
+    "subdomain_count",
+    "path_depth",
+    "query_param_count",
+    "host_is_ip",
+    "has_port",
+    "has_pct_encoding",
+    "entropy",
+    "count_colon",
+    "count_hash",
+    "count_plus",
+    "count_tilde",
+    "count_semicolon",
+    "first_dir_len",
+    "longest_path_segment_len",
+    "tld_len",
+    "host_label_count",
+    "max_host_label_len",
+    "fragment_len",
+    "embedded_double_slash_count"
+  ],
+  "rule": "order_by_rule on validation (macro-F1, 0.005 tie -> accuracy)",
+  "candidates": [
+    {
+      "feature_set": "v1_structural",
+      "accuracy": 0.8839,
+      "macro_f1": 0.8656
+    },
+    {
+      "feature_set": "v2_full",
+      "accuracy": 0.8824,
+      "macro_f1": 0.8641
+    },
+    {
+      "feature_set": "v1_lexicon",
+      "accuracy": 0.8481,
+      "macro_f1": 0.8276
+    },
+    {
+      "feature_set": "v1",
+      "accuracy": 0.8459,
+      "macro_f1": 0.8254
+    }
+  ],
+  "locked_at": "2026-11-06T16:35:27"
+}

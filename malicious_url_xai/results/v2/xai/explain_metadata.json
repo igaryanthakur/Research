@@ -1,0 +1,20 @@
+{
+  "per_class": 125,
+  "n_sample": 500,
+  "lime_num_samples": 2000,
+  "lime_background_rows": 10000,
+  "lime_discretize_continuous": true,
+  "shap_explainer": "exact path-dependent TreeSHAP via xgboost Booster.predict(pred_contribs=True); shap 0.49.1 TreeExplainer cannot parse xgboost 3.x vector base_score",
+  "shap_output_space": "margin (log-odds)",
+  "lime_output_space": "probability",
+  "seed": 42,
+  "pilot": false,
+  "elapsed_s_this_run": 281.6,
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "sklearn": "1.7.2",
+  "xgboost": "3.2.0"
+}

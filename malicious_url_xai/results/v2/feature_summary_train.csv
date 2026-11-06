@@ -1,0 +1,16 @@
+feature,n_unique,top_value_share,mean_benign,mean_defacement,mean_malware,mean_phishing
+count_colon,12,0.96324,0.0117,0.2344,0.2113,0.0201
+count_hash,7,0.99923,0.0003,0.0,0.0001,0.0044
+count_plus,28,0.97549,0.0974,0.0076,0.0277,0.005
+count_tilde,8,0.98651,0.0096,0.0003,0.001,0.0508
+count_semicolon,44,0.98378,0.043,0.0,0.0035,0.0637
+first_dir_len,198,0.12886,8.7815,9.6993,7.6207,6.6063
+longest_path_segment_len,344,0.12101,21.3794,14.4672,14.0259,10.2786
+tld_len,38,0.76218,2.8942,2.3917,1.3696,2.8125
+host_label_count,28,0.70678,2.3827,2.1774,1.2495,2.5845
+max_host_label_len,68,0.10396,10.2389,12.1413,5.0834,10.3683
+fragment_len,72,0.99934,0.0141,0.0001,0.0,0.0872
+embedded_double_slash_count,5,0.99684,0.0025,0.0,0.0053,0.0122
+suspicious_token_count,15,0.94797,0.1027,0.0106,0.0077,0.1099
+is_shortener_host,2,0.99909,0.001,0.0,0.0,0.0017
+has_punycode,2,0.9998,0.0001,0.0,0.0003,0.0009

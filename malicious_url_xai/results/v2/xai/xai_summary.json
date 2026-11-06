@@ -1,0 +1,225 @@
+{
+  "k": 5,
+  "n_urls": 500,
+  "rq1_overall": {
+    "jaccard_top5": {
+      "n": 500,
+      "mean": 0.173,
+      "median": 0.1111,
+      "std": 0.184,
+      "mean_ci95": [
+        0.1571,
+        0.1889
+      ]
+    },
+    "spearman_abs": {
+      "n": 500,
+      "mean": -0.0101,
+      "median": -0.0399,
+      "std": 0.2219,
+      "mean_ci95": [
+        -0.0299,
+        0.0093
+      ]
+    },
+    "spearman_undefined_n": 0,
+    "share_jaccard_below_threshold": 0.956,
+    "jaccard_value_counts": {
+      "0.0": 174,
+      "0.1111": 134,
+      "0.25": 89,
+      "0.4286": 81,
+      "0.6667": 22
+    },
+    "threshold": 0.5,
+    "considerable_disagreement": true
+  },
+  "rq2_by_class": {
+    "by_predicted_class": {
+      "benign": {
+        "jaccard_top5": {
+          "n": 125,
+          "mean": 0.0487,
+          "median": 0.0,
+          "std": 0.0625
+        },
+        "spearman_abs": {
+          "n": 125,
+          "mean": -0.1598,
+          "median": -0.1616,
+          "std": 0.1252
+        },
+        "share_jaccard_below_threshold": 1.0
+      },
+      "defacement": {
+        "jaccard_top5": {
+          "n": 125,
+          "mean": 0.2491,
+          "median": 0.25,
+          "std": 0.1342
+        },
+        "spearman_abs": {
+          "n": 125,
+          "mean": 0.0657,
+          "median": 0.0713,
+          "std": 0.138
+        },
+        "share_jaccard_below_threshold": 0.984
+      },
+      "malware": {
+        "jaccard_top5": {
+          "n": 125,
+          "mean": 0.3514,
+          "median": 0.4286,
+          "std": 0.1981
+        },
+        "spearman_abs": {
+          "n": 125,
+          "mean": 0.223,
+          "median": 0.2166,
+          "std": 0.189
+        },
+        "share_jaccard_below_threshold": 0.84
+      },
+      "phishing": {
+        "jaccard_top5": {
+          "n": 125,
+          "mean": 0.043,
+          "median": 0.0,
+          "std": 0.0679
+        },
+        "spearman_abs": {
+          "n": 125,
+          "mean": -0.1694,
+          "median": -0.1691,
+          "std": 0.1381
+        },
+        "share_jaccard_below_threshold": 1.0
+      }
+    },
+    "kruskal_wallis_jaccard": {
+      "H": 274.0176,
+      "p": 4.170940309837766e-59
+    },
+    "kruskal_wallis_spearman": {
+      "H": 279.2233,
+      "p": 3.118147237857204e-60
+    },
+    "jaccard_by_correct_prediction": {
+      "False": {
+        "n": 55,
+        "mean": 0.1071,
+        "median": 0.0,
+        "std": 0.1524
+      },
+      "True": {
+        "n": 445,
+        "mean": 0.1812,
+        "median": 0.1111,
+        "std": 0.1861
+      }
+    }
+  },
+  "rq3_timing": {
+    "timing_file": "explanation_times.csv",
+    "shap_ms_q25_median_q75": [
+      230.53,
+      236.01,
+      307.87
+    ],
+    "lime_ms_q25_median_q75": [
+      67.83,
+      72.69,
+      107.34
+    ],
+    "wilcoxon": {
+      "statistic": 1.0,
+      "p": 1.2723397311858558e-83
+    },
+    "median_ratio_shap_over_lime": 3.232,
+    "ratio_iqr": [
+      2.642,
+      3.46
+    ],
+    "faster_method_by_median": "lime",
+    "setup": "exact path-dependent TreeSHAP (all 4 classes per call, 636 rounds x 4 trees, depth 10) vs LIME tabular, 2000 perturbations, predicted label only"
+  },
+  "global_importance_spearman": -0.2433,
+  "global_top10": {
+    "shap": [
+      "tld_len",
+      "digit_ratio",
+      "count_slash",
+      "first_dir_len",
+      "count_dot",
+      "path_len",
+      "path_depth",
+      "longest_path_segment_len",
+      "entropy",
+      "max_host_label_len"
+    ],
+    "lime": [
+      "has_port",
+      "count_plus",
+      "count_at",
+      "host_is_ip",
+      "fragment_len",
+      "count_tilde",
+      "tld_len",
+      "count_percent",
+      "embedded_double_slash_count",
+      "path_depth"
+    ]
+  },
+  "lime_fit": {
+    "local_r2": {
+      "n": 500,
+      "mean": 0.156,
+      "median": 0.1628,
+      "std": 0.0545
+    },
+    "local_r2_by_class": {
+      "benign": {
+        "n": 125,
+        "mean": 0.1891,
+        "median": 0.1898,
+        "std": 0.0346
+      },
+      "defacement": {
+        "n": 125,
+        "mean": 0.144,
+        "median": 0.15,
+        "std": 0.038
+      },
+      "malware": {
+        "n": 125,
+        "mean": 0.0947,
+        "median": 0.0866,
+        "std": 0.0373
+      },
+      "phishing": {
+        "n": 125,
+        "mean": 0.1964,
+        "median": 0.1962,
+        "std": 0.0349
+      }
+    }
+  },
+  "lime_stability_sensitivity": {
+    "2000": {
+      "n_urls": 100,
+      "lime_self_jaccard_mean": 0.3855,
+      "shap_lime_jaccard_mean": 0.1694
+    },
+    "10000": {
+      "n_urls": 100,
+      "lime_self_jaccard_mean": 0.598,
+      "shap_lime_jaccard_mean": 0.1773
+    }
+  },
+  "caveats": [
+    "agreement is not explanation correctness",
+    "SHAP values are in log-odds space, LIME weights in probability space; comparison is rank-based",
+    "sample is balanced by predicted class, so overall means are class-balanced"
+  ]
+}
