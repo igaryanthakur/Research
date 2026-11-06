@@ -121,25 +121,25 @@
     }
   },
   "rq3_timing": {
-    "timing_file": "explanation_times.csv",
+    "timing_file": "explanation_times_retime.csv",
     "shap_ms_q25_median_q75": [
-      230.53,
-      236.01,
-      307.87
+      219.05,
+      224.19,
+      228.86
     ],
     "lime_ms_q25_median_q75": [
-      67.83,
-      72.69,
-      107.34
+      56.16,
+      60.85,
+      64.66
     ],
     "wilcoxon": {
-      "statistic": 1.0,
-      "p": 1.2723397311858558e-83
+      "statistic": 0.0,
+      "p": 1.2647189486921486e-83
     },
-    "median_ratio_shap_over_lime": 3.232,
+    "median_ratio_shap_over_lime": 3.708,
     "ratio_iqr": [
-      2.642,
-      3.46
+      3.464,
+      3.984
     ],
     "faster_method_by_median": "lime",
     "setup": "exact path-dependent TreeSHAP (all 4 classes per call, 636 rounds x 4 trees, depth 10) vs LIME tabular, 2000 perturbations, predicted label only"

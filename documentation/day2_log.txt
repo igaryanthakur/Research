@@ -571,28 +571,325 @@ D9. Apply only housekeeping corrections to selection ordering/feature hashing;
 
 
 --------------------------------------------------------------------------------
-20. NEXT WORK
+20. CLASSIFIER FIXES AND FREEZE
 --------------------------------------------------------------------------------
 
-Immediate:
-  - correct eligible-only ordering code and selected-feature metadata hash
-    without retraining or reevaluating test;
-  - design/run a small TreeSHAP and LIME compatibility pilot;
-  - confirm XGBoost multi-class SHAP output shape;
-  - estimate LIME time before the full 500-URL run.
+Selection-order fix:
+  Eligibility is now applied before the selection ordering rule. Selection was
+  rerun from saved validation results and produced the identical winner,
+  parameters and validation metrics. No model was retrained and test data was
+  not evaluated again.
 
-Then:
-  - sample 500 test predictions, balanced by predicted class;
-  - generate SHAP and LIME explanations for the same predicted class;
-  - compute top-5 Jaccard and full-rank Spearman;
-  - compare agreement across classes;
-  - compare per-prediction explanation time;
-  - analyse selected disagreement cases.
+Metadata-hash fix:
+  run_metadata.json now hashes the selected 36-column schema. The original
+  generated 39-feature hash is retained as generated_feature_hash with a note
+  that the correction was applied post hoc.
+
+Freeze:
+  results/v2/freeze.json records SHA-256 checksums for:
+    - final model;
+    - label encoder;
+    - feature names;
+    - selected configuration;
+    - test metrics;
+    - test predictions.
+
+  explain_v2.py stops if any frozen file changes.
+
+
+--------------------------------------------------------------------------------
+21. XAI SAMPLE AND PROTOCOL
+--------------------------------------------------------------------------------
+
+Sample:
+  500 saved test predictions
+  125 per predicted class
+  random seed 42
+  correct predictions   445
+  incorrect predictions  55
+
+The sample stores:
+  - test row ID;
+  - normalized URL;
+  - true class;
+  - predicted class;
+  - correctness flag;
+  - four saved class probabilities.
+
+SHAP:
+  shap 0.49.1 could not load the XGBoost 3.2 multiclass model because of its
+  vector base score. Exact path-dependent TreeSHAP was therefore generated
+  through XGBoost Booster.predict(pred_contribs=True).
+
+  Output:
+    - all four class contributions per call;
+    - 36 feature values plus one bias term per class;
+    - raw margin/logit space.
+
+  Validation:
+    - contributions + bias reproduced the raw model margins;
+    - softmax of those margins reproduced predict_proba.
+
+LIME:
+  LimeTabularExplainer
+  classification mode
+  10,000 fixed training-background rows
+  quartile discretization
+  seed 42
+  2,000 perturbations per URL
+  all 36 feature weights returned
+  predicted class only
+  local R2/intercept/local prediction saved
+
+Agreement:
+  k = 5
+  top-k Jaccard
+  Spearman over all 36 absolute feature values
+  exact ties broken by feature name
+  fixed considerable-disagreement threshold = 0.50
+  10,000-replicate bootstrap CI for overall means
+
+Important:
+  SHAP values are raw multiclass margins/logits; LIME weights explain
+  probabilities. Raw magnitudes are not compared. Only feature membership and
+  ranks based on absolute values are compared.
+
+
+--------------------------------------------------------------------------------
+22. RQ1 - OVERALL SHAP/LIME AGREEMENT
+--------------------------------------------------------------------------------
+
+Results:
+
+  n URLs                              500
+  mean top-5 Jaccard                 0.1730
+  95% bootstrap CI             0.1571-0.1889
+  median Jaccard                     0.1111
+  standard deviation                 0.1840
+  share below 0.50                    95.6%
+  mean full-rank Spearman           -0.0101
+  Spearman 95% CI             -0.0299-0.0093
+  undefined Spearman values               0
+
+Jaccard distribution:
+
+  Jaccard     shared top-5    URLs
+  0.0000           0          174
+  0.1111           1          134
+  0.2500           2           89
+  0.4286           3           81
+  0.6667           4           22
+
+No URL had identical top-5 feature sets.
+
+Decision:
+  Mean Jaccard is far below the pre-fixed 0.50 threshold. H0-1 is rejected and
+  the result is classified as considerable SHAP/LIME disagreement.
+
+
+--------------------------------------------------------------------------------
+23. RQ2 - AGREEMENT BY PREDICTED CLASS
+--------------------------------------------------------------------------------
+
+  predicted class   mean Jaccard  median Jaccard  mean Spearman  below 0.50
+  benign               0.0487        0.0000          -0.1598       100.0%
+  defacement           0.2491        0.2500           0.0657        98.4%
+  malware              0.3514        0.4286           0.2230        84.0%
+  phishing             0.0430        0.0000          -0.1694       100.0%
+
+Kruskal-Wallis:
+  Jaccard: H = 274.0176, p = 4.17e-59
+  Spearman: H = 279.2233, p = 3.12e-60
+
+Conclusion:
+  The omnibus tests reject equal distributions across predicted classes, so
+  H0-2 is rejected.
+  Malware has the highest descriptive agreement; benign and phishing have
+  near-zero agreement. Pairwise class claims require corrected post-hoc tests.
+
+Correct versus incorrect predictions:
+  correct     n=445, mean Jaccard 0.1812
+  incorrect    n=55, mean Jaccard 0.1071
+
+This is an exploratory comparison because class composition is not controlled.
+
+
+--------------------------------------------------------------------------------
+24. WHY THE EXPLAINERS DISAGREE
+--------------------------------------------------------------------------------
+
+Highest-agreement examples:
+  162.212.114.96:37564/Mozi.m
+  78.37.178.168:55549/Mozi.m
+  49.119.77.48:39616/Mozi.m
+
+These IP:port malware URLs have distinctive values. Both methods identify
+features such as host_is_ip, has_port, digit_ratio and count_dot. Their top-5
+Jaccard is 0.6667 (four shared features).
+
+Global SHAP leaders:
+  tld_len
+  digit_ratio
+  count_slash
+  first_dir_len
+  count_dot
+  path_len
+  path_depth
+  longest_path_segment_len
+  entropy
+  max_host_label_len
+
+Global LIME leaders:
+  has_port
+  count_plus
+  count_at
+  host_is_ip
+  fragment_len
+  count_tilde
+  tld_len
+  count_percent
+  embedded_double_slash_count
+  path_depth
+
+Global ranking Spearman:
+  rho = -0.2433
+
+Interpretation:
+  SHAP explains exact tree-path contributions relative to a model baseline.
+  LIME fits a perturbed local linear approximation. For sparse and Boolean
+  values, a large LIME coefficient can represent membership in the current
+  discretized bin relative to generated alternatives, which may not correspond
+  to a realistic URL edit. Different explanation definitions and weak local
+  approximation both contribute to disagreement.
+
+Agreement is not correctness. Neither method is explanation ground truth.
+
+
+--------------------------------------------------------------------------------
+25. LIME RELIABILITY CHECK
+--------------------------------------------------------------------------------
+
+Primary local surrogate fit:
+
+  class         mean local R2
+  benign           0.1891
+  defacement       0.1440
+  malware          0.0947
+  phishing         0.1964
+  overall          0.1560
+
+The low R2 shows that LIME's local linear surrogate often approximates the
+non-linear XGBoost model weakly.
+
+Extra sensitivity sample:
+  100 URLs (25 per predicted class)
+  2 additional seeds
+  2,000 and 10,000 perturbations
+
+  perturbations   mean LIME self-Jaccard   mean SHAP/LIME Jaccard*
+       2,000                0.3855                    0.1694
+      10,000                0.5980                    0.1773
+
+  * Saved summary compares SHAP against the first additional LIME seed.
+
+Correct wording:
+  These are mean top-5 Jaccard values, not the percentage of runs with
+  identical explanations.
+
+Conclusion:
+  More perturbations improve LIME seed stability but do not materially close
+  the SHAP/LIME gap. Sampling noise explains part, but not all, of the
+  disagreement.
+
+
+--------------------------------------------------------------------------------
+26. RQ3 - EXPLANATION TIME
+--------------------------------------------------------------------------------
+
+Initial run:
+  The laptop was on battery and Windows throttled the CPU. Both explainers
+  slowed together by approximately four times during some blocks. Explanation
+  values remained valid, but timing was treated as provisional.
+
+Controlled timing-only rerun:
+  charger connected
+  Windows Best performance
+  same frozen classifier and 500 URLs
+  same explanation calls
+  saved explanations not regenerated
+
+  measure               TreeSHAP      LIME
+  Q1                     219.05 ms     56.16 ms
+  median                 224.19 ms     60.85 ms
+  Q3                     228.86 ms     64.66 ms
+
+  paired median ratio (SHAP/LIME)  3.708
+  ratio IQR                        3.464-3.984
+  Wilcoxon statistic               0
+  Wilcoxon p                       1.26e-83
+
+Decision:
+  H0-3 is rejected. Under this measured setup, LIME is faster.
+
+Fairness caveat:
+  - TreeSHAP computes all four classes per call;
+  - LIME explains only the predicted class;
+  - the model has 636 boosting rounds x 4 class-specific trees = 2,544 trees;
+  - both values are complete per-URL explainer-call timings;
+  - calls always ran TreeSHAP then LIME.
+
+This result must not be generalized to all TreeSHAP/LIME implementations.
+
+
+--------------------------------------------------------------------------------
+27. XAI OUTPUTS
+--------------------------------------------------------------------------------
+
+Scripts:
+  explain_v2.py
+  analyze_v2.py
+
+results/v2/xai/
+  xai_sample.csv
+  shap_explanations.csv
+  lime_explanations.csv
+  lime_fit.csv
+  explanation_times.csv
+  explanation_times_retime.csv
+  per_url_agreement.csv
+  global_importance.csv
+  case_table.csv
+  lime_stability.csv
+  lime_stability_summary.csv
+  xai_summary.json
+  explain_metadata.json
+  figures/jaccard_distribution.png
+  figures/global_importance.png
+  figures/timing_boxplot.png
+
+Commands:
+  python explain_v2.py
+  python explain_v2.py --stability
+  python analyze_v2.py
+
+Controlled timing-only commands:
+  python explain_v2.py --retime
+  python analyze_v2.py --times explanation_times_retime.csv
+
+
+--------------------------------------------------------------------------------
+28. UPDATED NEXT WORK
+--------------------------------------------------------------------------------
 
 Still open:
   - read the closest SHAP/LIME paper in full;
   - verify dataset licence/source page;
-  - verify venue indexing.
+  - verify venue indexing;
+  - optionally add multiplicity-corrected pairwise class tests;
+  - extend provenance hashes to clean.parquet, features_v2_norm.parquet and
+    xai_sample.csv;
+  - optionally average sensitivity agreement over both extra LIME seeds;
+  - write final discussion, conclusion, references and presentation slides.
 
 
 ================================================================================
@@ -614,6 +911,21 @@ On the untouched test set, evaluated once, V2 achieved 0.9089 accuracy and
 (55.9 MB versus 565 MB). Phishing recall fell by 0.0365, and unseen-host
 macro-F1 remains only 0.6311, so these limitations are explicitly retained.
 
-The classifier stage is now strong enough to freeze. The next project stage is
-the planned SHAP-versus-LIME agreement and timing experiment.
+The classifier was frozen with SHA-256 checksums before XAI. Exact XGBoost
+TreeSHAP and LIME were generated for 500 class-balanced predictions. Mean top-5
+Jaccard was 0.1730 (95% CI 0.1571-0.1889); 95.6% of URLs fell below the 0.50
+threshold, and mean full-feature Spearman was -0.0101. Agreement differed
+strongly by predicted class, from 0.0430 for phishing to 0.3514 for malware.
+
+LIME's mean local surrogate R2 was only 0.156. A 100-URL sensitivity check
+showed that increasing perturbations improved LIME seed stability but left
+SHAP/LIME agreement near 0.17.
+
+After a charger-connected Best-performance timing rerun, median time was
+224.19 ms for all-class TreeSHAP and 60.85 ms for predicted-class LIME, a
+paired median ratio of 3.708. This reversal of the usual expectation is
+specific to the measured 2,544-tree multiclass setup.
+
+Both the classifier and explainability stages are now complete. Remaining work
+is literature verification, final report discussion, references and slides.
 ================================================================================
