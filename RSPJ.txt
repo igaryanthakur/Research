@@ -1,0 +1,111 @@
+# PROJECT CONTEXT: READ FULLY BEFORE RESPONDING
+
+## 1. ABOUT ME
+I am an MCA student, an upcoming engineer and not a researcher. I have about 1 WEEK to finish this project and want it done fast with minimal effort, but still academically defensible. Prefer simple, practical, low-risk choices. Don't over-engineer. Be direct, and tell me when something is risky or I'm wrong.
+
+## 2. COURSE CONTEXT
+SEMESTER 3: MCARP31 Research Project (4 credits, 150 marks)
+- Groups of 2-3, guided by a faculty mentor.
+- Goal: write a Research Project Proposal and develop a working solution.
+- Steps: identify problem -> literature review to find gaps -> formulate methodology -> design/develop model -> test with test cases -> submit project report. A weekly log book is maintained.
+- Term work (75): Proposal/problem statement/background/hypothesis (15), Literature Survey (10), Research Methodology/Data Collection/Data Analysis (15), Model Development (20), Testing (15).
+- Practical (75): Presentation (25), Project Evaluation (30), Report Evaluation (20).
+- LaTeX is advisable for the report. Evaluation is at institute level, preferably by alumni or industry experts. Rubrics are followed.
+
+SEMESTER 4: MCARP42 Research Paper / Product / Patent (2 credits, 100 marks)
+- Must produce ONE externally validated outcome:
+  1. Research Paper: published/presented at a national/international conference (proceedings with ISBN/ISSN) or an indexed journal (Scopus/WOS/IEEE Xplore). Max 2 students, guided by full-time faculty, topic approved by the institute.
+  2. Patent: Indian process/product/design patent, published or granted (a mere application is not enough).
+  3. Product: marketable software authenticated by the institute IIC/E-Cell, minuted in at least two meetings.
+- Assessed by two 50-mark mid-term presentations. Presentation I: abstract/intro/originality (10), literature review/market survey (15), objectives/scope/features (15), presentation (10). Presentation II: methodology/models (10), analysis/findings/conclusion (20), publication proof (10), presentation (10).
+- My Sem 4 plan: Research Paper track (short conference paper).
+
+## 3. TOPIC
+Detection of Malicious URLs Using Machine Learning and Explainable AI
+Working title: "Detection of Malicious URLs Using Machine Learning and Explainable AI: A Comparative Study of SHAP and LIME Explanation Agreement and Efficiency"
+
+## 4. LITERATURE SURVEY DONE (5 papers, based only on what I could read)
+1. Poddar, Chowdhury, Dwivedi, Mukkamala. "Data Driven based Malicious URL Detection using Explainable AI." IEEE TrustCom 2022. https://ieeexplore.ieee.org/document/10063704/
+   21 features from 651,191 URLs; two-stage stacked ensemble (gradient boosting + random forest); 97% accuracy; 4 classes (benign, defacement, phishing, malware); XAI used to study per-feature impact on each class.
+2. "Malicious URL Detection with Explainable Machine Learning Techniques." ACM, ICIECTA 2025. https://dl.acm.org/doi/10.1145/3732801.3732854
+   Compared LR, Decision Tree, Random Forest; RF best; explained with SHAP. The authors state future work: robustness/adaptation to evolving threats, more advanced ML, and multi-modal sources (behavior analytics, network traffic). (Only the search snippet was readable; the page blocked fetching.)
+3. "Beyond Classification: Understanding Why URLs Are Malicious with Transparent Convex Optimization and Interpretable XAI." Springer, 2025. https://link.springer.com/chapter/10.1007/978-3-032-14805-6_5
+   Argues ML detectors lack interpretability for legal/investigative contexts; proposes an XAI framework for trust, transparency and auditability.
+4. "XAI-PhD: Fortifying Trust of Phishing URL Detection Empowered by Shapley Additive Explanations." iJOE, 2024. https://online-journals.org/index.php/i-joe/article/view/49533
+   ML + SHAP for phishing URL detection; motivated by the need for accuracy and reduced prediction overhead.
+5. Nair & Di Troia. "A Comparative Analysis of SHAP and LIME in Detecting Malicious URLs." Springer book chapter, 2025. https://doi.org/10.1007/978-3-031-83157-7_11
+   5 classes (benign, malware, phishing, defacement, spam); uses LIME and SHAP to find key features per class.
+
+LIMITATIONS OF THE SURVEY:
+- I only read abstracts/snippets, not full texts.
+- Paper 5 is the closest to my idea. I have NOT verified whether it already measures SHAP-LIME agreement quantitatively. This MUST be checked in its full text.
+1. https://ieeexplore.ieee.org/document/10063704/
+2. https://dl.acm.org/doi/10.1145/3732801.3732854
+3. https://link.springer.com/chapter/10.1007/978-3-032-14805-6_5
+4. https://online-journals.org/index.php/i-joe/article/view/49533
+5. https://link.springer.com/chapter/10.1007/978-3-031-83157-7_11
+- Venue indexing (Scopus/IEEE) was not independently verified for every paper; Paper 4 (iJOE) in particular should be checked.
+
+## 5. GAPS IDENTIFIED AND CHOSEN ANGLE
+Gaps noted: multi-modal fusion not done; efficiency vs interpretability under-addressed; legal/audit framing is newer; SHAP vs LIME head-to-head is niche; per-class explainability is more advanced than binary.
+Chosen angle (for feasibility): SHAP vs LIME agreement analysis plus a latency comparison, using lexical features only. Rejected options: network/behavioral features (WHOIS/page fetching is risky and slow) and real-time browser deployment.
+Novelty is modest. If Paper 5 already measures agreement, reframe as an extension (latency comparison, second dataset, per-class breakdown).
+
+## 6. PROBLEM STATEMENT
+Several studies apply SHAP or LIME to explain malicious URL classifiers, but most pick one method without comparing it against another. When two explainers give different reasons for the same prediction, an analyst has no basis for deciding which to trust. Prediction overhead is also raised as a concern, yet the time cost of generating explanations is rarely measured. This project examines how consistently SHAP and LIME explain the same malicious URL classifier, and how their computational costs compare.
+
+## 7. RESEARCH QUESTIONS AND HYPOTHESES
+RQ1: How well do SHAP and LIME agree on the most influential features for the same URL predictions?
+RQ2: Does agreement differ across URL classes (benign, phishing, malware, defacement)?
+RQ3: How do SHAP and LIME differ in per-prediction explanation time?
+H0-1: No meaningful difference between top-k features of SHAP and LIME (agreement high). H1-1: They differ significantly for a considerable share of predictions.
+H0-2: Agreement does not vary across classes. H1-2: It varies significantly.
+H0-3: Per-prediction explanation time is the same. H1-3: It differs significantly.
+The agreement threshold (e.g. mean Jaccard < 0.7 = considerable disagreement) must be fixed BEFORE running experiments and stated in the report.
+
+## 8. OBJECTIVES
+1. Review literature on ML-based malicious URL detection and XAI.
+2. Extract lexical features and build a multi-class pipeline on a public dataset.
+3. Train and compare Logistic Regression, Random Forest, XGBoost (optionally Decision Tree and LightGBM) using accuracy, precision, recall, macro-F1.
+4. Generate SHAP and LIME explanations for the best model on a sample of test URLs.
+5. Quantify agreement with Jaccard similarity of top-k features and Spearman rank correlation, overall and per class.
+6. Measure per-prediction explanation time for both.
+7. Analyse a sample of disagreement cases.
+
+## 9. SCOPE
+In scope: lexical (URL-string) features only, one public dataset, classical ML, explanations on a 500-1000 URL sample.
+Out of scope: page-content/WHOIS/network features, deep learning, real-time deployment, browser extension/dashboard (only if time remains).
+Stated limitation: agreement shows consistency, not correctness; neither explainer is ground truth.
+
+## 10. TECHNICAL PLAN
+- Data: 4-class URL dataset (benign, phishing, malware, defacement), likely the ~651k-URL Kaggle dataset used in Paper 1. NOT YET VERIFIED: source, licence, label quality. Remove duplicate URLs before splitting.
+- Features (~20, plain Python, no external lookups): URL length, host length, digit count, special-character counts (@ - _ ? = %), subdomain count, IP-in-host, HTTPS, entropy, path depth.
+- Models: stratified 80/20 split; class weights if imbalanced; compare on accuracy, precision, recall, macro-F1; pick the best (likely XGBoost or RF). Tree models chosen because shap.TreeExplainer is fast and exact on them and prior work reported strong results with them. SVM, KNN and deep learning excluded for time and slow explanations.
+- Explanations: shap.TreeExplainer and LimeTabularExplainer on a random 500-1000 test sample; explain the model's PREDICTED class for both; fix LIME random_state; save results to disk.
+- Agreement: top-k (start k=5) features from each explainer; Jaccard and Spearman per URL; average overall and per class.
+- Timing: time.perf_counter() per URL for both; note that SHAP batching favours SHAP.
+- Stats: Wilcoxon or paired t-test for timing; Kruskal-Wallis for agreement across classes (scipy).
+- Compute: normal laptop is enough.
+
+## 11. KNOWN PITFALLS
+- Multi-class SHAP output shape varies by shap version (list of arrays vs 3D array); print shape first.
+- LIME is much slower than TreeSHAP; keep the sample small and run once.
+- Data leakage: duplicates, features that encode the label.
+- Compare the same predicted class for both explainers.
+- Report fairness caveats on timing.
+- Don't pick the agreement threshold after seeing results.
+- Accuracy around 95%+ is plausible (Paper 1 reported 97% on a similar setup) but not guaranteed. The research value is the agreement analysis, not beating accuracy.
+
+## 12. ONE-WEEK PLAN
+Day 1: check Paper 5 full text, verify dataset, finalize problem statement. Day 2: feature extraction, split, imbalance. Day 3: train and compare models. Day 4: run SHAP and LIME on sample. Day 5: agreement metrics, timing, charts. Day 6: write report (proposal, lit survey, methodology, results, testing). Day 7: slides, buffer, cleanup.
+Difficulty: easy to moderate. Biggest risk is time (LIME runs, report writing), not skill.
+
+## 13. OPEN ITEMS (NOT YET DONE)
+1. Read Paper 5 full text to check whether it already measures SHAP-LIME agreement.
+2. Verify dataset source, licence and labels.
+3. Confirm indexing status of the surveyed venues.
+4. Fix the agreement threshold and k before experiments.
+5. Write starter code for the pipeline.
+
+## 14. HOW I WANT YOU TO HELP
+We are about to discuss DEVELOPMENT (code, pipeline, debugging, analysis, report writing). Keep to the scope above. Don't suggest scope expansion unless I ask. Don't invent papers, results or library behavior; say when you're unsure. Prefer short, runnable code with brief explanations. Flag anything that would risk the one-week deadline.
