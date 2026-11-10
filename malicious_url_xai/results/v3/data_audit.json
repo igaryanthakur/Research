@@ -1,0 +1,31 @@
+{
+  "source_clean": "C:\\Users\\Devil\\Desktop\\Research\\malicious_url_xai\\artifacts\\v2\\clean.parquet",
+  "rows": 631179,
+  "split_counts": {
+    "train": 441825,
+    "test": 94677,
+    "val": 94677
+  },
+  "n_lexical_features": 48,
+  "n_ngram_features": 300,
+  "n_features_full": 348,
+  "dropped_features": {},
+  "timings": {
+    "load_clean_s": 1.0,
+    "extract_lexical_s": 56.5,
+    "fit_ngram_s": 24.6,
+    "transform_ngram_s": 22.4,
+    "concat_s": 1.4
+  },
+  "peak_memory_mb": 3213.1,
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "sklearn": "1.7.2",
+    "xgboost": "3.2.0"
+  },
+  "feature_hash": "0c6c523f4b4eaaceef1bba61680b0918db54759597b094def9de005527994a9d"
+}

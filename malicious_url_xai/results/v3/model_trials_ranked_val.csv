@@ -1,0 +1,9 @@
+trial_id,family,feature_set,n_features,accuracy,macro_precision,macro_recall,macro_f1,recall_benign,recall_defacement,recall_malware,recall_phishing,unseen_host_accuracy,unseen_host_macro_f1,fit_s
+stack_lr_xgb_lgbm,stack_lr,v3_full,348,0.9463,0.9425,0.9198,0.9307,0.971,0.981,0.9311,0.7961,0.8796,0.6879,1590.2
+softvote_xgb_lgbm,softvote,v3_full,348,0.9458,0.939,0.9234,0.9309,0.966,0.984,0.9305,0.8132,0.8776,0.6847,0.0
+lgbm_v3_full,lgbm,v3_full,348,0.9448,0.9377,0.9225,0.9298,0.965,0.9836,0.9296,0.8116,0.8756,0.6843,389.7
+xgb_v3_full,xgb,v3_full,348,0.9445,0.9368,0.9219,0.9291,0.9647,0.9815,0.9282,0.8133,0.8765,0.6829,1034.9
+softvote_xgb_lgbm_cat,softvote,v3_full,348,0.9438,0.937,0.9221,0.9292,0.9631,0.9821,0.9277,0.8153,0.8771,0.6834,0.0
+xgb_v3_lexical,xgb,v3_lexical,48,0.9216,0.9096,0.8933,0.901,0.9475,0.9593,0.9031,0.7633,0.8446,0.6406,83.0
+cat_v3_full,cat,v3_full,348,0.9146,0.8948,0.8948,0.8944,0.9346,0.9501,0.9124,0.7819,0.8487,0.6513,1725.1
+xgb_v2_full_ref,xgb,v2_full,39,0.9085,0.8904,0.8814,0.8855,0.9351,0.9389,0.9,0.7517,0.8332,0.6289,75.2

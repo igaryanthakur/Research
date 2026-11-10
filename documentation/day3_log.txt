@@ -1,0 +1,472 @@
+================================================================================
+PROJECT LOG BOOK - DAY 3 / V3
+Project : Detection of Malicious URLs Using Machine Learning and Explainable AI
+          (SHAP vs LIME explanation agreement and efficiency)
+Course  : MCARP31 Research Project (Sem 3) -> MCARP42 Research Paper (Sem 4)
+Session : Monday 9 Nov 2026 -> Tuesday 10 Nov 2026
+Focus   : V3 classification extension using character n-grams and boosted
+          ensembles; preserve the completed V2 XAI experiment
+================================================================================
+
+
+--------------------------------------------------------------------------------
+1. STARTING POINT
+--------------------------------------------------------------------------------
+
+V2 classification:
+  model                         XGBoost
+  selected features             36 normalized lexical/structural fields
+  test accuracy                 0.9089
+  test macro-F1                 0.8863
+  phishing recall               0.7559
+
+V2 explainability:
+  sample                        500 URLs, 125 per predicted class
+  mean top-5 SHAP/LIME Jaccard 0.1730
+  mean Spearman                -0.0101
+  LIME mean local R2            0.1560
+
+Day 3 objective:
+  Test whether richer normalized URL-string features and complementary
+  boosted-tree models could improve classification without restoring leading
+  scheme/http/https/www indicators or adding network/page-content data.
+
+
+--------------------------------------------------------------------------------
+2. RULES RETAINED
+--------------------------------------------------------------------------------
+
+R1. Reuse the exact V2 clean rows and saved 70/15/15 split.
+R2. Fit the character n-gram vocabulary on training data only.
+R3. Use validation data for candidate comparison and selection.
+R4. Keep scheme and leading www removed from model input.
+R5. Use square-root-balanced class weights.
+R6. Retain seed 42.
+R7. Save every trial and its probabilities so stopped work is resumable.
+R8. Do not overwrite an existing V3 final test result.
+
+Important later caveat:
+  The same fixed test partition had already been evaluated in V1 and V2 before
+  V3 was designed. The V3 final stage used it once, but the final report must
+  call it a held-out random-split test, not a globally untouched test.
+
+
+--------------------------------------------------------------------------------
+3. V3 FILES CREATED
+--------------------------------------------------------------------------------
+
+Source:
+  src/features_v3.py
+  prepare_v3.py
+  train_v3.py
+
+Tests:
+  tests/test_features_v3.py
+
+Artifacts:
+  artifacts/v3/clean.parquet
+  artifacts/v3/features_v3_lexical.parquet
+  artifacts/v3/features_v3_ngram.parquet
+  artifacts/v3/features_v3_full.parquet
+  artifacts/v3/ngram_vectorizer.joblib
+  artifacts/v3/feature_manifest.json
+  artifacts/v3/final_model.joblib
+  artifacts/v3/label_encoder.joblib
+  artifacts/v3/feature_names.json
+  artifacts/v3/selected_config.json
+
+Results:
+  results/v3/data_audit.json
+  results/v3/feature_summary_train.csv
+  results/v3/model_trials_val.csv
+  results/v3/model_trials_ranked_val.csv
+  results/v3/selection.json
+  results/v3/test_metrics.json
+  results/v3/classification_report.txt / .csv
+  results/v3/confusion_matrix.csv
+  results/v3/confusion_matrix_normalized.csv
+  results/v3/test_predictions.csv
+  results/v3/hostname_subgroup_test.csv
+  results/v3/v2_vs_v3.csv
+  results/v3/run_metadata.json
+
+
+--------------------------------------------------------------------------------
+4. FEATURE ENGINEERING
+--------------------------------------------------------------------------------
+
+V3 lexical fields:
+  39 V2-generated fields
+  + 4 segmented entropy fields
+  + 5 brand/typosquat fields
+  = 48 lexical fields
+
+Segmented entropy:
+  host_entropy
+  path_entropy
+  query_entropy
+  entropy_host_path_absdiff
+
+Brand-related:
+  min_brand_edit_distance
+  brand_typo_flag
+  brand_in_subdomain
+  brand_in_path_or_query
+  is_exact_brand_host
+
+Brand limitation:
+  The code uses a best-effort second-level label rather than the Public Suffix
+  List. It must not be described as exact registered-domain extraction.
+
+Character TF-IDF:
+  analyzer          character
+  n-gram range      3 to 4
+  maximum features  300
+  minimum df        5
+  lowercase         yes
+  sublinear TF      yes
+  fitted on         training split only
+
+Total V3 fields:
+  48 lexical + 300 n-gram = 348
+
+Preparation:
+  rows                    631,179
+  lexical extraction       56.5 s
+  n-gram fitting            24.6 s
+  n-gram transformation     22.4 s
+  peak process memory    3,213.1 MB
+  constant new fields          0
+
+
+--------------------------------------------------------------------------------
+5. MODEL CANDIDATES
+--------------------------------------------------------------------------------
+
+XGBoost:
+  depth 10
+  learning rate 0.1
+  subsample 0.8
+  column sample 0.8
+  maximum 1,200 rounds
+  validation early stopping 50
+
+LightGBM:
+  128 leaves
+  learning rate 0.05
+  subsample 0.8
+  column sample 0.8
+  minimum child samples 40
+  maximum 2,000 rounds
+  validation early stopping 50
+
+CatBoost:
+  depth 8
+  learning rate 0.08
+  L2 leaf regularization 3
+  maximum 800 rounds
+  validation early stopping 40
+
+Ensembles:
+  equal-probability soft voting
+  three-fold out-of-fold Logistic Regression stacking
+
+Random Forest:
+  Not retrained in V3. It remains the V1 winner and a V2 candidate. V3 compares
+  boosted-tree families and their ensembles only.
+
+
+--------------------------------------------------------------------------------
+6. VALIDATION RESULTS
+--------------------------------------------------------------------------------
+
+trial                         n     accuracy   macro-F1   phishing R  unseen acc
+xgb_v2_full_ref              39      0.9085      0.8855      0.7517     0.8332
+xgb_v3_lexical               48      0.9216      0.9010      0.7633     0.8446
+xgb_v3_full                 348      0.9445      0.9291      0.8133     0.8765
+lgbm_v3_full                348      0.9448      0.9298      0.8116     0.8756
+cat_v3_full                 348      0.9146      0.8944      0.7819     0.8487
+softvote_xgb_lgbm           348      0.9458      0.9309      0.8132     0.8776
+stack_lr_xgb_lgbm           348      0.9463      0.9307      0.7961     0.8796
+
+Finding:
+  The main performance increase came from the 300 character n-gram fields.
+  XGBoost rose from 0.9216 accuracy with the 48 lexical fields to 0.9445 with
+  all 348 fields. The ensemble added a smaller improvement.
+
+Selection rule:
+  - maximize validation macro-F1;
+  - values within 0.005 are near-tied;
+  - among near ties prefer accuracy, then minimum malicious recall, then time.
+
+Winner:
+  stack_lr_xgb_lgbm
+
+Tie detail:
+  The soft vote has slightly higher macro-F1 (0.9309 vs 0.9307) and phishing
+  recall (0.8132 vs 0.7961). The stack wins under the fixed near-tie rule
+  because it has higher accuracy (0.9463 vs 0.9458).
+
+
+--------------------------------------------------------------------------------
+7. SELECTED STACK
+--------------------------------------------------------------------------------
+
+Base models:
+  XGBoost
+  LightGBM
+
+Meta-model:
+  Logistic Regression, C=1.0
+
+Training:
+  Three-fold stratified out-of-fold base probabilities train the meta-model.
+  Final base models are refit on train+validation for test prediction.
+
+Final artifact:
+  model size               111.0 MB
+  final fit time         1,916.3 s
+  peak process memory    5,196.5 MB
+
+
+--------------------------------------------------------------------------------
+8. V3 HELD-OUT TEST RESULT
+--------------------------------------------------------------------------------
+
+Aggregate:
+  accuracy            0.9485
+  macro precision     0.9444
+  macro recall        0.9239
+  macro-F1            0.9338
+  weighted-F1         0.9480
+
+Per class:
+
+class          precision   recall     F1       support
+benign           0.9581    0.9715    0.9648    63,472
+defacement       0.9808    0.9806    0.9807    14,296
+malware          0.9851    0.9350    0.9594     3,539
+phishing         0.8537    0.8085    0.8304    13,370
+
+Confusion matrix (rows true, columns predicted):
+
+                 benign  defacement  malware  phishing
+benign           61,665        181       11      1,615
+defacement          184     14,018        4         90
+malware               79          3    3,309        148
+phishing           2,436         90       35     10,809
+
+Largest remaining error:
+  2,436 phishing URLs predicted as benign.
+
+
+--------------------------------------------------------------------------------
+9. V2 VERSUS V3
+--------------------------------------------------------------------------------
+
+metric                  V2       V3      change
+accuracy              0.9089   0.9485   +0.0396
+macro-F1              0.8863   0.9338   +0.0475
+benign recall         0.9345   0.9715   +0.0370
+defacement recall     0.9395   0.9806   +0.0411
+malware recall        0.9053   0.9350   +0.0297
+phishing recall       0.7559   0.8085   +0.0526
+phishing precision    0.7451   0.8537   +0.1086
+phishing F1           0.7504   0.8304   +0.0800
+
+Conclusion:
+  V3 improves every displayed test metric. The increase is substantial, but it
+  is a same-dataset, same-random-split result and not external validation.
+
+
+--------------------------------------------------------------------------------
+10. HOSTNAME GENERALIZATION
+--------------------------------------------------------------------------------
+
+subgroup          n       accuracy   macro-F1   benign R  deface R  malware R  phishing R
+all test        94,677     0.9485      0.9338     0.9715    0.9806    0.9350     0.8085
+seen hostname   71,276     0.9683      0.9499     0.9825    0.9807    0.9791     0.8330
+unseen hostname 23,401     0.8881      0.6907     0.9380    0.8571*   0.7979     0.7850
+
+* Only 21 unseen-host defacement URLs exist.
+
+V2 -> V3 unseen-host changes:
+  accuracy   0.8357 -> 0.8881
+  macro-F1   0.6311 -> 0.6907
+
+Interpretation:
+  V3 improves on unseen hostnames, so the full gain is not confined to exact
+  familiar hosts. Nevertheless, the seen/unseen gap remains large, and
+  character n-grams may learn repeated templates or campaigns.
+
+
+--------------------------------------------------------------------------------
+11. REPRODUCIBILITY FIX AND VERIFICATION
+--------------------------------------------------------------------------------
+
+Problem:
+  The first V3 verification implementation predicted the first 2,000 feature
+  rows but compared them with the first 2,000 saved test predictions. Test rows
+  are not the first sequential dataset rows, so the assertion failed.
+
+Correction:
+  stage_verify now:
+    1. reads test_predictions.csv first;
+    2. gets its saved row_id values;
+    3. selects matching rows from features_v3_full by index label;
+    4. rebuilds base and meta-model probabilities;
+    5. compares them with the corresponding saved probabilities.
+
+No model was retrained and no result file was regenerated.
+
+Verification command:
+  python train_v3.py verify
+
+Verified output:
+  "Verified: final model reloads and matches saved test probabilities."
+
+Result:
+  exit code 0
+
+CPU portability:
+  The saved XGBoost model was fitted with CUDA enabled. On a machine without a
+  visible GPU, XGBoost warns that it is changing to CPU. Verification still
+  reproduces the saved probabilities within tolerance.
+
+
+--------------------------------------------------------------------------------
+12. COMPLETE TEST RUN
+--------------------------------------------------------------------------------
+
+Command:
+  python -m pytest -p no:cacheprovider
+
+Environment:
+  Python 3.13.14
+  pytest 9.2.0
+
+Result:
+  55 tests passed in 1.99 seconds
+
+Breakdown:
+  tests/test_features.py             12 passed
+  tests/test_features_v2.py          23 passed
+  tests/test_features_v3.py          15 passed
+  tests/test_pipeline_v2_smoke.py     5 passed
+
+Known test gap:
+  No dedicated V3 pipeline smoke-test module currently covers stack
+  serialization or check.py. The final saved stack is covered by the runtime
+  verification command.
+
+
+--------------------------------------------------------------------------------
+13. V3 AND THE EXISTING SHAP/LIME RESULT
+--------------------------------------------------------------------------------
+
+V2 XAI target:
+  one XGBoost model
+  36 human-readable fields
+  exact XGBoost TreeSHAP available
+  same model callable by LIME
+
+V3 target:
+  XGBoost + LightGBM probabilities
+  Logistic Regression meta-model
+  348 fields, including 300 correlated character n-grams
+
+Technical consequence:
+  TreeSHAP can explain either V3 base tree model, but not the complete stacked
+  prediction through one direct TreeSHAP call. Explaining only one base would
+  not explain the final V3 decision.
+
+LIME consequence:
+  LIME can call the full stack, but tabular perturbations independently change
+  correlated n-gram fields. Those vectors may not represent any real URL and
+  would be hard to interpret. V2 LIME already has weak mean local R2 (0.156).
+
+Current lowest-risk reporting option:
+  - V3 is the strongest classification model.
+  - V2 is the explicitly named explanation model.
+  - Existing V2 SHAP/LIME values are never presented as V3 explanations.
+
+This wording decision remains to be confirmed before final report submission.
+
+
+--------------------------------------------------------------------------------
+14. LIMITATIONS ADDED FOR V3
+--------------------------------------------------------------------------------
+
+L1. The test partition was reported in earlier iterations, so V3 is not a
+    completely independent confirmatory test.
+L2. 75.3% of test URLs share a hostname with train+validation.
+L3. Character n-grams may encode campaigns, templates or source-specific text.
+L4. The brand-domain approximation is not Public Suffix List aware.
+L5. CatBoost was capped and the model-family search was intentionally bounded.
+L6. Random Forest was not evaluated with V3 features.
+L7. The V3 stack is harder to explain directly than the V2 single XGBoost.
+L8. Dataset licence/provenance and external-dataset validation remain open.
+
+
+--------------------------------------------------------------------------------
+15. DAY 3 DECISIONS
+--------------------------------------------------------------------------------
+
+D1. Stop further accuracy tuning using the existing test split.
+D2. Preserve V3 as the strongest saved classifier.
+D3. Do not claim that 94.85% is performance on new websites or new sources.
+D4. Report the held-out test reuse caveat explicitly.
+D5. Report the V3 soft-vote/stack validation trade-off.
+D6. Do not claim that Random Forest was evaluated in V3.
+D7. Keep V2 SHAP/LIME evidence clearly attached to V2 unless a new, separately
+    justified explanation experiment is performed.
+D8. Do not claim that explaining one V3 base learner explains the final stack.
+D9. Complete documentation, report and slides before optional demo work.
+
+
+--------------------------------------------------------------------------------
+16. NEXT WORK
+--------------------------------------------------------------------------------
+
+Immediate:
+  - create a checksum freeze manifest for V3;
+  - update the final report with V3 classification and caveats;
+  - decide and state the V2-XAI/V3-classifier boundary;
+  - prepare presentation slides.
+
+Still open from earlier work:
+  - read the closest SHAP/LIME paper in full;
+  - verify dataset licence and original sources;
+  - verify venue indexing;
+  - optionally add V3 stack/checker smoke tests;
+  - build a viva CLI after report content is stable.
+
+
+================================================================================
+DAY 3 SUMMARY
+================================================================================
+
+V3 reused the normalized 631,179-row dataset and fixed split from V2. It added
+nine entropy/brand lexical fields and 300 train-fitted character TF-IDF
+3/4-grams, producing 348 inputs. XGBoost, LightGBM and CatBoost were compared,
+followed by soft voting and three-fold out-of-fold Logistic Regression
+stacking.
+
+The selected XGBoost-LightGBM stack achieved validation accuracy 0.9463 and
+macro-F1 0.9307. On the held-out random-split test partition it achieved
+accuracy 0.9485 and macro-F1 0.9338. All displayed class metrics improved over
+V2; phishing F1 rose from 0.7504 to 0.8304.
+
+Unseen-host accuracy improved from V2's 0.8357 to 0.8881, but remains below
+the 0.9683 seen-host result. Host overlap, n-gram memorization and the unstable
+21-example unseen defacement subgroup remain limitations.
+
+The V3 artifact reload verification was corrected to select feature rows by
+saved test row_id. It now passes without retraining or changing results. The
+complete suite also passes: 55 tests in 1.99 seconds.
+
+V3 is the strongest classifier, but its stacked structure and 300 correlated
+n-gram fields make direct SHAP/LIME comparison substantially less defensible.
+The completed quantitative XAI evidence remains valid for the explicitly named
+V2 XGBoost explanation model. Final report wording must preserve this boundary.
+================================================================================

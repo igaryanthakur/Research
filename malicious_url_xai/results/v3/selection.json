@@ -1,0 +1,136 @@
+{
+  "winner": {
+    "trial_id": "stack_lr_xgb_lgbm",
+    "family": "stack_lr",
+    "feature_set": "v3_full",
+    "weight_mode": "sqrt_balanced",
+    "n_features": "348"
+  },
+  "winner_params": {
+    "bases": [
+      "xgb",
+      "lgbm"
+    ],
+    "meta": "LogisticRegression(C=1)",
+    "oof_folds": 3
+  },
+  "winner_extra": {
+    "fold_extras": [
+      {
+        "fold": "full_train",
+        "family": "xgb",
+        "best_iteration": 1199,
+        "n_estimators_used": 1200,
+        "best_val_mlogloss": 0.14964,
+        "device": "cuda"
+      },
+      {
+        "fold": "full_train",
+        "family": "lgbm",
+        "n_estimators_used": 1401,
+        "best_iteration": 1401
+      }
+    ]
+  },
+  "winner_val_metrics": {
+    "accuracy": 0.9463,
+    "macro_precision": 0.9425,
+    "macro_recall": 0.9198,
+    "macro_f1": 0.9307,
+    "weighted_precision": 0.9454,
+    "weighted_recall": 0.9463,
+    "weighted_f1": 0.9456,
+    "precision_benign": 0.9555,
+    "recall_benign": 0.971,
+    "f1_benign": 0.9632,
+    "support_benign": "63472",
+    "precision_defacement": 0.9764,
+    "recall_defacement": 0.981,
+    "f1_defacement": 0.9787,
+    "support_defacement": "14297",
+    "precision_malware": 0.9842,
+    "recall_malware": 0.9311,
+    "f1_malware": 0.9569,
+    "support_malware": "3539",
+    "precision_phishing": 0.8538,
+    "recall_phishing": 0.7961,
+    "f1_phishing": 0.8239,
+    "support_phishing": "13369",
+    "unseen_host_n": "24735",
+    "unseen_host_accuracy": 0.8796,
+    "unseen_host_macro_f1": 0.6879
+  },
+  "rule": "max macro-F1 on validation; within 0.005 prefer higher accuracy, then higher min malicious recall, then lower fit time; prefer feature_set=v3_full",
+  "v2_test_reference": {
+    "accuracy": 0.9089,
+    "macro_f1": 0.8863,
+    "recall_phishing": 0.7559
+  },
+  "ranked_top10": [
+    {
+      "trial_id": "stack_lr_xgb_lgbm",
+      "family": "stack_lr",
+      "feature_set": "v3_full",
+      "accuracy": 0.9463,
+      "macro_f1": 0.9307,
+      "recall_phishing": 0.7961
+    },
+    {
+      "trial_id": "softvote_xgb_lgbm",
+      "family": "softvote",
+      "feature_set": "v3_full",
+      "accuracy": 0.9458,
+      "macro_f1": 0.9309,
+      "recall_phishing": 0.8132
+    },
+    {
+      "trial_id": "lgbm_v3_full",
+      "family": "lgbm",
+      "feature_set": "v3_full",
+      "accuracy": 0.9448,
+      "macro_f1": 0.9298,
+      "recall_phishing": 0.8116
+    },
+    {
+      "trial_id": "xgb_v3_full",
+      "family": "xgb",
+      "feature_set": "v3_full",
+      "accuracy": 0.9445,
+      "macro_f1": 0.9291,
+      "recall_phishing": 0.8133
+    },
+    {
+      "trial_id": "softvote_xgb_lgbm_cat",
+      "family": "softvote",
+      "feature_set": "v3_full",
+      "accuracy": 0.9438,
+      "macro_f1": 0.9292,
+      "recall_phishing": 0.8153
+    },
+    {
+      "trial_id": "xgb_v3_lexical",
+      "family": "xgb",
+      "feature_set": "v3_lexical",
+      "accuracy": 0.9216,
+      "macro_f1": 0.901,
+      "recall_phishing": 0.7633
+    },
+    {
+      "trial_id": "cat_v3_full",
+      "family": "cat",
+      "feature_set": "v3_full",
+      "accuracy": 0.9146,
+      "macro_f1": 0.8944,
+      "recall_phishing": 0.7819
+    },
+    {
+      "trial_id": "xgb_v2_full_ref",
+      "family": "xgb",
+      "feature_set": "v2_full",
+      "accuracy": 0.9085,
+      "macro_f1": 0.8855,
+      "recall_phishing": 0.7517
+    }
+  ],
+  "selected_at": "2026-11-10T00:47:19"
+}

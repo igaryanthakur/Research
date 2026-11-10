@@ -1,0 +1,17 @@
+metric,v2,v3,delta
+accuracy,0.9089,0.9485,0.0396
+macro_precision,0.8895,0.9444,0.0549
+macro_recall,0.8838,0.9239,0.0401
+macro_f1,0.8863,0.9338,0.0475
+recall_benign,0.9345,0.9715,0.037
+recall_defacement,0.9395,0.9806,0.0411
+recall_malware,0.9053,0.935,0.0297
+recall_phishing,0.7559,0.8085,0.0526
+precision_benign,0.9425,0.9581,0.0156
+precision_defacement,0.9033,0.9808,0.0775
+precision_malware,0.9671,0.9851,0.018
+precision_phishing,0.7451,0.8537,0.1086
+f1_benign,0.9385,0.9648,0.0263
+f1_defacement,0.9211,0.9807,0.0596
+f1_malware,0.9352,0.9594,0.0242
+f1_phishing,0.7504,0.8304,0.08

@@ -1,0 +1,10 @@
+feature,n_unique,top_value_share,mean_benign,mean_defacement,mean_malware,mean_phishing
+host_entropy,6725,0.03549,3.3157,3.3461,3.0337,3.3656
+path_entropy,68154,0.12101,3.3212,3.4814,3.2135,2.5799
+query_entropy,29516,0.7878,0.6434,2.3557,0.2452,0.32
+entropy_host_path_absdiff,191315,0.01368,1.0488,0.4663,0.7023,1.371
+min_brand_edit_distance,11,0.17144,5.2995,6.38,7.3344,5.3609
+brand_typo_flag,2,0.8995,0.0779,0.1767,0.0226,0.1467
+brand_in_subdomain,2,0.98977,0.0112,0.0,0.0065,0.0174
+brand_in_path_or_query,2,0.97911,0.0236,0.0041,0.003,0.0307
+is_exact_brand_host,2,0.93635,0.0887,0.0,0.0245,0.023
