@@ -199,7 +199,20 @@ Setup: frozen V2 XGBoost, 500 test URLs (125 per predicted class), exact TreeSHA
 | Malware | 0.3514 |
 | Phishing | 0.0430 |
 
-Two random picks of 5 features out of 36 would give a mean Jaccard of about 0.082. Benign and phishing are below that, and their rank correlations are negative (about -0.16 and -0.17). So for those classes the two methods are ranking features in opposite directions, not merely noisily. A proper shuffled null baseline has not been computed yet (Stage 1).
+**Null baselines (post-hoc, added 15 Nov 2026 after the results were seen).** Source: `results/v2/xai/null_baseline.json`, computed from the saved CSVs only. Two baselines are reported:
+
+- **Uniform chance:** two random picks of 5 features out of 36 give a mean Jaccard of 0.0817 (exact).
+- **Same-class null:** the SHAP explanation of one URL paired with the LIME explanation of every other URL with the same predicted class (all pairs). A permutation test (10,000 within-class shuffles, seed 42) gives the p-value.
+
+| Predicted class | Observed Jaccard | Same-class null | Observed Spearman | Same-class null Spearman |
+|---|---:|---:|---:|---:|
+| Benign | 0.0487 | 0.0351 | -0.1598 | -0.1812 |
+| Defacement | 0.2491 | 0.2152 | 0.0657 | 0.0446 |
+| Malware | 0.3514 | 0.2514 | 0.2230 | 0.1560 |
+| Phishing | 0.0430 | 0.0262 | -0.1694 | -0.2070 |
+| All (class-balanced) | 0.1730 | 0.1323 | -0.0101 | -0.0466 |
+
+Every observed value is above its same-class null (permutation p = 0.0001, the smallest possible with 10,000 shuffles). Benign and phishing are below uniform chance, but mismatched URLs of the same class agree even less, and their rank correlations are more negative still. So the negative correlations are a class-level habit of the two tools (each favours a different set of features for that class), not the two methods reversing each other on individual URLs. The per-URL signal is real but small: about 0.04 Jaccard above the same-class null overall.
 
 Two weaknesses of this study explain why it is preliminary:
 

@@ -1,0 +1,174 @@
+{
+  "analysis": "post-hoc, added 2026-11-15 after results were seen",
+  "source_files": [
+    "per_url_agreement.csv",
+    "shap_explanations.csv",
+    "lime_explanations.csv"
+  ],
+  "k": 5,
+  "n_features": 36,
+  "n_urls": 500,
+  "uniform_chance_jaccard_exact": 0.0817,
+  "uniform_chance_definition": "expected Jaccard of two independent uniformly random 5-subsets of 36 features",
+  "same_class_null_definition": "SHAP explanation of URL i paired with the LIME explanation of every other URL j != i with the same predicted class; exhaustive over all pairs",
+  "permutation_test": "10000 within-class random permutations of the LIME assignment (seed 42); two-sided p-value of the observed mean against the permutation distribution",
+  "overall": {
+    "jaccard_top5": {
+      "observed_mean": 0.173,
+      "null_mean_same_class": 0.1323,
+      "perm_mean_p2_5_p97_5": [
+        0.1262,
+        0.1386
+      ],
+      "perm_p_two_sided": 0.0001
+    },
+    "spearman_abs": {
+      "observed_mean": -0.0101,
+      "null_mean_same_class": -0.0466,
+      "perm_mean_p2_5_p97_5": [
+        -0.052,
+        -0.0411
+      ],
+      "perm_p_two_sided": 0.0001
+    }
+  },
+  "by_predicted_class": {
+    "benign": {
+      "n_urls": 125,
+      "uniform_chance_jaccard": 0.0817,
+      "jaccard_top5": {
+        "observed_mean": 0.0487,
+        "null_mean": 0.0351,
+        "null_pair_p2_5_p97_5": [
+          0.0,
+          0.1111
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0135,
+        "perm_mean_p2_5_p97_5": [
+          0.0287,
+          0.0422
+        ],
+        "perm_p_two_sided": 0.0001
+      },
+      "spearman_abs": {
+        "observed_mean": -0.1598,
+        "null_mean": -0.1812,
+        "null_pair_p2_5_p97_5": [
+          -0.4411,
+          0.0947
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0214,
+        "perm_mean_p2_5_p97_5": [
+          -0.1903,
+          -0.172
+        ],
+        "perm_p_two_sided": 0.0001
+      }
+    },
+    "defacement": {
+      "n_urls": 125,
+      "uniform_chance_jaccard": 0.0817,
+      "jaccard_top5": {
+        "observed_mean": 0.2491,
+        "null_mean": 0.2152,
+        "null_pair_p2_5_p97_5": [
+          0.0,
+          0.4286
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0339,
+        "perm_mean_p2_5_p97_5": [
+          0.2007,
+          0.2299
+        ],
+        "perm_p_two_sided": 0.0001
+      },
+      "spearman_abs": {
+        "observed_mean": 0.0657,
+        "null_mean": 0.0446,
+        "null_pair_p2_5_p97_5": [
+          -0.2768,
+          0.3489
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0211,
+        "perm_mean_p2_5_p97_5": [
+          0.036,
+          0.0537
+        ],
+        "perm_p_two_sided": 0.0001
+      }
+    },
+    "malware": {
+      "n_urls": 125,
+      "uniform_chance_jaccard": 0.0817,
+      "jaccard_top5": {
+        "observed_mean": 0.3514,
+        "null_mean": 0.2514,
+        "null_pair_p2_5_p97_5": [
+          0.0,
+          0.6667
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.1,
+        "perm_mean_p2_5_p97_5": [
+          0.2349,
+          0.2695
+        ],
+        "perm_p_two_sided": 0.0001
+      },
+      "spearman_abs": {
+        "observed_mean": 0.223,
+        "null_mean": 0.156,
+        "null_pair_p2_5_p97_5": [
+          -0.1834,
+          0.5195
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0669,
+        "perm_mean_p2_5_p97_5": [
+          0.1427,
+          0.1702
+        ],
+        "perm_p_two_sided": 0.0001
+      }
+    },
+    "phishing": {
+      "n_urls": 125,
+      "uniform_chance_jaccard": 0.0817,
+      "jaccard_top5": {
+        "observed_mean": 0.043,
+        "null_mean": 0.0262,
+        "null_pair_p2_5_p97_5": [
+          0.0,
+          0.1111
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0168,
+        "perm_mean_p2_5_p97_5": [
+          0.0196,
+          0.0332
+        ],
+        "perm_p_two_sided": 0.0001
+      },
+      "spearman_abs": {
+        "observed_mean": -0.1694,
+        "null_mean": -0.207,
+        "null_pair_p2_5_p97_5": [
+          -0.4789,
+          0.0945
+        ],
+        "null_n_pairs": 15500,
+        "observed_minus_null": 0.0376,
+        "perm_mean_p2_5_p97_5": [
+          -0.2179,
+          -0.1956
+        ],
+        "perm_p_two_sided": 0.0001
+      }
+    }
+  },
+  "generated_at": "2026-11-15T22:55:55"
+}

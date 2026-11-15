@@ -51,6 +51,7 @@ F2. Preliminary SHAP vs LIME on V2 (500 URLs, 125 per predicted class, exact Tre
 - mean top-5 Jaccard 0.1730 (95% CI 0.1571-0.1889); 95.6% of URLs below 0.50; mean Spearman -0.0101
 - by class: benign 0.0487, defacement 0.2491, malware 0.3514, phishing 0.0430 (Kruskal-Wallis p = 4.17e-59)
 - random chance for top-5 of 36 is about 0.082, so benign and phishing are below chance
+- post-hoc null (results/v2/xai/null_baseline.json): uniform chance 0.0817 exact; same-class null overall 0.1323 (benign 0.0351, defacement 0.2152, malware 0.2514, phishing 0.0262); every class is above its same-class null (permutation p = 0.0001); the negative benign/phishing Spearman is a class-level habit (null Spearman -0.18/-0.21), not per-URL reversal
 - LIME mean local R2 0.1560 (poor fit)
 - median time: TreeSHAP 224.19 ms (all 4 classes, 2,544 trees) vs LIME 60.85 ms (predicted class only)
 Weaknesses: SHAP was in log-odds space and LIME in probability space; LIME fitted poorly. This is why it is preliminary.
