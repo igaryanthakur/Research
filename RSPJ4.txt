@@ -73,7 +73,7 @@ Weaknesses: SHAP was in log-odds space and LIME in probability space; LIME fitte
 5. Full experiment (up to 200 URLs, up to 50 per predicted class, at least 25; set from pilot timing) and analysis.
 6. Web app.
 7. Report (LaTeX) and slides.
-Current position: the plan for stages 1-4 is written and reviewed; no stage has been run.
+Current position (15 Nov 2026): stages 1-4 done. V2 null baseline in results/v2/xai/null_baseline.json; V3 frozen (results/v3/freeze.json, 46 files); protocol in documentation/v3_protocol.md; 20-URL pilot in results/v3/xai/pilot/ passed every gate (G0 exact feature match, Q1 20/20, Q3 0.90, t90 0.96 s/URL -> n_class 50; LIME median R2 0.705, reported only). Pilot was run on battery (Balanced plan), so timings are conservative. Pilot observations: for phishing predictions the punctuation-only string scores ~0.9 phishing (higher than the full URL); delete-vs-placeholder SHAP Spearman median 0.67 (masking rule matters). Next: stage 5 main run (50 per class).
 Detailed plan for stages 1-4: .cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md. Where it is more detailed than this file, the plan wins.
 Before any fallback, scale down: raise the LIME budget if LIME is unstable; cut the LIME budget and then the sample (down to 100 URLs) if runtime is too long.
 Fallback if the signal gate fails or scaling down is not enough: V3 as classifier, V2 study as the explanation experiment, kept explicitly separate.

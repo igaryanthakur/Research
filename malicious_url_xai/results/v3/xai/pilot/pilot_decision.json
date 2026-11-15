@@ -1,0 +1,84 @@
+{
+  "pilot_is_smoke_test": true,
+  "n_urls": 20,
+  "n_units_counts": {
+    "6": 4,
+    "7": 5,
+    "8": 2,
+    "9": 3,
+    "10": 6
+  },
+  "G0": {
+    "features_match": true,
+    "feature_max_abs_err": 0.0,
+    "proba_match": true,
+    "proba_max_abs_err": 1.3290477302030368e-08,
+    "additivity": true,
+    "additivity_max_err": 2.220446049250313e-16,
+    "all_finite": true,
+    "pass": true
+  },
+  "Q1": {
+    "urls_range_ge_0.10": 20,
+    "median_max_single_deletion": 0.5347142001072869,
+    "pass": true
+  },
+  "Q3": {
+    "mean_lime_self_jaccard_top3": 0.9,
+    "pass": true
+  },
+  "R": {
+    "t90_total_s": 0.9632319800006371,
+    "median_shap_s": 0.14655725000011444,
+    "median_lime_s": 0.44864960000086285,
+    "n_class": 50,
+    "projected_full_run_min": 3.2,
+    "pass": true
+  },
+  "Q2_reported": {
+    "median_lime_r2": 0.7052945511287207,
+    "by_class": {
+      "benign": 0.7411,
+      "defacement": 0.7358,
+      "malware": 0.734,
+      "phishing": 0.5096
+    },
+    "below_0.30": false,
+    "gated": false
+  },
+  "masking_diagnostic": {
+    "median_shap_delete_vs_placeholder_spearman": 0.6653281119434457,
+    "mean_share_empty_hostname": 0.0
+  },
+  "shap_cross_check": {
+    "row_id": 547444,
+    "method": "shap.ExactExplainer",
+    "max_abs_diff": 1.1102230246251565e-16
+  },
+  "go": true,
+  "next_step": "GO: main run with n_class = 50 per predicted class",
+  "metadata": {
+    "run_at": "2026-11-15T23:03:03",
+    "protocol_sha256": "f03efac489a3c9aac73471aa461e448d2f8cf5fe8a67b6bd2acc09a2630f79d8",
+    "git_head": "27db0d93f8f1b72b301dee41494af864eb96f622",
+    "git_dirty": true,
+    "lime_samples": 1000,
+    "pilot_seed": 7,
+    "warmup_row_id": 6,
+    "total_model_calls": 60708,
+    "peak_memory_mb": 1530.5,
+    "power": {
+      "battery_status": "1",
+      "power_scheme": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)"
+    },
+    "environment": {
+      "python": "3.13.14",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "sklearn": "1.7.2",
+      "xgboost": "3.2.0"
+    }
+  }
+}
