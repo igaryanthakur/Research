@@ -7,10 +7,10 @@ todos:
     status: completed
   - id: null-baseline
     content: Write null_baseline_v2.py (exact uniform chance, exhaustive same-class Jaccard/Spearman null, permutation p-values); write null_baseline.json/csv; update draft4 section 3.3 as post-hoc; commit
-    status: pending
+    status: completed
   - id: freeze
     content: Write src/freeze.py and freeze_v3.py with a tmp-file unit test; commit the code; run freeze_v3.py (hashes artifacts/v3, results/v3 except freeze.json and xai/, and source files; records library versions, git HEAD and the release URL); run verify; commit freeze.json
-    status: pending
+    status: in_progress
   - id: protocol
     content: Write documentation/v3_protocol.md (units, masking, value function, k, chance, eligibility shares, sample-size rule, gates G0/Q1/Q3/R, reported-only Q2, step-down ladder, fallback); get approval; commit
     status: pending
