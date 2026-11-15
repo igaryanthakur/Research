@@ -1,0 +1,103 @@
+# PROJECT CONTEXT (VERSION 4, 14 NOV 2026): READ FULLY BEFORE RESPONDING
+
+This replaces RSPJ.txt, which describes the plan from before any work was done. The repository is far ahead of that file. If the two disagree, this file and the repository win.
+
+## 1. ABOUT ME
+I am an MCA student, an upcoming engineer and not a researcher. I want to pass the Sem 3 research project and get one short conference paper out for Sem 4, with minimal effort but academically defensible work. A few days remain before submission. Prefer simple, practical, low-risk choices. Don't over-engineer. Be direct, and tell me when something is risky or I'm wrong.
+
+## 2. COURSE CONTEXT
+SEMESTER 3: MCARP31 Research Project (4 credits, 150 marks)
+- Groups of 2-3, guided by a faculty mentor.
+- Goal: write a Research Project Proposal and develop a working solution.
+- Steps: identify problem -> literature review to find gaps -> formulate methodology -> design/develop model -> test with test cases -> submit project report. A weekly log book is maintained.
+- Term work (75): Proposal/problem statement/background/hypothesis (15), Literature Survey (10), Research Methodology/Data Collection/Data Analysis (15), Model Development (20), Testing (15).
+- Practical (75): Presentation (25), Project Evaluation (30), Report Evaluation (20).
+- LaTeX is advisable for the report. Evaluation is at institute level, preferably by alumni or industry experts. Rubrics are followed.
+
+SEMESTER 4: MCARP42 Research Paper / Product / Patent (2 credits, 100 marks)
+- Must produce ONE externally validated outcome. My plan: Research Paper track (short conference paper; proceedings with ISBN/ISSN or an indexed journal; max 2 students; full-time faculty guide; topic approved by the institute).
+- Assessed by two 50-mark mid-term presentations. Presentation I: abstract/intro/originality (10), literature review/market survey (15), objectives/scope/features (15), presentation (10). Presentation II: methodology/models (10), analysis/findings/conclusion (20), publication proof (10), presentation (10).
+
+## 3. TOPIC AND CHOSEN GAP
+Title: "Detection of Malicious URLs Using Machine Learning and Explainable AI: A Comparative Study of SHAP and LIME Explanation Agreement and Efficiency"
+Gap: existing malicious-URL papers show SHAP or LIME output, or both side by side, but do not measure whether the two agree on the same prediction or what each costs in time. We measure agreement and timing.
+Rejected gaps: network/behavioural features (live lookups on dead URLs, too risky); low-latency XAI as a contribution of its own (kept only as a timing measurement).
+
+## 4. LITERATURE (5 papers)
+1. Poddar, Chowdhury, Dwivedi, Mukkamala. "Data Driven based Malicious URL Detection using Explainable AI." IEEE TrustCom 2022. Same 651,191-URL four-class dataset; 21 features including count-http, count-https, count-www; 70/30 split; stacked ensemble (LightGBM, Gradient Boosting, XGBoost, Random Forest into a Random Forest); 97% accuracy; ALE explanations. READ. PDF in repo root.
+2. "Malicious URL Detection with Explainable Machine Learning Techniques." ACM ICIECTA 2025. LR, Decision Tree, Random Forest; RF best; SHAP. PDF in repo root; not yet read in full.
+3. "Beyond Classification: Understanding Why URLs Are Malicious with Transparent Convex Optimization and Interpretable XAI." Springer 2025. Abstract only.
+4. "XAI-PhD: Fortifying Trust of Phishing URL Detection Empowered by Shapley Additive Explanations." iJOE 2024. PDF in repo root; not yet read in full.
+5. Nair & Di Troia. "A Comparative Analysis of SHAP and LIME in Detecting Malicious URLs." Springer book chapter 2025. Closest to my idea. FULL TEXT NOT READ. I will check it myself; do not raise it again unless I ask. If it already measures agreement, frame my work as an extension.
+Venue indexing is not yet verified.
+
+## 5. DATA
+- Public Kaggle dataset malicious_phish.csv, 651,191 URLs, classes benign/defacement/malware/phishing. Downloaded from the official Kaggle page; no licence concern. Only the exact citation line is still to be copied into the references.
+- Cleaning: strip scheme and one leading "www."; delete every URL that then has conflicting labels (4,047 URLs, 8,230 rows, all benign vs phishing); keep one row per URL. Clean rows: 631,179.
+- Fixed stratified 70/15/15 split, seed 42: train 441,825 / validation 94,677 / test 94,677. Every version uses this split.
+
+## 6. WHAT HAS BEEN BUILT (all results saved under malicious_url_xai/results/)
+| Version | Role | Model | Inputs | Test accuracy | Macro-F1 |
+| V1 | baseline, leakage proof | Random Forest | 24 lexical | 0.8471 | 0.8269 |
+| V2 | intermediate, preliminary XAI study | XGBoost | 36 lexical/structural | 0.9089 | 0.8863 |
+| V3 | FINAL MODEL, the one to explain | XGBoost + LightGBM into Logistic Regression | 48 lexical + 300 char 3/4-gram TF-IDF = 348 | 0.9485 | 0.9338 |
+
+V3 per-class F1: benign 0.9648, defacement 0.9807, malware 0.9594, phishing 0.8304. Seen-hostname accuracy 0.9683, unseen-hostname 0.8881 (75.3% of test URLs share a hostname with train+validation).
+55 tests pass; `python train_v3.py verify` reproduces saved V3 probabilities (both checked 14 Nov 2026).
+
+## 7. FINDINGS SO FAR
+F1. Dataset leakage. URL formatting reveals the class (scheme present in 8.3% of benign, 100% of defacement, 96.3% of malware, 26.4% of phishing). Same Random Forest on test: cleaned 0.8471, raw 0.9402, raw plus scheme flags 0.9466. Not yet checked whether another paper reports this.
+F2. Preliminary SHAP vs LIME on V2 (500 URLs, 125 per predicted class, exact TreeSHAP vs LIME Tabular, top-5 of 36, threshold 0.50 fixed beforehand):
+- mean top-5 Jaccard 0.1730 (95% CI 0.1571-0.1889); 95.6% of URLs below 0.50; mean Spearman -0.0101
+- by class: benign 0.0487, defacement 0.2491, malware 0.3514, phishing 0.0430 (Kruskal-Wallis p = 4.17e-59)
+- random chance for top-5 of 36 is about 0.082, so benign and phishing are below chance
+- LIME mean local R2 0.1560 (poor fit)
+- median time: TreeSHAP 224.19 ms (all 4 classes, 2,544 trees) vs LIME 60.85 ms (predicted class only)
+Weaknesses: SHAP was in log-odds space and LIME in probability space; LIME fitted poorly. This is why it is preliminary.
+
+## 8. DECISIONS ALREADY MADE (do not reopen unless I ask)
+- V3 is final and frozen. 94.85% is accepted and reported as 94.85%, not "95%". No more training or tuning.
+- The paper explains ONE model, V3. V1 and V2 are the route to it; their findings (F1, F2) are contributions found on the way.
+- V3 is explained by URL-segment masking: cut the URL into segments, hide some, rebuild the URL, recompute all 348 features, call the complete stack, explain the stack's predicted class. SHAP and LIME both use this.
+- Never perturb the 348 columns independently. Never explain a single base model and call it V3. Never present V2 explanation values as V3 explanations.
+- Sem 3 package: a Streamlit web app (not a browser extension) that classifies a URL and highlights the segments that drove the result.
+- The app cannot say "no HTTPS" as a reason; the model never sees the scheme.
+- Known issue: V3 calls https://www.google.com phishing (88%) and https://mail.google.com/mail/u/0/ phishing (93%), and calls an obvious fake PayPal URL benign (91%). Likely cause: short bare-domain URLs in the dataset are mostly phishing. Handle with a small disclosed allowlist in the app, demo mainly on held-out test URLs, and report it as a limitation.
+
+## 9. STAGES (in this order)
+1. Freeze V3 with a checksum manifest (results/v3/freeze.json).
+2. Add a shuffled same-class null baseline to the saved V2 XAI results (no regeneration).
+3. Write the V3 experiment protocol and get my approval BEFORE any explainer runs.
+4. Build the segment explainer; run a 10-URL pilot (runtime, segment counts, LIME fit).
+5. Full experiment (about 200 URLs, 50 per predicted class) and analysis.
+6. Web app.
+7. Report (LaTeX) and slides.
+Current position: stages 1-3 not started.
+Fallback if the pilot fails: V3 as classifier, V2 study as the explanation experiment, kept explicitly separate.
+
+## 10. PROTOCOL CHOICES PROPOSED FOR STAGE 3 (NOT YET APPROVED)
+- Segment: each unbroken run of letters/digits in the cleaned URL. Measured on 50,000 cleaned URLs: median 7 segments; 33.8% have 5 or fewer; class medians benign 7, defacement 12, malware 7, phishing 5.
+- Masking: remove the segment's characters, keep punctuation; one shared function for both explainers.
+- Explain the stack's probability for its predicted class (both methods in probability space).
+- SHAP: model-agnostic Shapley values over segments (exact for short URLs, sampled with a fixed budget otherwise). LIME: linear surrogate on the same masks, fixed seed and budget.
+- k = 3, minimum 6 segments, threshold mean top-3 Jaccard < 0.50.
+- Chance level: random-ranking agreement for each URL's own segment count (explanations cannot be shuffled between URLs because segments differ).
+- Go/no-go: projected full run of about two hours or less on the laptop.
+
+## 11. PITFALLS
+- With the same masks, SHAP and LIME are close relatives; agreement may be much higher than 0.17. Either outcome is reportable. Do not write the abstract around "they disagree" before the numbers exist.
+- Do not compare the V2 and V3 agreement numbers as better or worse; one is over 36 features, the other over URL segments.
+- A 6-segment minimum excludes about a third of URLs and at least half of phishing URLs. Report the excluded share.
+- Fix k, threshold and sample before seeing agreement numbers.
+- Do not regenerate or overwrite anything under results/. The V2 and V3 final stages refuse to rerun by design.
+- shap 0.49.1 cannot load the XGBoost 3.2 multiclass model directly; the V2 study used Booster.predict(pred_contribs=True).
+- The saved XGBoost model was trained on GPU and prints a CPU-fallback warning on reload; this is harmless.
+- Timing must be measured on charger with Windows Best performance; on battery the CPU throttles.
+
+## 12. REPOSITORY
+- malicious_url_xai/: src/ (features.py, features_v2.py, features_v3.py, data.py, runinfo.py), tests/ (55 tests), prepare*.py, train*.py, explain_v2.py, analyze_v2.py, check.py, artifacts/ (not in git), results/.
+- documentation/: project_documentation_draft.md, draft2, draft3 (detailed records of V1-V3), project_documentation_draft4.md (current direction, proposal, roadmap, plain-English guide), day1-3 logs.
+- Environment: Windows, PowerShell, 16 GB RAM, Python 3.13 in malicious_url_xai/.venv; run commands from malicious_url_xai/ with the venv active.
+
+## 13. HOW I WANT YOU TO HELP
+We are working through the stages in section 9. Keep to the decisions in section 8. Don't suggest scope expansion unless I ask. Don't invent papers, results or library behaviour; say when you're unsure. Every number you quote must come from a saved file in the repository. Prefer short, runnable code with brief explanations. Flag anything that risks the deadline. When a choice affects the research result, propose it and wait for my approval before running anything.
