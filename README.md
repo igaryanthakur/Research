@@ -38,10 +38,10 @@ The V2 explanation results describe V2 only. They must not be presented as expla
 
 Next stages, in order:
 
-1. Freeze V3 with a checksum manifest.
-2. Add a shuffled null baseline to the saved V2 explanation results.
+1. Add a shuffled null baseline to the saved V2 explanation results.
+2. Freeze V3 with a checksum manifest.
 3. Write and approve the V3 experiment protocol.
-4. Build the segment explainer and run a 10-URL pilot.
+4. Build the segment explainer and run a 20-URL pilot (5 per predicted class).
 5. Run the full V3 experiment and analysis.
 6. Build the Streamlit web app.
 7. Write the report and slides.

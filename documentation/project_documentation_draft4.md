@@ -199,7 +199,7 @@ Setup: frozen V2 XGBoost, 500 test URLs (125 per predicted class), exact TreeSHA
 | Malware | 0.3514 |
 | Phishing | 0.0430 |
 
-Two random picks of 5 features out of 36 would give a mean Jaccard of about 0.082. Benign and phishing are below that, and their rank correlations are negative (about -0.16 and -0.17). So for those classes the two methods are ranking features in opposite directions, not merely noisily. A proper shuffled null baseline has not been computed yet (Stage 2).
+Two random picks of 5 features out of 36 would give a mean Jaccard of about 0.082. Benign and phishing are below that, and their rank correlations are negative (about -0.16 and -0.17). So for those classes the two methods are ranking features in opposite directions, not merely noisily. A proper shuffled null baseline has not been computed yet (Stage 1).
 
 Two weaknesses of this study explain why it is preliminary:
 
@@ -216,7 +216,7 @@ Two weaknesses of this study explain why it is preliminary:
 | Paper 5 full text unread | Aryan's task. The novelty wording waits on it. |
 | Dataset citation | Dataset is public and was downloaded from Kaggle. Copy the exact page title, author and licence line into the references. |
 | Venue indexing of surveyed papers | Still unverified. |
-| V3 has no checksum freeze | Stage 1. |
+| V3 has no checksum freeze | Stage 2. |
 
 **Everyday URLs.** Eight URLs were tried with `check.py` on 14 Nov. Five were sensible (GitHub login, Wikipedia and YouTube as benign; an Amazon cart URL as benign but only narrowly, 51% against 47% phishing; an IP-and-port URL as malware). Three were not:
 
@@ -249,33 +249,39 @@ Eight URLs is an anecdote, not a measurement. The likely cause is the dataset: i
 
 | # | Stage | Output | Done when |
 |---|---|---|---|
-| 1 | Freeze V3 | `results/v3/freeze.json` with checksums of model, encoder, feature list, vectorizer, test metrics and predictions | Explanation scripts refuse to run if a frozen file changes |
-| 2 | Null baseline on the V2 results | Observed vs shuffled same-class agreement, added to the V2 XAI summary | Uses saved CSVs only; no explanation is regenerated |
-| 3 | Write the V3 experiment protocol | A short protocol section fixing every choice listed in 4.2 | Aryan approves it before any explainer code runs |
-| 4 | Build the segment explainer and run a 10-URL pilot | One explanation function; pilot runtime, segment counts, LIME fit, sample perturbed URLs | Go/no-go rule from the protocol is applied |
+| 1 | Null baseline on the V2 results | Observed vs shuffled same-class agreement, written to a separate file `results/v2/xai/null_baseline.json` | Uses saved CSVs only; no explanation is regenerated and no existing result file is touched |
+| 2 | Freeze V3 | `results/v3/freeze.json` with checksums of everything in `artifacts/v3/`, the saved V3 results and the feature and training source files | Explanation scripts refuse to run if a frozen file changes |
+| 3 | Write the V3 experiment protocol | `documentation/v3_protocol.md`, fixing every choice listed in 4.2 | Aryan approves it before any explainer code runs |
+| 4 | Build the segment explainer and run a 20-URL pilot (5 per predicted class) | One explanation function; pilot runtime, segment counts, LIME fit, sample perturbed URLs | The protocol's gates are applied and the full-run sample size is set |
 | 5 | Full experiment and analysis | Per-URL agreement, per-class results, chance level, timing, figures | Results saved to `results/v3/xai/` |
 | 6 | Web app | Streamlit page: URL in; class, probabilities and highlighted segments out | Runs locally on demo URLs |
 | 7 | Report and slides | LaTeX report, presentation | Submitted |
 
-Stages 1–3 are short and low risk. Stage 4 decides whether the paper has its main result.
+Stages 1–3 are short and low risk. Stage 4 decides whether the paper has its main result. The null baseline runs first because it only reads saved files and is useful whatever happens later.
+
+The working plan for stages 1–4 is `.cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md`. Where it is more detailed than this section, the plan is the reference.
 
 ## 4.2 Protocol choices to fix in Stage 3
 
-These are proposals. None is fixed until approved.
+These are proposals, aligned with the reviewed plan on 15 Nov 2026. None is fixed until the protocol file is approved.
 
 | Choice | Proposed default | Why |
 |---|---|---|
 | Segment | Each unbroken run of letters and digits in the cleaned URL (`paypal.com/account/verify?id=123` gives `paypal`, `com`, `account`, `verify`, `id`, `123`) | Simple, deterministic; segment-count statistics are already known for this rule |
 | Masking | Remove the segment's characters and leave the punctuation in place; one shared function used by both explainers | Identical perturbations for both methods |
 | Output explained | The stack's probability for its own predicted class | Both methods in probability space, which removes the log-odds vs probability mismatch of the V2 study |
-| SHAP | Model-agnostic Shapley values over segments; exact when the URL has few segments, sampled with a fixed budget otherwise | No dependence on tree internals, so the whole stack is explained |
-| LIME | Linear surrogate fitted on the same kind of masks with LIME's usual distance weighting, fixed seed, fixed budget | Same inputs as SHAP; only the method differs |
+| Unit cap | At most 10 units per URL; a URL with more than 10 segments has neighbouring segments merged into 10 groups | Keeps the number of possible masks at 1,024 or fewer, so SHAP can be exact |
+| SHAP | Exact Shapley values over the units, computed from every possible mask (at most 1,024 model calls per URL); never sampled | No dependence on tree internals, so the whole stack is explained; no sampling noise on the SHAP side |
+| LIME | Linear surrogate fitted on the same kind of masks with LIME's usual sampling and distance weighting, fixed seed, 1,000 samples, a weight for every unit | Same inputs as SHAP; only the method differs |
 | k | 3 | Median URL has 7 segments; top-5 is meaningless for short URLs |
 | Minimum segments | 6 | Keeps top-3 away from "all segments" |
 | Threshold | Mean top-3 Jaccard below 0.50 counts as considerable disagreement | Top-3 Jaccard can only be 0, 0.2, 0.5 or 1.0; below 0.50 means at most one shared segment |
-| Sample | 200 test URLs, 50 per V3 predicted class, seed 42 | Class-balanced like the V2 study |
-| Chance level | Random-ranking agreement computed for each URL's own segment count | Segments differ per URL, so explanations cannot be shuffled between URLs |
-| Go/no-go | Proceed if the projected full run finishes in about two hours on the laptop | Protects the deadline |
+| Sample | Up to 200 test URLs, up to 50 per V3 predicted class, seed 42; the per-class number is set from the pilot's timing so the full run fits in about two hours, and must be at least 25 | Class-balanced like the V2 study; protects the deadline |
+| Chance level | Random-ranking agreement computed for each URL's own unit count (0.37 at 6 units, 0.20 at 10) | Segments differ per URL, so explanations cannot be shuffled between URLs |
+| Class comparison | Tested on agreement minus chance, not on raw agreement | Classes differ in URL length, and chance depends on length |
+| Cost comparison | Model calls per explanation first, wall time second | Exact SHAP needs between 64 and 1,024 calls and LIME always 1,000, so time is largely set by design |
+| Pilot gates | Hard checks (recomputed features and predictions match the saved ones; Shapley values add up); signal (hiding segments must move the model's output); LIME stability across two seeds; runtime | Stops a broken or uninformative experiment before the full run |
+| LIME fit | Reported, with its interpretation written in advance; it does not stop the experiment | The V2 study was reported with a poor fit; a low value is a finding, not a failure |
 
 Segment counts measured on 50,000 random cleaned URLs with the proposed rule: median 7; 33.8% have 5 or fewer; 9.8% have more than 16. Class medians: benign 7, defacement 12, malware 7, phishing 5. A six-segment minimum therefore excludes roughly a third of URLs and at least half of phishing URLs. The excluded share must be reported and the bias toward longer URLs stated as a limitation.
 
@@ -287,7 +293,9 @@ The V2 and V3 numbers must not be described as an improvement or a decline. One 
 
 ## 4.4 Fallback
 
-If the pilot fails the go/no-go rule or the segment explanations are unusable, the paper reverts to the position already documented in Draft 3: V3 is the classifier, the V2 study is the explanation experiment, and the two are kept explicitly separate. Stages 1 and 2 are useful under either outcome.
+Before any fallback, the experiment is scaled down: if LIME is unstable its sample budget is raised, and if runtime is too long the LIME budget and then the sample size are reduced, down to 100 URLs (25 per class).
+
+If the signal gate fails, or scaling down is not enough, the paper reverts to the position already documented in Draft 3: V3 is the classifier, the V2 study is the explanation experiment, and the two are kept explicitly separate. Stages 1 and 2 are useful under either outcome.
 
 ## 4.5 Web app outline (Stage 6)
 

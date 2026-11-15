@@ -65,24 +65,30 @@ Weaknesses: SHAP was in log-odds space and LIME in probability space; LIME fitte
 - Known issue: V3 calls https://www.google.com phishing (88%) and https://mail.google.com/mail/u/0/ phishing (93%), and calls an obvious fake PayPal URL benign (91%). Likely cause: short bare-domain URLs in the dataset are mostly phishing. Handle with a small disclosed allowlist in the app, demo mainly on held-out test URLs, and report it as a limitation.
 
 ## 9. STAGES (in this order)
-1. Freeze V3 with a checksum manifest (results/v3/freeze.json).
-2. Add a shuffled same-class null baseline to the saved V2 XAI results (no regeneration).
-3. Write the V3 experiment protocol and get my approval BEFORE any explainer runs.
-4. Build the segment explainer; run a 10-URL pilot (runtime, segment counts, LIME fit).
-5. Full experiment (about 200 URLs, 50 per predicted class) and analysis.
+1. Add a shuffled same-class null baseline to the saved V2 XAI results (reads saved CSVs only; writes a separate null_baseline.json; nothing regenerated).
+2. Freeze V3 with a checksum manifest (results/v3/freeze.json).
+3. Write the V3 experiment protocol (documentation/v3_protocol.md) and get my approval BEFORE any explainer runs.
+4. Build the segment explainer; run a 20-URL pilot, 5 per predicted class (runtime, segment counts, LIME fit).
+5. Full experiment (up to 200 URLs, up to 50 per predicted class, at least 25; set from pilot timing) and analysis.
 6. Web app.
 7. Report (LaTeX) and slides.
-Current position: stages 1-3 not started.
-Fallback if the pilot fails: V3 as classifier, V2 study as the explanation experiment, kept explicitly separate.
+Current position: the plan for stages 1-4 is written and reviewed; no stage has been run.
+Detailed plan for stages 1-4: .cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md. Where it is more detailed than this file, the plan wins.
+Before any fallback, scale down: raise the LIME budget if LIME is unstable; cut the LIME budget and then the sample (down to 100 URLs) if runtime is too long.
+Fallback if the signal gate fails or scaling down is not enough: V3 as classifier, V2 study as the explanation experiment, kept explicitly separate.
 
-## 10. PROTOCOL CHOICES PROPOSED FOR STAGE 3 (NOT YET APPROVED)
+## 10. PROTOCOL CHOICES PROPOSED FOR STAGE 3 (ALIGNED WITH THE REVIEWED PLAN, NOT YET APPROVED AS A PROTOCOL)
 - Segment: each unbroken run of letters/digits in the cleaned URL. Measured on 50,000 cleaned URLs: median 7 segments; 33.8% have 5 or fewer; class medians benign 7, defacement 12, malware 7, phishing 5.
-- Masking: remove the segment's characters, keep punctuation; one shared function for both explainers.
+- Unit cap: at most 10 units per URL; longer URLs have neighbouring segments merged into 10 groups, so there are at most 1,024 possible masks.
+- Masking: remove the unit's characters, keep punctuation; one shared function for both explainers; masked strings are not re-normalized.
 - Explain the stack's probability for its predicted class (both methods in probability space).
-- SHAP: model-agnostic Shapley values over segments (exact for short URLs, sampled with a fixed budget otherwise). LIME: linear surrogate on the same masks, fixed seed and budget.
+- SHAP: exact Shapley values from every possible mask (at most 1,024 model calls per URL); never sampled.
+- LIME: the library's own linear fitter on the same kind of masks, sampling as in LimeTextExplainer, 1,000 samples, fixed seed, a weight for every unit.
 - k = 3, minimum 6 segments, threshold mean top-3 Jaccard < 0.50.
-- Chance level: random-ranking agreement for each URL's own segment count (explanations cannot be shuffled between URLs because segments differ).
-- Go/no-go: projected full run of about two hours or less on the laptop.
+- Chance level: random-ranking agreement for each URL's own unit count (0.37 at 6 units, 0.20 at 10). Explanations cannot be shuffled between URLs because segments differ.
+- Class comparison is tested on agreement minus chance, because classes differ in URL length.
+- Cost: model calls per explanation is the primary measure, wall time secondary (exact SHAP needs 64 to 1,024 calls, LIME always 1,000).
+- Pilot gates: hard checks (features and predictions reproduce the saved ones, Shapley values add up); signal (hiding segments must move the output); LIME stability over two seeds; runtime. LIME fit (R2) is reported with a pre-stated interpretation and does not stop the experiment.
 
 ## 11. PITFALLS
 - With the same masks, SHAP and LIME are close relatives; agreement may be much higher than 0.17. Either outcome is reportable. Do not write the abstract around "they disagree" before the numbers exist.
