@@ -15,6 +15,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from lime.lime_base import LimeBase
+from scipy.stats import spearmanr
 from sklearn.metrics.pairwise import pairwise_distances
 
 from src.features_v3 import build_feature_frame_v3_lexical
@@ -56,6 +57,11 @@ def mask(url: str, unit_spans, keep, rule: str = "delete") -> str:
         pos = end
     out.append(url[pos:])
     return "".join(out)
+
+
+def unit_text(url: str, unit) -> str:
+    """Text of one unit: from its first segment to its last, inner punctuation included."""
+    return url[unit[0][0]:unit[-1][1]]
 
 
 def coalition_keep(bits: int, n: int) -> list[bool]:
@@ -157,3 +163,25 @@ def chance_jaccard(n: int, k: int = 3) -> float:
     """Exact expected Jaccard of two independent uniformly random k-subsets of n items."""
     total = comb(n, k)
     return sum(comb(k, h) * comb(n - k, k - h) / total * h / (2 * k - h) for h in range(k + 1))
+
+
+def pair_agreement(a, b, k: int = 3) -> dict:
+    """Agreement of two explanations of the same units (protocol section 4 and Amendment A1.6).
+
+    jaccard: top-k Jaccard by |value|. spearman: rank correlation of |value| over all units, NaN
+    when either vector is constant. sign_agreement: share of the units in both top-k sets whose
+    two values have the same sign, NaN when no unit is shared.
+    """
+    a, b = np.asarray(a, dtype=float), np.asarray(b, dtype=float)
+    top_a, top_b = top_k(a, k), top_k(b, k)
+    abs_a, abs_b = np.abs(a), np.abs(b)
+    constant = np.ptp(abs_a) == 0 or np.ptp(abs_b) == 0
+    shared = sorted(set(top_a) & set(top_b))
+    return {
+        "jaccard": jaccard(top_a, top_b),
+        "spearman": float("nan") if constant else float(spearmanr(abs_a, abs_b).statistic),
+        "n_shared": len(shared),
+        "sign_agreement": (float(np.mean([np.sign(a[i]) == np.sign(b[i]) for i in shared]))
+                           if shared else float("nan")),
+        "top_a": top_a, "top_b": top_b,
+    }

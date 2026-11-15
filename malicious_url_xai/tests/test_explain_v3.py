@@ -4,8 +4,8 @@ import numpy as np
 import pytest
 
 from src.explain_v3 import (
-    ART, StackModel, chance_jaccard, coalition_keep, exact_shapley, jaccard, mask, segments,
-    top_k, units,
+    ART, StackModel, chance_jaccard, coalition_keep, exact_shapley, jaccard, mask, pair_agreement,
+    segments, top_k, unit_text, units,
 )
 from src.features_v3 import FEATURE_NAMES_V3_LEXICAL, extract_features_v3_lexical
 
@@ -85,6 +85,36 @@ def test_chance_jaccard_matches_brute_force():
 
 def test_top_k_tie_break_by_position():
     assert top_k([0.1, -0.5, 0.5, 0.2], 3) == [1, 2, 3]
+
+
+def test_unit_text_single_and_merged():
+    assert [unit_text(URL, u) for u in units(URL)] == ["paypal", "com", "account", "verify", "id", "123"]
+    url = "/".join(f"s{i}" for i in range(23))
+    texts = [unit_text(url, u) for u in units(url)]
+    assert texts[0] == "s0/s1/s2" and texts[-1] == "s21/s22"
+    assert "/".join(texts) == url
+
+
+def test_pair_agreement():
+    a = [0.5, -0.4, 0.3, 0.2, 0.1, 0.0]
+    same = pair_agreement(a, a)
+    assert same["jaccard"] == 1.0 and np.isclose(same["spearman"], 1.0)
+    assert same["n_shared"] == 3 and same["sign_agreement"] == 1.0
+
+    flipped = pair_agreement(a, [-x for x in a])        # same sizes, opposite directions
+    assert flipped["jaccard"] == 1.0 and np.isclose(flipped["spearman"], 1.0)
+    assert flipped["n_shared"] == 3 and flipped["sign_agreement"] == 0.0
+
+    b = [0.0, 0.1, 0.2, 0.3, -0.4, 0.5]
+    other = pair_agreement(a, b)
+    assert other["top_a"] == [0, 1, 2] and other["top_b"] == [5, 4, 3]
+    assert other["jaccard"] == 0.0 and other["n_shared"] == 0 and np.isnan(other["sign_agreement"])
+    assert np.isclose(other["spearman"], -1.0)
+
+    partial = pair_agreement(a, [0.5, 0.4, 0.0, 0.3, 0.0, 0.0])
+    assert partial["jaccard"] == 0.5 and partial["n_shared"] == 2 and partial["sign_agreement"] == 0.5
+
+    assert np.isnan(pair_agreement(a, [0.2] * 6)["spearman"])     # constant vector: undefined
 
 
 def test_empty_url_lexical_features_finite():
