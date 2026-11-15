@@ -1,0 +1,40 @@
+{
+  "run_at": "2026-11-15T23:58:16",
+  "protocol_sha256": "02b151dae8d9c53d115b53ee62ee31a035fcf18c3dffeeb2776a8c10a98207e9",
+  "git_head": "1a6e490c74f7e519c21f9f7430e75962c3b608ca",
+  "git_dirty": true,
+  "lime_samples": 1000,
+  "total_model_calls": 604824,
+  "peak_memory_mb": 843.4,
+  "power": {
+    "battery_status": "2",
+    "power_online": "True",
+    "power_scheme": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "overlay_ac": "ded574b5-45a0-4f42-8737-46345c09c238",
+    "overlay_dc": "",
+    "timing_conditions_met": true
+  },
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "sklearn": "1.7.2",
+    "xgboost": "3.2.0",
+    "shap": "0.49.1",
+    "lime": "0.2.0.1",
+    "lightgbm": "4.7.0"
+  },
+  "mode": "main",
+  "n_class": 50,
+  "n_urls": 200,
+  "main_seed": 42,
+  "lime_seed": "42 + row_id",
+  "rules": [
+    "delete",
+    "placeholder"
+  ],
+  "warmup_row_id": 6,
+  "elapsed_s": 289.8
+}

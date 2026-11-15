@@ -1,0 +1,11 @@
+case,row_id,url_norm,true,pred,correct,n_units,jaccard_top3,spearman_abs,top3_shap,top3_lime
+highest agreement,4001,momcinema.com/free/pics-movies/vasconcelos/,benign,benign,True,6,1.0,1.0,movies | com | momcinema,movies | com | momcinema
+highest agreement,61041,hafenrocker.de/gaestebuch.html?start=190,defacement,defacement,True,6,1.0,1.0,hafenrocker | html | de,hafenrocker | html | de
+highest agreement,135319,hobartcorp.com/products/food-prep/mixers/,benign,phishing,False,6,1.0,1.0,products | com | mixers,products | com | mixers
+lowest agreement,42692,appleid.apple.co.uk.cgi-bin.webobjects.myappleid.woa.verify8.eu-id3.com/identify-customer=Ip5kD6mQcP9eY0goxz7yG2Zn08BpFyu4jQ9F2y9WTsF89uOiCKuSCaVHHpjNvkTupYmRuIml86DxegV6B41etX3OsqtVR6sKGiNl/,phishing,phishing,True,10,0.2,0.38181818181818183,com | webobjects.myappleid | eu-id3,webobjects.myappleid | Ip5kD6mQcP9eY0goxz7yG2Zn08BpFyu4jQ9F2y9WTsF89uOiCKuSCaVHHpjNvkTupYmRuIml86DxegV6B41etX3OsqtVR6sKGiNl | woa.verify8
+lowest agreement,77119,yage168.cn/images/?app=com-d3&amp;us.battle.net/login/en/?ref=http://ytewmnuus.battle.net/d3/en/index,phishing,phishing,True,10,0.2,0.34545454545454546,yage168.cn | images/?app | amp;us,login/en | amp;us | ytewmnuus.battle
+lowest agreement,616082,ibm.com/software/data/db2/9/,phishing,phishing,True,6,0.2,-0.14285714285714288,ibm | data | db2,com | ibm | 9
+typical benign,4001,momcinema.com/free/pics-movies/vasconcelos/,benign,benign,True,6,1.0,1.0,movies | com | momcinema,movies | com | momcinema
+typical defacement,16475,michaelgoczol.de/hp/index.php/portfolio/equine-book,defacement,defacement,True,8,1.0,0.880952380952381,michaelgoczol | portfolio | index,portfolio | michaelgoczol | index
+typical malware,13584,shicaifanxin.cn/index.php?s=video/search/wd/%E5%9F%83%E9%87%8C%E5%85%8B,malware,malware,True,10,1.0,0.6848484848484848,index.php | shicaifanxin.cn | search/wd,search/wd | index.php | shicaifanxin.cn
+typical phishing,51364,yage168.cn/images/?app=com-d3&amp;us.battle.net/login/en/?ref=ooxedvmus.battle.net/d3/en/index,phishing,phishing,True,10,0.5,0.9057792600832962,images/?app | amp;us | d3/en,images/?app | d3/en | login/en
