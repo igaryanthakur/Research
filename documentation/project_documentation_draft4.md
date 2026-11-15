@@ -1,7 +1,7 @@
 # Project Documentation Draft 4 — Direction Document
 
 > **Project:** Detection of Malicious URLs Using Machine Learning and Explainable AI
-> **Written:** 14 Nov 2026
+> **Written:** 14 Nov 2026. **Updated:** 16 Nov 2026 with the result of the V3 main experiment (section 3.6). Stages 1–5 are done; the web app is next.
 > **What this draft is:** the single place that states the idea, the proposal, where the project stands, what happens next, and a plain-English guide to every technical term.
 > **What this draft is not:** a results log. Drafts 1–3 and the day logs remain the detailed record of V1, V2 and V3. Nothing in them is withdrawn.
 > **What this draft changes:** it replaces the "next work" lists in the earlier drafts, and it changes the reporting decision in Draft 3 §12.3. The plan is now to explain the V3 model itself. "V3 as classifier, V2 as explained model" becomes the fallback only.
@@ -82,6 +82,8 @@ These are written before the experiment is run.
 
 The value of k, the threshold and the minimum URL length are fixed in the protocol (Part 4, Stage 3) before any agreement number is produced. They must not be changed afterward.
 
+**Outcome (added 16 Nov 2026; the table above is unchanged).** H1 was not supported: mean top-3 agreement is 0.797, above the 0.50 threshold. H2 was supported. H3 was supported, largely by design. Details are in section 3.6.
+
 ## 2.6 Objectives
 
 1. Review the literature on ML-based malicious-URL detection and XAI.
@@ -125,9 +127,9 @@ URL  ->  segments  ->  hide some segments  ->  rebuild URL text
 
 The paper explains one model, V3. The other items are findings made on the way to it.
 
-1. **Main result (not yet produced):** SHAP vs LIME agreement and cost on the final stacked classifier under aligned URL-segment masking.
+1. **Main result (section 3.6):** on the final stacked classifier, SHAP and LIME largely agree when both use the same URL-segment masking (mean top-3 Jaccard 0.797, chance 0.269). Changing the masking rule changes the explanation more than changing the explainer (0.492 against 0.797). Agreement differs by predicted class.
 2. **Finding on the way — dataset leakage:** in this widely used dataset, URL formatting reveals the class. Removing it lowers a baseline's accuracy from 94.02% to 84.71% and exposes 4,047 URLs with contradictory labels.
-3. **Finding on the way — default tooling disagrees:** on the intermediate 36-feature XGBoost model, off-the-shelf TreeSHAP and LIME Tabular share few top features (mean top-5 Jaccard 0.173) and LIME fits the model poorly (mean local R² 0.156). This motivated the segment-based design.
+3. **Finding on the way — default tooling disagrees:** on the intermediate 36-feature XGBoost model, off-the-shelf TreeSHAP and LIME Tabular share few top features (mean top-5 Jaccard 0.173) and LIME fits the model poorly (mean local R² 0.156). This motivated the segment-based design. It is consistent with the main result (how the input is perturbed matters), but it is not a controlled comparison with it.
 4. **Classifier:** 94.85% accuracy and 0.9338 macro-F1 on cleaned data, with seen/unseen hostname results reported.
 
 Whether item 2 has been reported elsewhere has not been checked.
@@ -140,7 +142,9 @@ Whether item 2 has been reported elsewhere has not been checked.
 - Character-chunk features may memorise campaigns or hostnames.
 - Agreement between explainers measures consistency, not correctness. Neither is ground truth.
 - Hiding segments creates URLs that never existed; they are real strings but may be unusual.
-- Short URLs have too few segments for a top-k comparison and will be excluded from that metric.
+- Short URLs have too few segments for a top-k comparison and are excluded. The 6-segment rule keeps 66.2% of test URLs but only 34.7% of predicted-phishing URLs.
+- Only two masking rules were tried, and the explanation depends on which one is used.
+- Sharing the same masks makes SHAP and LIME close relatives (KernelSHAP is formally LIME with a particular kernel), so some agreement is expected.
 
 ---
 
@@ -156,7 +160,7 @@ Whether item 2 has been reported elsewhere has not been checked.
 
 V3 per-class F1: benign 0.9648, defacement 0.9807, malware 0.9594, phishing 0.8304. Phishing is the weakest class; 2,436 phishing URLs in the test set are predicted benign.
 
-Checked on 14 Nov 2026: all 55 tests pass, and `python train_v3.py verify` reloads the saved V3 model and reproduces its saved test probabilities.
+Checked on 14 Nov 2026: `python train_v3.py verify` reloads the saved V3 model and reproduces its saved test probabilities. Checked on 15 Nov 2026: all 70 tests pass and the V3 checksum freeze is clean.
 
 ## 3.2 Finding 1 — the dataset leaks its labels
 
@@ -224,12 +228,12 @@ Two weaknesses of this study explain why it is preliminary:
 | Issue | Status |
 |---|---|
 | V3 is at 94.85%, not 95% | Accepted. Report 94.85%. No further tuning against the test set. |
-| The paper's main experiment does not exist yet | Stages 3–5 below. This is the largest remaining risk. |
+| The paper's main experiment | Done on 15 Nov 2026 (section 3.6). H1 was not supported, so the paper's headline changes. |
 | V3 misjudges some everyday URLs | See below. Handled in the web app and reported as a limitation. |
 | Paper 5 full text unread | Aryan's task. The novelty wording waits on it. |
 | Dataset citation | Dataset is public and was downloaded from Kaggle. Copy the exact page title, author and licence line into the references. |
 | Venue indexing of surveyed papers | Still unverified. |
-| V3 has no checksum freeze | Stage 2. |
+| V3 has no checksum freeze | Done: `results/v3/freeze.json` (46 files). |
 
 **Everyday URLs.** Eight URLs were tried with `check.py` on 14 Nov. Five were sensible (GitHub login, Wikipedia and YouTube as benign; an Amazon cart URL as benign but only narrowly, 51% against 47% phishing; an IP-and-port URL as malware). Three were not:
 
@@ -254,6 +258,65 @@ Eight URLs is an anecdote, not a measurement. The likely cause is the dataset: i
 | Well-known sites in the app | A small, disclosed allowlist in the app layer; demo mainly on held-out test URLs. |
 | Order of work | Experiment first, app second, report and slides last. |
 
+## 3.6 Finding 3 — the main experiment on V3 (run 15 Nov 2026)
+
+Source: `malicious_url_xai/results/v3/xai/main/xai_summary.json`. Protocol: `documentation/v3_protocol.md` with Amendment 1. Code commit `1a6e490`; the run was on charger with Windows Best performance.
+
+Setup: 200 test URLs, 50 per predicted class, each with at least 6 segments, pilot URLs excluded. Exact Shapley values against LIME with 1,000 samples. Both explain the stack's probability for its predicted class. The primary masking rule deletes a segment; the secondary rule (Amendment 1) replaces it with `x` characters of the same length.
+
+**RQ1 — do they agree? Yes. H1 is not supported.**
+
+| Result (delete rule) | Value |
+|---|---:|
+| Mean top-3 Jaccard | 0.797 (95% CI 0.760–0.833) |
+| Mean chance level | 0.269 |
+| Mean Jaccard minus chance | 0.528 (95% CI 0.490–0.566); Wilcoxon p = 1.8e-34 |
+| URLs with identical top-3 sets | 123 of 200 |
+| URLs sharing two of three | 70 |
+| URLs sharing one of three (below the 0.50 threshold) | 7 (3.5%) |
+| Mean rank correlation (Spearman) | 0.831 |
+| Same sign on shared top-3 segments | 100% |
+
+**RQ2 — does agreement differ by class? Yes. H2 is supported.**
+
+| Predicted class | Mean units | Mean Jaccard | Chance | Minus chance | LIME median R² |
+|---|---:|---:|---:|---:|---:|
+| Benign | 8.22 | 0.884 | 0.267 | 0.617 | 0.69 |
+| Defacement | 9.16 | 0.920 | 0.231 | 0.689 | 0.75 |
+| Malware | 7.34 | 0.744 | 0.299 | 0.445 | 0.73 |
+| Phishing | 7.92 | 0.640 | 0.278 | 0.362 | 0.46 |
+
+Kruskal-Wallis on Jaccard minus chance: H = 56.95, p = 2.6e-12. This class order belongs to the delete rule. Under placeholder masking the class means are benign 0.75, defacement 0.89, malware 0.79 and phishing 0.77, so "phishing agrees least" must always be stated together with the rule. Only 6 of the 200 predictions are wrong, which is too few to compare right and wrong predictions.
+
+**RQ3 — cost. H3 is supported, largely by design.**
+
+| | Exact SHAP | LIME |
+|---|---:|---:|
+| Model calls per explanation | 2^n: median 256 (64 to 1,024) | always 1,000 |
+| Median wall time | 143.6 ms | 438.8 ms |
+
+SHAP needs fewer calls on 60% of URLs. Paired Wilcoxon on wall time: p = 7.0e-29. At 10 units (80 of the 200 URLs) the two take the same time, about 440 ms. The difference comes from how many times the model is called, not from one method being cleverer.
+
+**The masking rule matters more than the explainer** (comparison declared in Amendment 1, after the pilot and before the main run).
+
+| Comparison | Mean top-3 Jaccard |
+|---|---:|
+| SHAP vs LIME, both with delete | 0.797 |
+| SHAP vs LIME, both with placeholder | 0.800 |
+| SHAP with delete vs SHAP with placeholder | 0.492 (95% CI 0.457–0.529) |
+| LIME with delete vs LIME with placeholder | 0.510 (95% CI 0.473–0.546) |
+
+Paired test of the first row against the third: the explainer pair agrees more on 125 URLs, less on 15, equally on 60 (Wilcoxon p = 5.2e-18).
+
+**The phishing baseline.** For 34 of 50 phishing URLs the model is more confident of "phishing" when every segment is deleted than for the full URL (mean 0.915 against 0.860). For the other three classes this never happens. A string of bare punctuation looks like phishing to this model, so for phishing the segments mostly pull the score down from a high starting point. This is a likely reason masking matters so much, and it looks like the same dataset habit as the Google case in section 3.4; neither link has been tested.
+
+**How the paper is written from this.**
+
+- H1 is reported as not supported. The hypothesis, k = 3 and the 0.50 threshold are not rewritten.
+- The headline is the masking finding, followed by the class differences. The agreement number alone is the weaker claim, because SHAP and LIME on the same masks are close relatives.
+- Finding 2 (V2) is used as a contrast that is consistent with this result. The numbers 0.173 and 0.797 are not placed in one table, because the units differ.
+- The masking comparison is described as declared before the main run, not as planned from the start.
+
 ---
 
 # Part 4 — What happens next
@@ -270,13 +333,13 @@ Eight URLs is an anecdote, not a measurement. The likely cause is the dataset: i
 | 6 | Web app | Streamlit page: URL in; class, probabilities and highlighted segments out | Runs locally on demo URLs |
 | 7 | Report and slides | LaTeX report, presentation | Submitted |
 
-Stages 1–3 are short and low risk. Stage 4 decides whether the paper has its main result. The null baseline runs first because it only reads saved files and is useful whatever happens later.
+**Status on 16 Nov 2026: stages 1–5 are done.** The null baseline is in section 3.3, the freeze is `results/v3/freeze.json`, the protocol is `documentation/v3_protocol.md`, the pilot passed every gate (`results/v3/xai/pilot/`), and the main result is in section 3.6. No fallback was needed. Stage 6, the web app, is next.
 
-The working plan for stages 1–4 is `.cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md`. Where it is more detailed than this section, the plan is the reference.
+The working plan for stages 1–4 was `.cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md` (completed).
 
-## 4.2 Protocol choices to fix in Stage 3
+## 4.2 Protocol choices (now fixed)
 
-These are proposals, aligned with the reviewed plan on 15 Nov 2026. None is fixed until the protocol file is approved.
+These were proposals when this section was written. They are now fixed in `documentation/v3_protocol.md`, which is the reference; Amendment 1 there adds placeholder masking as a secondary analysis. The table is kept as the plain-language summary.
 
 | Choice | Proposed default | Why |
 |---|---|---|
@@ -304,7 +367,9 @@ When SHAP and LIME use the same masks and the same model calls, they are close r
 
 The V2 and V3 numbers must not be described as an improvement or a decline. One compares 36 engineered features; the other compares URL segments.
 
-## 4.4 Fallback
+**What happened (16 Nov 2026).** Agreement was high, 0.797, as this section warned it might be. See section 3.6.
+
+## 4.4 Fallback (not needed)
 
 Before any fallback, the experiment is scaled down: if LIME is unstable its sample budget is raised, and if runtime is too long the LIME budget and then the sample size are reduced, down to 100 URLs (25 per class).
 
@@ -312,9 +377,14 @@ If the signal gate fails, or scaling down is not enough, the paper reverts to th
 
 ## 4.5 Web app outline (Stage 6)
 
-- One Streamlit page; the model is loaded once at start.
-- Input: a URL. Output: cleaned URL, predicted class, four probabilities, and the URL with its most influential segments highlighted.
-- Allowlist check for a small set of well-known domains, shown on screen as an app-level rule, with the model's own answer still visible.
+- One Streamlit page; the model is loaded once at start. A web app and not a browser extension: the model is a 111 MB Python stack, so an extension would need this backend anyway.
+- Input: a URL. It is cleaned the same way as the training data and is never opened or fetched.
+- Output: cleaned URL, predicted class, four probabilities, and the URL with its segments coloured.
+- One explainer: exact SHAP with the delete rule, the protocol's primary setting. The two explainers agree closely (section 3.6), so showing both adds nothing for a user.
+- Two colours: segments that push towards the predicted class and segments that push away from it. No one-directional "flagged because" list, because for most phishing results the segments lower the score (section 3.6).
+- "No HTTPS" is never shown as a reason; the scheme is removed before the model sees the URL.
+- A line saying how the reasons are computed (parts of the URL are deleted and the URL is re-scored), and a note when the URL has fewer than 6 segments that such URLs were outside the study.
+- Allowlist check for a small set of well-known domains, shown on screen as an app-level rule, with the model's own answer still visible. It never enters any reported accuracy figure.
 - Example buttons that load held-out test URLs.
 - A visible note that this is a research demonstration trained on an old dataset.
 
@@ -442,7 +512,9 @@ The fix is to change the URL itself instead of the numbers:
 3. Turn the altered URL back into all 348 numbers.
 4. Ask the complete model for its answer.
 
-Both SHAP and LIME then say which pieces of the URL mattered. The result reads naturally: "flagged mainly because of `verify` and `secure-login`", not "because `tld_len` is 3".
+Both SHAP and LIME then say which pieces of the URL mattered. The result reads naturally: it names pieces such as `verify` and `secure-login`, not "`tld_len` is 3".
+
+There are two ways to hide a piece. **Delete** removes its characters (`paypal.com/verify` becomes `.com/verify`). **Placeholder** replaces them with the letter x (`xxxxxx.com/verify`). The main experiment found that this choice changes which pieces look important more than the choice between SHAP and LIME does.
 
 ## 5.11 The statistics, briefly
 
@@ -469,6 +541,12 @@ Changing the 348 numbers independently creates inputs no real URL can produce. C
 
 **Which explainer is correct?**
 Neither is ground truth. The study measures whether they are consistent with each other, which is what an analyst relying on them needs to know.
+
+**Your hypothesis said they would disagree. They agreed. Is the study a failure?**
+No. The hypothesis, the threshold and the sample were fixed before the run, and the result is reported as it came out: mean top-3 agreement 0.797 against a threshold of 0.50. A hypothesis that is not supported is still a result.
+
+**If SHAP and LIME agree, can the explanation be trusted?**
+Only partly. When the way of hiding a segment was changed from deleting it to replacing it with x's, the top-3 segments of the same explainer overlapped by only about a half (0.492 for SHAP, 0.510 for LIME). The explanation depends on that choice, so the app states which one it uses.
 
 **What did you find that was not planned?**
 The label leakage in the dataset and the 4,047 contradictory labels it was hiding.

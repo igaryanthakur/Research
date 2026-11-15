@@ -1,4 +1,4 @@
-# PROJECT CONTEXT (VERSION 4, 14 NOV 2026): READ FULLY BEFORE RESPONDING
+# PROJECT CONTEXT (VERSION 4, UPDATED 16 NOV 2026 AFTER THE V3 MAIN RUN): READ FULLY BEFORE RESPONDING
 
 This replaces RSPJ.txt, which describes the plan from before any work was done. The repository is far ahead of that file. If the two disagree, this file and the repository win.
 
@@ -21,6 +21,7 @@ SEMESTER 4: MCARP42 Research Paper / Product / Patent (2 credits, 100 marks)
 ## 3. TOPIC AND CHOSEN GAP
 Title: "Detection of Malicious URLs Using Machine Learning and Explainable AI: A Comparative Study of SHAP and LIME Explanation Agreement and Efficiency"
 Gap: existing malicious-URL papers show SHAP or LIME output, or both side by side, but do not measure whether the two agree on the same prediction or what each costs in time. We measure agreement and timing.
+Outcome (see F3): on the final model the two explainers mostly AGREE; the way parts of the URL are hidden changes the explanation more than the choice of explainer. The title still fits. A working alternative: "SHAP and LIME on Malicious URL Detection: The Masking Rule Matters More Than the Explainer".
 Rejected gaps: network/behavioural features (live lookups on dead URLs, too risky); low-latency XAI as a contribution of its own (kept only as a timing measurement).
 
 ## 4. LITERATURE (5 papers)
@@ -43,7 +44,7 @@ Venue indexing is not yet verified.
 | V3 | FINAL MODEL, the one to explain | XGBoost + LightGBM into Logistic Regression | 48 lexical + 300 char 3/4-gram TF-IDF = 348 | 0.9485 | 0.9338 |
 
 V3 per-class F1: benign 0.9648, defacement 0.9807, malware 0.9594, phishing 0.8304. Seen-hostname accuracy 0.9683, unseen-hostname 0.8881 (75.3% of test URLs share a hostname with train+validation).
-55 tests pass; `python train_v3.py verify` reproduces saved V3 probabilities (both checked 14 Nov 2026).
+70 tests pass and the V3 freeze check is clean (15 Nov 2026); `python train_v3.py verify` reproduces saved V3 probabilities (checked 14 Nov 2026).
 
 ## 7. FINDINGS SO FAR
 F1. Dataset leakage. URL formatting reveals the class (scheme present in 8.3% of benign, 100% of defacement, 96.3% of malware, 26.4% of phishing). Same Random Forest on test: cleaned 0.8471, raw 0.9402, raw plus scheme flags 0.9466. Not yet checked whether another paper reports this.
@@ -55,14 +56,25 @@ F2. Preliminary SHAP vs LIME on V2 (500 URLs, 125 per predicted class, exact Tre
 - LIME mean local R2 0.1560 (poor fit)
 - median time: TreeSHAP 224.19 ms (all 4 classes, 2,544 trees) vs LIME 60.85 ms (predicted class only)
 Weaknesses: SHAP was in log-odds space and LIME in probability space; LIME fitted poorly. This is why it is preliminary.
+F3. MAIN RESULT: SHAP vs LIME on the V3 stack (run 15 Nov 2026; results/v3/xai/main/, start with xai_summary.json). 200 test URLs, 50 per predicted class, each with 6+ segments, pilot URLs excluded; exact Shapley values vs LIME (1,000 samples); top-3 segments; delete masking is primary, placeholder masking is the secondary analysis declared in protocol Amendment 1.
+- H1 NOT SUPPORTED. Mean top-3 Jaccard 0.797 (95% CI 0.760-0.833) against the fixed 0.50 threshold; mean chance 0.269 (Wilcoxon vs chance p = 1.8e-34). 123 URLs have identical top-3 sets, 70 share two of three, 7 share one; 3.5% are below 0.50. Mean Spearman 0.831. Every shared top-3 segment has the same sign in both methods.
+- H2 SUPPORTED. Mean Jaccard by predicted class: benign 0.884, defacement 0.920, malware 0.744, phishing 0.640; minus chance 0.617 / 0.689 / 0.445 / 0.362; Kruskal-Wallis on Jaccard minus chance p = 2.6e-12. This ordering holds for the delete rule only: under placeholder masking the class means are benign 0.75, defacement 0.89, malware 0.79, phishing 0.77.
+- H3 SUPPORTED, LARGELY BY DESIGN. Exact SHAP needs 2^n model calls (median 256), LIME always 1,000; SHAP uses fewer calls on 60% of URLs. Median wall time 143.6 ms (SHAP) vs 438.8 ms (LIME), paired Wilcoxon p = 7.0e-29. At 10 units (80 of 200 URLs) the two take the same time, about 440 ms. Timing conditions were met (charger, Best performance).
+- MASKING FINDING (pre-declared in Amendment 1, after the pilot and before the main run). Same explainer, different masking rule: SHAP delete vs SHAP placeholder mean top-3 Jaccard 0.492 (CI 0.457-0.529); LIME 0.510. Same rule, different explainer: 0.797 (delete), 0.800 (placeholder). Paired test 0.797 vs 0.492: 125 URLs one way, 15 the other, 60 equal, p = 5.2e-18.
+- LIME fit: median local R2 0.692 (benign 0.69, defacement 0.75, malware 0.73, phishing 0.46).
+- Phishing baseline: for 34 of 50 phishing URLs the model is MORE confident of phishing with every segment deleted than with the full URL (mean 0.915 vs 0.860). This share is 0% for the other three classes.
+- Only 6 of the 200 predictions are wrong, so nothing can be said about agreement on wrong predictions.
+- explain_metadata.json says git_dirty true only because the flag is read after the run writes its own outputs; the code was commit 1a6e490.
 
 ## 8. DECISIONS ALREADY MADE (do not reopen unless I ask)
 - V3 is final and frozen. 94.85% is accepted and reported as 94.85%, not "95%". No more training or tuning.
 - The paper explains ONE model, V3. V1 and V2 are the route to it; their findings (F1, F2) are contributions found on the way.
 - V3 is explained by URL-segment masking: cut the URL into segments, hide some, rebuild the URL, recompute all 348 features, call the complete stack, explain the stack's predicted class. SHAP and LIME both use this.
 - Never perturb the 348 columns independently. Never explain a single base model and call it V3. Never present V2 explanation values as V3 explanations.
-- Sem 3 package: a Streamlit web app (not a browser extension) that classifies a URL and highlights the segments that drove the result.
+- Paper framing after F3: H1 is reported as "not supported" (never rewritten, threshold and k unchanged). The paper leads with the masking finding, then agreement by class. The V2 study (F2) is a contrast that is "consistent with" the masking finding, not a controlled comparison. The masking comparison is described as "pre-declared before the main run", never as "planned from the start". 0.797 and 0.173 never go in one table. Cite that KernelSHAP is formally LIME with a special kernel (Lundberg & Lee 2017), so some agreement is expected; our LIME kernel is not that kernel.
+- Sem 3 package: a Streamlit web app (not a browser extension; the model is a 111 MB Python stack, so an extension would need this backend anyway). It classifies a URL and highlights the segments that drove the result.
 - The app cannot say "no HTTPS" as a reason; the model never sees the scheme.
+- App explanation: ONE explainer, exact SHAP under the delete rule (the protocol's primary rule; median 54 ms at 6 units to 440 ms at 10 units in the main run). Segments are shown in two colours, pushing towards and away from the predicted class; no one-directional "flagged because" list, because of the phishing baseline in F3. The page states that reasons come from deleting parts of the URL and re-scoring it, and that URLs with fewer than 6 segments are outside the study.
 - Known issue: V3 calls https://www.google.com phishing (88%) and https://mail.google.com/mail/u/0/ phishing (93%), and calls an obvious fake PayPal URL benign (91%). Likely cause: short bare-domain URLs in the dataset are mostly phishing. Handle with a small disclosed allowlist in the app, demo mainly on held-out test URLs, and report it as a limitation.
 
 ## 9. STAGES (in this order)
@@ -73,12 +85,10 @@ Weaknesses: SHAP was in log-odds space and LIME in probability space; LIME fitte
 5. Full experiment (up to 200 URLs, up to 50 per predicted class, at least 25; set from pilot timing) and analysis.
 6. Web app.
 7. Report (LaTeX) and slides.
-Current position (15 Nov 2026): stages 1-4 done. V2 null baseline in results/v2/xai/null_baseline.json; V3 frozen (results/v3/freeze.json, 46 files); protocol in documentation/v3_protocol.md; 20-URL pilot in results/v3/xai/pilot/ passed every gate (G0 exact feature match, Q1 20/20, Q3 0.90, t90 0.96 s/URL -> n_class 50; LIME median R2 0.705, reported only). Pilot was run on battery (Balanced plan), so timings are conservative. Pilot observations: for phishing predictions the punctuation-only string scores ~0.9 phishing (higher than the full URL); delete-vs-placeholder SHAP Spearman median 0.67 (masking rule matters). Next: stage 5 main run (50 per class).
-Detailed plan for stages 1-4: .cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md. Where it is more detailed than this file, the plan wins.
-Before any fallback, scale down: raise the LIME budget if LIME is unstable; cut the LIME budget and then the sample (down to 100 URLs) if runtime is too long.
-Fallback if the signal gate fails or scaling down is not enough: V3 as classifier, V2 study as the explanation experiment, kept explicitly separate.
+Current position (16 Nov 2026): stages 1-5 DONE. V2 null baseline in results/v2/xai/null_baseline.json; V3 frozen (results/v3/freeze.json, 46 files); protocol with Amendment 1 in documentation/v3_protocol.md; 20-URL pilot in results/v3/xai/pilot/ passed every gate; main run and analysis in results/v3/xai/main/ (F3). The main run and the pilot refuse to run again. No fallback was needed. NEXT: stage 6, the web app.
+Detailed plan for stages 1-4: .cursor/plans/v3_freeze,_null,_protocol,_pilot_4a645f5a.plan.md (completed).
 
-## 10. PROTOCOL CHOICES PROPOSED FOR STAGE 3 (ALIGNED WITH THE REVIEWED PLAN, NOT YET APPROVED AS A PROTOCOL)
+## 10. PROTOCOL CHOICES (NOW FIXED IN documentation/v3_protocol.md; THE PROTOCOL FILE WINS OVER THIS SUMMARY)
 - Segment: each unbroken run of letters/digits in the cleaned URL. Measured on 50,000 cleaned URLs: median 7 segments; 33.8% have 5 or fewer; class medians benign 7, defacement 12, malware 7, phishing 5.
 - Unit cap: at most 10 units per URL; longer URLs have neighbouring segments merged into 10 groups, so there are at most 1,024 possible masks.
 - Masking: remove the unit's characters, keep punctuation; one shared function for both explainers; masked strings are not re-normalized.
@@ -90,21 +100,23 @@ Fallback if the signal gate fails or scaling down is not enough: V3 as classifie
 - Class comparison is tested on agreement minus chance, because classes differ in URL length.
 - Cost: model calls per explanation is the primary measure, wall time secondary (exact SHAP needs 64 to 1,024 calls, LIME always 1,000).
 - Pilot gates: hard checks (features and predictions reproduce the saved ones, Shapley values add up); signal (hiding segments must move the output); LIME stability over two seeds; runtime. LIME fit (R2) is reported with a pre-stated interpretation and does not stop the experiment.
+- Amendment 1 (15 Nov 2026, after the pilot, before the main run): placeholder masking (each hidden segment replaced by x's of the same length) as a pre-declared secondary analysis; one pre-declared paired test of "change the explainer" against "change the masking rule"; baseline values v(full) and v(empty) saved and reported by class.
 
 ## 11. PITFALLS
-- With the same masks, SHAP and LIME are close relatives; agreement may be much higher than 0.17. Either outcome is reportable. Do not write the abstract around "they disagree" before the numbers exist.
+- The expected disagreement did not appear (F3). Do not write "SHAP and LIME disagree" about V3, and do not change H1, k or the threshold after the fact.
 - Do not compare the V2 and V3 agreement numbers as better or worse; one is over 36 features, the other over URL segments.
-- A 6-segment minimum excludes about a third of URLs and at least half of phishing URLs. Report the excluded share.
-- Fix k, threshold and sample before seeing agreement numbers.
+- The 6-segment minimum keeps 66.2% of test URLs and only 34.7% of predicted-phishing URLs (protocol section 2). Results describe longer URLs.
+- "Phishing agrees least" is true under the delete rule only; say which rule every class number comes from.
+- Agreement is not correctness: both explainers change their answer when the masking rule changes.
 - Do not regenerate or overwrite anything under results/. The V2 and V3 final stages refuse to rerun by design.
 - shap 0.49.1 cannot load the XGBoost 3.2 multiclass model directly; the V2 study used Booster.predict(pred_contribs=True).
 - The saved XGBoost model was trained on GPU and prints a CPU-fallback warning on reload; this is harmless.
 - Timing must be measured on charger with Windows Best performance; on battery the CPU throttles.
 
 ## 12. REPOSITORY
-- malicious_url_xai/: src/ (features.py, features_v2.py, features_v3.py, data.py, runinfo.py), tests/ (55 tests), prepare*.py, train*.py, explain_v2.py, analyze_v2.py, check.py, artifacts/ (not in git), results/.
-- documentation/: project_documentation_draft.md, draft2, draft3 (detailed records of V1-V3), project_documentation_draft4.md (current direction, proposal, roadmap, plain-English guide), day1-3 logs.
-- Environment: Windows, PowerShell, 16 GB RAM, Python 3.13 in malicious_url_xai/.venv; run commands from malicious_url_xai/ with the venv active.
+- malicious_url_xai/: src/ (features.py, features_v2.py, features_v3.py, data.py, runinfo.py, freeze.py, explain_v3.py = segment explainer and StackModel), tests/ (70 tests), prepare*.py, train*.py, explain_v2.py, analyze_v2.py, null_baseline_v2.py, freeze_v3.py, explain_v3.py (--pilot | --main | --retime), analyze_v3.py, check.py, artifacts/ (not in git), results/.
+- documentation/: project_documentation_draft.md, draft2, draft3 (detailed records of V1-V3), project_documentation_draft4.md (current direction, proposal, main result, roadmap, plain-English guide), v3_protocol.md (protocol and Amendment 1), day1-3 logs.
+- Environment: Windows, PowerShell, 16 GB RAM, Python 3.13 in malicious_url_xai/.venv; run commands from malicious_url_xai/ with the venv active. Streamlit is not installed yet.
 
 ## 13. HOW I WANT YOU TO HELP
 We are working through the stages in section 9. Keep to the decisions in section 8. Don't suggest scope expansion unless I ask. Don't invent papers, results or library behaviour; say when you're unsure. Every number you quote must come from a saved file in the repository. Prefer short, runnable code with brief explanations. Flag anything that risks the deadline. When a choice affects the research result, propose it and wait for my approval before running anything.

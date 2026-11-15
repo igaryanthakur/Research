@@ -26,27 +26,33 @@ Done:
 - Preliminary SHAP vs LIME study on the frozen **V2** XGBoost model (500 URLs, top-5 of 36 features):
   - mean top-5 Jaccard **0.1730**; 95.6% of URLs below the pre-fixed 0.50 threshold;
   - mean full-ranking Spearman **-0.0101**;
-  - LIME mean local R² **0.1560**.
+  - LIME mean local R² **0.1560**;
+  - a post-hoc null baseline (`results/v2/xai/null_baseline.json`).
+- V3 frozen with a checksum manifest (`results/v3/freeze.json`); experiment protocol fixed in `documentation/v3_protocol.md` before any V3 explanation was computed; 20-URL pilot passed every gate.
+- **Main experiment** — SHAP vs LIME on the **V3 stack** (200 URLs, 50 per predicted class, top-3 URL segments, all 348 features recomputed for each masked URL):
+  - the two explainers largely agree: mean top-3 Jaccard **0.797** (95% CI 0.760–0.833), chance 0.269. The hypothesis of considerable disagreement (below 0.50), fixed before the run, was **not supported**;
+  - agreement differs by predicted class (delete masking): benign 0.884, defacement 0.920, malware 0.744, phishing 0.640;
+  - the masking rule matters more than the explainer: the same explainer under delete vs placeholder masking gives a mean top-3 Jaccard of only **0.492** (SHAP) and 0.510 (LIME);
+  - exact SHAP needs 2^n model calls (median 256) and LIME always 1,000; median time 144 ms vs 439 ms.
 
 Not done yet:
 
-- The main experiment: SHAP vs LIME on the **V3 stack**, using URL-segment masking with all 348 features recomputed for each perturbed URL.
 - The web app.
 - The final report and slides.
 
-The V2 explanation results describe V2 only. They must not be presented as explanations of V3.
+The V2 explanation results describe V2 only. They must not be presented as explanations of V3, and the V2 and V3 agreement numbers are not comparable (36 engineered features vs URL segments).
 
-Next stages, in order:
+Stages, in order:
 
-1. Add a shuffled null baseline to the saved V2 explanation results.
-2. Freeze V3 with a checksum manifest.
-3. Write and approve the V3 experiment protocol.
-4. Build the segment explainer and run a 20-URL pilot (5 per predicted class).
-5. Run the full V3 experiment and analysis.
-6. Build the Streamlit web app.
+1. Add a shuffled null baseline to the saved V2 explanation results. *(done)*
+2. Freeze V3 with a checksum manifest. *(done)*
+3. Write and approve the V3 experiment protocol. *(done)*
+4. Build the segment explainer and run a 20-URL pilot (5 per predicted class). *(done)*
+5. Run the full V3 experiment and analysis. *(done)*
+6. Build the Streamlit web app. *(next)*
 7. Write the report and slides.
 
-`documentation/project_documentation_draft4.md` holds the full plan, the proposal draft and a plain-English guide.
+`documentation/project_documentation_draft4.md` holds the full plan, the proposal draft, the main result (section 3.6) and a plain-English guide.
 
 ## Project layout
 
@@ -55,12 +61,13 @@ malicious_phish.csv            # Kaggle dataset, 651,191 URLs
 RSPJ4.txt                      # current project context prompt
 RSPJ.txt                       # original pre-project plan (superseded)
 malicious_url_xai/
-├── src/                       # cleaning and V1/V2/V3 feature code
-├── tests/                     # 55 tests
+├── src/                       # cleaning, V1/V2/V3 features, freeze check, V3 segment explainer
+├── tests/                     # 70 tests
 ├── prepare.py / train.py      # V1
 ├── prepare_v2.py / train_v2.py
-├── explain_v2.py / analyze_v2.py
-├── prepare_v3.py / train_v3.py
+├── explain_v2.py / analyze_v2.py / null_baseline_v2.py
+├── prepare_v3.py / train_v3.py / freeze_v3.py
+├── explain_v3.py / analyze_v3.py     # V3 pilot, main run and analysis
 ├── check.py                   # latest-model URL prediction
 ├── artifacts/                 # generated models/features (not in git)
 └── results/                   # saved metrics and XAI outputs
@@ -68,7 +75,8 @@ documentation/
 ├── project_documentation_draft.md    # V1 record
 ├── project_documentation_draft2.md   # V2 and V2 SHAP/LIME record
 ├── project_documentation_draft3.md   # V3 record
-├── project_documentation_draft4.md   # current direction and roadmap
+├── project_documentation_draft4.md   # current direction, main result and roadmap
+├── v3_protocol.md                    # V3 experiment protocol and Amendment 1
 ├── day1_log.txt
 ├── day2_log.txt
 └── day3_log.txt
@@ -94,10 +102,10 @@ python -m pytest
 python train_v3.py verify
 ```
 
-Expected status (last confirmed 14 Nov 2026):
+Expected status (tests last confirmed 15 Nov 2026, `verify` 14 Nov 2026):
 
 ```text
-55 passed
+70 passed
 Verified: final model reloads and matches saved test probabilities.
 ```
 
@@ -157,6 +165,19 @@ python train_v3.py verify
 
 V3 outputs are under `artifacts/v3/` and `results/v3/`.
 
+### V3 explanation experiment
+
+Historical sequence. The pilot and the main run have been run once and refuse to run again; their saved outputs are never regenerated.
+
+```powershell
+python freeze_v3.py
+python explain_v3.py --pilot
+python explain_v3.py --main
+python analyze_v3.py
+```
+
+`analyze_v3.py` only reads saved values and can be rerun. Results are under `results/v3/xai/main/`; start with `xai_summary.json`, `case_table.csv` and `figures/`.
+
 ## Methodological safeguards
 
 - URLs are normalized by removing a leading scheme and one leading `www.` before feature extraction.
@@ -167,6 +188,7 @@ V3 outputs are under `artifacts/v3/` and `results/v3/`.
 - Candidate models are selected using validation metrics, not test metrics.
 - Seed 42 is used for reproducibility.
 - Saved models, predictions and feature order are verified after reload.
+- The V3 explanation protocol (units, k, threshold, sample, tests) was fixed and committed before any V3 explanation was computed; the one later change is a dated amendment made before the main run.
 
 ## Important limitations
 
@@ -176,7 +198,8 @@ V3 outputs are under `artifacts/v3/` and `results/v3/`.
 - Character n-grams may learn repeated campaigns, templates, hostnames or source-specific text.
 - The unseen-host group has only 21 defacement URLs.
 - The model reflects the dataset's habits; well-known short URLs can be misclassified.
-- SHAP/LIME agreement measures consistency, not explanation correctness.
+- SHAP/LIME agreement measures consistency, not explanation correctness. Both explainers give different top segments when the masking rule changes.
+- The V3 explanation experiment covers only URLs with at least 6 segments (66.2% of test URLs, 34.7% of predicted-phishing URLs).
 - Only one dataset is used; there is no external validation.
 
 ## Documentation
