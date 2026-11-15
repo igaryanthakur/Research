@@ -10,13 +10,13 @@ todos:
     status: completed
   - id: freeze
     content: Write src/freeze.py and freeze_v3.py with a tmp-file unit test; commit the code; run freeze_v3.py (hashes artifacts/v3, results/v3 except freeze.json and xai/, and source files; records library versions, git HEAD and the release URL); run verify; commit freeze.json
-    status: in_progress
+    status: completed
   - id: protocol
     content: Write documentation/v3_protocol.md (units, masking, value function, k, chance, eligibility shares, sample-size rule, gates G0/Q1/Q3/R, reported-only Q2, step-down ladder, fallback); get approval; commit
-    status: pending
+    status: completed
   - id: explainer
     content: Build src/explain_v3.py (segments, mask, featurize, StackModel, exact_shapley, lime_segments, chance_jaccard) and tests/test_explain_v3.py; commit
-    status: pending
+    status: in_progress
   - id: pilot
     content: Run explain_v3.py --pilot on 20 held-out URLs; write pilot outputs and pilot_decision.json; commit
     status: pending

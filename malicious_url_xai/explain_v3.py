@@ -55,6 +55,18 @@ def git(*args):
                           check=True).stdout.strip()
 
 
+def power_state():
+    """Battery status (Win32_Battery: 1 = on battery, 2 = on AC) and the active power scheme."""
+    def ps(cmd):
+        try:
+            return subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True,
+                                  text=True, timeout=30).stdout.strip()
+        except Exception as exc:
+            return f"unavailable ({exc})"
+    return {"battery_status": ps("(Get-CimInstance Win32_Battery).BatteryStatus"),
+            "power_scheme": ps("powercfg /getactivescheme")}
+
+
 def load_test():
     df = pd.read_parquet(ART / "clean.parquet", columns=["url_norm"])
     preds = pd.read_csv(RES / "test_predictions.csv")
@@ -204,6 +216,7 @@ def pilot():
         "git_head": git("rev-parse", "HEAD"), "git_dirty": bool(git("status", "--porcelain")),
         "lime_samples": LIME_SAMPLES, "pilot_seed": PILOT_SEED, "warmup_row_id": int(warm["row_id"]),
         "total_model_calls": model.calls, "peak_memory_mb": peak_memory_mb(),
+        "power": power_state(),
         "environment": environment(),
     }
     with open(PILOT / "pilot_decision.json", "w") as f:
