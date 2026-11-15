@@ -16,10 +16,10 @@ todos:
     status: completed
   - id: explainer
     content: Build src/explain_v3.py (segments, mask, featurize, StackModel, exact_shapley, lime_segments, chance_jaccard) and tests/test_explain_v3.py; commit
-    status: in_progress
+    status: completed
   - id: pilot
     content: Run explain_v3.py --pilot on 20 held-out URLs; write pilot outputs and pilot_decision.json; commit
-    status: pending
+    status: completed
 isProject: false
 ---
 

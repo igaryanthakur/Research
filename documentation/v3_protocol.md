@@ -105,4 +105,35 @@ The pilot is a smoke test. It tells us about runtime, crashes and gross quality 
 
 ## Amendments
 
-None.
+### Amendment 1 — 15 Nov 2026, after the pilot and before the main run
+
+**When this was written.** After the 20-URL pilot (`results/v3/xai/pilot/pilot_decision.json`, which records the pre-amendment protocol SHA-256 `f03efac489a3c9aac73471aa461e448d2f8cf5fe8a67b6bd2acc09a2630f79d8`) and before any main-run code existed. No SHAP-vs-LIME agreement on V3 has been computed at this point; the pilot computed none.
+
+**What does not change.** Sections 1–8 stand. The primary analysis, the delete masking rule, k = 3, the 0.50 threshold, the main-sample rule and the tests that decide H1–H3 are exactly as written above. H1–H3 are decided on the delete rule only.
+
+**A1.1 — Placeholder masking becomes a pre-declared secondary analysis of the main run.**
+
+Reason: the pilot diagnostic showed that exact SHAP rankings under the delete rule and under the placeholder rule correlate at a median Spearman of only 0.665, and are negatively correlated for 3 of 20 URLs. The masking rule may therefore move an explanation as much as the choice of explainer does. The main run measures this instead of only mentioning it.
+
+Added for every main-sample URL:
+
+- Exact Shapley values and LIME weights are also computed under the placeholder rule, with the same units, the same LIME budget (1,000) and the same seed (42 + row_id), so both rules use identical masks.
+- **Secondary agreement:** SHAP-vs-LIME top-3 Jaccard and Spearman under the placeholder rule, summarised like the primary measure (mean, bootstrap 95% CI, chance, by class). No threshold and no hypothesis decision is attached to it.
+- **Masking sensitivity:** for SHAP and for LIME separately, top-3 Jaccard and Spearman between the delete-rule and placeholder-rule explanations of the same URL.
+- **One pre-declared comparison:** a paired two-sided Wilcoxon signed-rank test, per URL, between J(SHAP delete, LIME delete) and J(SHAP delete, SHAP placeholder). Both have the same chance level for a given URL. It asks whether changing the masking rule moves the top-3 more than changing the explainer does.
+
+**A1.2 — Baseline descriptives.** For every URL the run saves v(N) and v(∅) under both rules. The analysis reports, by predicted class, the mean v(N), the mean v(∅) and the share of URLs with v(∅) > v(N). Reason: in all five phishing pilot URLs the fully masked string scored higher for phishing than the full URL did, which changes how phishing explanations must be read. These are descriptive values, not agreement measures.
+
+**A1.3 — Empty-host diagnostic redefined.** The pilot's check (hostname parses as the empty string) always read 0, because a deleted host parses as `.`. It is replaced by the share of delete-rule masked strings whose hostname contains no ASCII letter or digit. Diagnostic only.
+
+**A1.4 — Timing.** RQ3 wall time covers the delete rule only: exact SHAP, then LIME at the primary seed, as in section 5. For each URL the placeholder computations run after the timed delete-rule calls and are not part of RQ3. If the main run is not executed under the section 5 timing conditions (on charger, Best performance), the explanation values are kept, because they do not depend on the power state, and wall times are re-measured by a timing-only pass (`explain_v3.py --retime`) under those conditions. That pass recomputes the delete-rule explanations, checks them against the saved values and saves only the times. The paper reports the wall times from the pass that met the conditions. The power state is recorded in the metadata of every run. Model calls per explanation do not depend on the power state.
+
+**A1.5 — Runtime.** n_class = 50 from the pilot stands. The placeholder rule roughly doubles the model calls, for a projected run of about seven minutes, well inside the two-hour budget.
+
+**A1.6 — Definitions that section 4 left implicit.**
+
+- Spearman is computed on |value| over the n units. It is recorded as undefined when either vector is constant, and the number of undefined values is reported.
+- Sign agreement: for a URL with at least one unit in both top-3 sets, the share of those shared units where the SHAP value and the LIME weight have the same sign. URLs with no shared unit are excluded from this measure and counted.
+- The Wilcoxon test of J against chance is two-sided on J minus chance.
+- Overall means are class-balanced by design, because the sample has the same number of URLs per predicted class.
+- The main sample is saved to `results/v3/xai/main_sample.csv` before any model call. The main run refuses to run if its outputs already exist; explanations are never regenerated.
